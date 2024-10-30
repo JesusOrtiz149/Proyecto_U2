@@ -15,8 +15,7 @@ namespace Proyecto_U2
         {
             InitializeComponent();
             this.Text = String.Format("Acerca de {0}", AssemblyTitle);
-            //this.labelProductName.Text = AssemblyProduct;
-            this.labelProductName.Text = "Base de datos NorthWind";
+            this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = String.Format("Versión {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
@@ -102,17 +101,5 @@ namespace Proyecto_U2
             }
         }
         #endregion
-
-        private void AcercaDe_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void okButton_Click(object sender, EventArgs e)
-        {
-            Form1 forma = new Form1();
-            this.Close();
-            forma.Show();
-        }
     }
 }
