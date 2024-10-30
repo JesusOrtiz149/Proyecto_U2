@@ -151,6 +151,7 @@
             okButton.Size = new Size(88, 27);
             okButton.TabIndex = 24;
             okButton.Text = "&Aceptar";
+            okButton.Click += okButton_Click;
             // 
             // AcercaDe
             // 
@@ -164,11 +165,12 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AcercaDe";
-            Padding = new Padding(10, 10, 10, 10);
+            Padding = new Padding(10);
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "AcercaDe";
+            Load += AcercaDe_Load;
             tableLayoutPanel.ResumeLayout(false);
             tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logoPictureBox).EndInit();
