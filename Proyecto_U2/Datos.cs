@@ -10,9 +10,9 @@ namespace Proyecto_U2
 {
     public class Datos
     {
-        string Con = @"Data Source = DESKTOP-U39V4L7\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind";
-        //Debajo puedes cambiar la conexion para que se conecte en tu sql, solamente cambiando lo de "DESKTOP" y los números
         //string Con = @"Data Source = DESKTOP-U39V4L7\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind";
+        //Debajo puedes cambiar la conexion para que se conecte en tu sql, solamente cambiando lo de "DESKTOP" y los números
+        string Con = @"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind";
         private SqlConnection Conexion()
         {
             SqlConnection conexion = new SqlConnection(Con);
