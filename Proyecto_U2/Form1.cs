@@ -26,6 +26,7 @@ namespace Proyecto_U2
             cargarDatos("Select * From Territories");
             cargarDatos1("Select * From Employees");
             cargarDatos2("Select * From Customers");
+            cargarDatos3("Select * From Orders");
         }
         public void cargarDatos1(String comando)
         {
@@ -44,6 +45,16 @@ namespace Proyecto_U2
             if (ds != null)
             {
                 dtgCustomers.DataSource = ds.Tables[0];
+            }
+
+        }
+        public void cargarDatos3(String comando)
+        {
+            Datos dt = new Datos();
+            ds = dt.Ejecutar(comando);
+            if (ds != null)
+            {
+                dtgOrders.DataSource = ds.Tables[0];
             }
 
         }
@@ -104,8 +115,8 @@ namespace Proyecto_U2
                     cmbTerritorio.ValueMember = "TerritoryID";
                 }
                 cargarDatos("SELECT   Northwind.NOMBRE, Territory.TerritoryID  " +
-                    "\r\nFROM     Northwind INNER JOIN Territory ON Nortwind.TerrytoryID = " +
-                    "\r\nWhere Territory.TerritoryID='" + cmbTerritorio.Text + "'");
+                    "FROM     Northwind INNER JOIN Territory ON Nortwind.TerrytoryID = " +
+                    "Where Territory.TerritoryID='" + cmbTerritorio.Text + "'");
             }
             else
             {

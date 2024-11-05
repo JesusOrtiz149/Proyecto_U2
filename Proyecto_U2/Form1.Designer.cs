@@ -41,6 +41,8 @@
             dtgEmployees = new DataGridView();
             tabPage3 = new TabPage();
             dtgCustomers = new DataGridView();
+            tabPage4 = new TabPage();
+            dtgOrders = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dtgTerritory).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -48,6 +50,8 @@
             ((System.ComponentModel.ISupportInitialize)dtgEmployees).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgCustomers).BeginInit();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgOrders).BeginInit();
             SuspendLayout();
             // 
             // dtgTerritory
@@ -66,6 +70,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -185,6 +190,26 @@
             dtgCustomers.Size = new Size(896, 306);
             dtgCustomers.TabIndex = 0;
             // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(dtgOrders);
+            tabPage4.Location = new Point(4, 29);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(1262, 555);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "tabPage4";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dtgOrders
+            // 
+            dtgOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgOrders.Location = new Point(35, 240);
+            dtgOrders.Name = "dtgOrders";
+            dtgOrders.RowHeadersWidth = 51;
+            dtgOrders.Size = new Size(1212, 290);
+            dtgOrders.TabIndex = 0;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -204,6 +229,8 @@
             ((System.ComponentModel.ISupportInitialize)dtgEmployees).EndInit();
             tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgCustomers).EndInit();
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dtgOrders).EndInit();
             ResumeLayout(false);
         }
 
@@ -222,5 +249,7 @@
         private TabPage tabPage3;
         private CheckBox chkTerritorios;
         private CheckBox chkRegion;
+        private TabPage tabPage4;
+        private DataGridView dtgOrders;
     }
 }
