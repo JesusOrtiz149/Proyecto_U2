@@ -14,7 +14,7 @@ namespace Proyecto_U2
         public void cargarDatos(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgTerritory.DataSource = ds.Tables[0];
@@ -31,17 +31,18 @@ namespace Proyecto_U2
         public void cargarDatos1(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgEmployees.DataSource = ds.Tables[0];
             }
 
+
         }
         public void cargarDatos2(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgCustomers.DataSource = ds.Tables[0];
@@ -51,7 +52,7 @@ namespace Proyecto_U2
         public void cargarDatos3(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgOrders.DataSource = ds.Tables[0];
@@ -66,7 +67,7 @@ namespace Proyecto_U2
             if (rbtCiudad.Checked)
             {
                 cmbPais.Enabled = true;
-                DataSet ds = dt.Ejecutar("Select City From Employees");
+                DataSet ds = dt.ejecutarConsulta("Select City From Employees");
                 if (ds != null)
                 {
                     da = ds.Tables[0];
@@ -74,7 +75,7 @@ namespace Proyecto_U2
                     cmbPais.DisplayMember = "City";
                     //cmbPais.ValueMember = "EmployeeID";
                 }
-                cargarDatos1("SELECT   Nortwind.FirstName,Employees.City " +
+                dt.ejecutarConsulta("SELECT   Nortwind.FirstName,Employees.City " +
                     "FROM     Northwind INNER JOIN Employees ON Northwind.EmployeeID =  " +
                     "\r\nWhere Employees.City='"
                     + cmbPais.Text + "'");
@@ -106,7 +107,7 @@ namespace Proyecto_U2
             if (chkTerritorios.Checked)
             {
                 cmbTerritorio.Enabled = true;
-                DataSet ds = dt.Ejecutar("Select TerritoryID From Territory");
+                DataSet ds = dt.ejecutarConsulta("Select TerritoryID From Territory");
                 if (ds != null)
                 {
                     da = ds.Tables[0];
