@@ -1,5 +1,6 @@
 using System.Data;
 using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace Proyecto_U2
 {
@@ -14,7 +15,7 @@ namespace Proyecto_U2
         public void cargarDatos(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgTerritory.DataSource = ds.Tables[0];
@@ -25,39 +26,208 @@ namespace Proyecto_U2
         {
             cargarDatos("Select * From Territories");
             cargarDatos1("Select * From Employees");
-            cargarDatos2("Select * From Customers");
-            cargarDatos3("Select * From Orders");
+            cargarDatosCustomers("Select * From Customers");
+            cargarDatosOrders("Select * From Orders");
+            cargarDatosOrderDetails();
+            cargarDatosCategories();           
+            cargarDatosProducts();
+            cargarDatosSuppliers();
+            cargarDatosShippers();
+            cargarDatosEmpT();
+            cargarDatosCustomerDemo();
+            cargarDatosCustomerCustomerDemo();
+
+
         }
         public void cargarDatos1(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgEmployees.DataSource = ds.Tables[0];
             }
 
+
         }
-        public void cargarDatos2(String comando)
+        public void cargarDatosCustomers(String comando)
         {
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgCustomers.DataSource = ds.Tables[0];
             }
 
         }
-        public void cargarDatos3(String comando)
+        public void cargarDatosOrders(String comando)
         {
+
+            dtgOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgOrders.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
             Datos dt = new Datos();
-            ds = dt.Ejecutar(comando);
+            ds = dt.ejecutarConsulta(comando);
             if (ds != null)
             {
                 dtgOrders.DataSource = ds.Tables[0];
             }
+        }
+
+        public void cargarDatosOrderDetails()
+        {
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from [Order Details]");
+            if (ds != null)
+            {
+                dgvOrderDetails.DataSource = ds.Tables[0];
+            }
+        }
+
+        public void cargarDatosProducts()
+        {
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Products");
+            if (ds != null)
+            {
+                dgvProducts.DataSource = ds.Tables[0];
+            }
+        }
+
+        public void cargarDatosCategories()
+        {
+            dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCategories.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Categories");
+
+            if (ds != null)
+            {
+                dgvCategories.DataSource = ds.Tables[0];
+                
+               // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
+        }
+
+        private void AjustarTamañoConPreferido()
+        {
+            dgvCategories.AutoResizeColumns();
+            dgvCategories.AutoResizeRows();
+
+            dgvCategories.Width = dgvCategories.PreferredSize.Width;
+            dgvCategories.Height = dgvCategories.PreferredSize.Height;
+        }
+
+
+        public void cargarDatosSuppliers()
+        {
+            dgvSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSuppliers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Suppliers");
+
+            if (ds != null)
+            {
+                dgvSuppliers.DataSource = ds.Tables[0];
+                //dgvSuppliers.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
+        }
+        public void cargarDatosShippers()
+        {
+            dgvShippers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvShippers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Shippers");
+
+            if (ds != null)
+            {
+                dgvShippers.DataSource = ds.Tables[0];
+                //dgvSuppliers.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
+        }
+
+        public void cargarDatosEmpT()
+        {
+            dgvEmpT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvEmpT.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from EmployeeTerritories");
+
+            if (ds != null)
+            {
+                dgvEmpT.DataSource = ds.Tables[0];
+                //dgvSuppliers.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
+        }
+
+        public void cargarDatosCustomerDemo()
+        {
+            dgvCustomerDemographics.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCustomerDemographics.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from CustomerDemographics");
+
+            if (ds != null)
+            {
+                dgvCustomerDemographics.DataSource = ds.Tables[0];
+                //dgvSuppliers.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
+        }
+        public void cargarDatosCustomerCustomerDemo()
+        {
+            dgvCustomerCustomerDemo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCustomerCustomerDemo.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from CustomerCustomerDemo");
+
+            if (ds != null)
+            {
+                dgvCustomerCustomerDemo.DataSource = ds.Tables[0];
+                //dgvSuppliers.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
+        }
+
+        public void ajustarCategories()
+        {
+            // Establece el alto en función de las filas, por ejemplo:
+            int alturaFila = dgvCategories.RowTemplate.Height;
+            int numFilas = dgvCategories.Rows.Count;
+            int margen = dgvCategories.ColumnHeadersHeight;
+
+            dgvCategories.Height = (alturaFila * numFilas) + margen;
 
         }
+
+
+
+        /*public void cargarDatosOrders()
+        {
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Orders");
+            if (ds != null)
+            {
+                dgvOrders.DataSource = ds.Tables[0];
+            }
+        }*/
+
+
 
         private void rbtCiudad_CheckedChanged(object sender, EventArgs e)
         {
@@ -66,7 +236,7 @@ namespace Proyecto_U2
             if (rbtCiudad.Checked)
             {
                 cmbPais.Enabled = true;
-                DataSet ds = dt.Ejecutar("Select City From Employees");
+                DataSet ds = dt.ejecutarConsulta("Select City From Employees");
                 if (ds != null)
                 {
                     da = ds.Tables[0];
@@ -74,7 +244,7 @@ namespace Proyecto_U2
                     cmbPais.DisplayMember = "City";
                     //cmbPais.ValueMember = "EmployeeID";
                 }
-                cargarDatos1("SELECT   Nortwind.FirstName,Employees.City " +
+                dt.ejecutarConsulta("SELECT   Nortwind.FirstName,Employees.City " +
                     "FROM     Northwind INNER JOIN Employees ON Northwind.EmployeeID =  " +
                     "\r\nWhere Employees.City='"
                     + cmbPais.Text + "'");
@@ -106,7 +276,7 @@ namespace Proyecto_U2
             if (chkTerritorios.Checked)
             {
                 cmbTerritorio.Enabled = true;
-                DataSet ds = dt.Ejecutar("Select TerritoryID From Territory");
+                DataSet ds = dt.ejecutarConsulta("Select TerritoryID From Territory");
                 if (ds != null)
                 {
                     da = ds.Tables[0];
@@ -114,7 +284,7 @@ namespace Proyecto_U2
                     cmbTerritorio.DisplayMember = "Territory";
                     cmbTerritorio.ValueMember = "TerritoryID";
                 }
-                cargarDatos("SELECT   Northwind.NOMBRE, Territory.TerritoryID  " +
+                dt.ejecutarConsulta("SELECT   Northwind.NOMBRE, Territory.TerritoryID  " +
                     "FROM     Northwind INNER JOIN Territory ON Nortwind.TerrytoryID = " +
                     "Where Territory.TerritoryID='" + cmbTerritorio.Text + "'");
             }
@@ -123,8 +293,16 @@ namespace Proyecto_U2
                 cmbTerritorio.Enabled = false;
             }
         }
+
+
+
         //FALTA EL DE REGION ,IGUAL QUERIA QUE CUANDO SELECCIONEMOS UNA DE LAS CUATRO REGIONES TE ARROJE QUE TERRITORIOS ESTAN
+        private void dgvCategories_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ajustarCategories();
+        }
     }
+
 }
 
 

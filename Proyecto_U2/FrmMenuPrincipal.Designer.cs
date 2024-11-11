@@ -1,4 +1,4 @@
-﻿namespace Proyecto_U2
+namespace Proyecto_U2
 {
     partial class FrmMenuPrincipal
     {
@@ -47,7 +47,11 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, northwindToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
+
             menuStrip1.Size = new Size(1529, 28);
+
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+          
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -55,13 +59,16 @@
             // 
             archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(73, 24);
+            archivoToolStripMenuItem.Size = new Size(60, 20);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+
             salirToolStripMenuItem.Size = new Size(119, 26);
+
+            salirToolStripMenuItem.Size = new Size(180, 22);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -69,13 +76,17 @@
             // 
             northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem });
             northwindToolStripMenuItem.Name = "northwindToolStripMenuItem";
-            northwindToolStripMenuItem.Size = new Size(93, 24);
+            northwindToolStripMenuItem.Size = new Size(76, 20);
             northwindToolStripMenuItem.Text = "Northwind";
             // 
             // mostrarToolStripMenuItem
             // 
             mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
+
             mostrarToolStripMenuItem.Size = new Size(143, 26);
+
+           
+
             mostrarToolStripMenuItem.Text = "mostrar";
             mostrarToolStripMenuItem.Click += mostrarToolStripMenuItem_Click;
             // 
@@ -103,15 +114,19 @@
             // 
             // FrmMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+
             BackColor = Color.LightBlue;
             ClientSize = new Size(1529, 704);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+
+
             Controls.Add(menuStrip1);
             ForeColor = SystemColors.ActiveCaption;
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
             Text = "MenuPrincipal";
             WindowState = FormWindowState.Maximized;
