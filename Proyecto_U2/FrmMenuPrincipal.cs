@@ -27,5 +27,15 @@ namespace Proyecto_U2
         {
             this.Close();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
