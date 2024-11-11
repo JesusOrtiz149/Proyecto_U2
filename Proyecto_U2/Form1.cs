@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
@@ -29,7 +30,7 @@ namespace Proyecto_U2
             cargarDatosCustomers("Select * From Customers");
             cargarDatosOrders("Select * From Orders");
             cargarDatosOrderDetails();
-            cargarDatosCategories();           
+            cargarDatosCategories();
             cargarDatosProducts();
             cargarDatosSuppliers();
             cargarDatosShippers();
@@ -110,8 +111,8 @@ namespace Proyecto_U2
             if (ds != null)
             {
                 dgvCategories.DataSource = ds.Tables[0];
-                
-               // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
+
+                // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
             }
         }
 
@@ -256,8 +257,7 @@ namespace Proyecto_U2
         }
         private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //ME FALTA QUE SE ACOMODE POR CIUDAD ,O SEA QUE CUANDO ELIJAMOS UNA CIUDAD SALGAN EN SOLO LOS DE ESA CIUDAD
-            // DEPENDE DE COMO LO VEAS TU POR QUE SON 9 SON POCOS , TAMBIEN AHI PODEMOS IMPLEMENTAR OTRA TABLA EN ESE TAB 
+            
             if (rbtCiudad.Checked)
             {
                 cargarDatos1("SELECT   Nortwind.FirstName,Employees.City " +
@@ -267,30 +267,43 @@ namespace Proyecto_U2
             }
 
         }
-        private void chkTerritorios_CheckedChanged(object sender, EventArgs e)
+      
+
+        private void CargarTerritorios()
         {
-            //INTENTE CONECTAR LA TABLA DE EMPLOYEETERRITORY PARA CUANDO SELECCIONEMOS UN EMPLOYEEID NOS MARQUE QUE TERRITORIOS SON 
-            //PERO NO PUDE CONECTARLO
-            DataTable da;
-            Datos dt = new Datos();
-            if (chkTerritorios.Checked)
+            
+            using (SqlConnection conexion = new SqlConnection(@"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
             {
-                cmbTerritorio.Enabled = true;
-                DataSet ds = dt.ejecutarConsulta("Select TerritoryID From Territory");
-                if (ds != null)
+                try
                 {
-                    da = ds.Tables[0];
-                    cmbTerritorio.DataSource = ds.Tables[0];
-                    cmbTerritorio.DisplayMember = "Territory";
-                    cmbTerritorio.ValueMember = "TerritoryID";
+                    conexion.Open();
+
+                    
+                    string consulta = "SELECT TerritoryDescription FROM Northwind.dbo.Territories";
+
+                    SqlCommand comando = new SqlCommand(consulta, conexion);
+
+                    
+                    SqlDataReader lector = comando.ExecuteReader();
+
+                    List<string> territorios = new List<string>();
+
+                    
+                    while (lector.Read())
+                    {
+                        territorios.Add(lector["TerritoryDescription"].ToString());
+                    }
+
+                    
+                    cmbTerritorio.DataSource = territorios;
+
+                    
+                    lector.Close();
                 }
-                dt.ejecutarConsulta("SELECT   Northwind.NOMBRE, Territory.TerritoryID  " +
-                    "FROM     Northwind INNER JOIN Territory ON Nortwind.TerrytoryID = " +
-                    "Where Territory.TerritoryID='" + cmbTerritorio.Text + "'");
-            }
-            else
-            {
-                cmbTerritorio.Enabled = false;
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
 
@@ -301,8 +314,44 @@ namespace Proyecto_U2
         {
             ajustarCategories();
         }
-    }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbTerritorio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           CargarTerritorios();
+        }
+
+        private void chkRegion_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkTerritorios_CheckedChanged(object sender, EventArgs e)
+        {
+            // Verificar si el CheckBox está marcado
+            if (chkTerritorios.Checked)
+            {
+                // Llamar al método para cargar los territorios en el ComboBox
+                CargarTerritorios();
+            }
+            else
+            {
+                // Limpiar el ComboBox si el CheckBox no está marcado
+                cmbTerritorio.DataSource = null;
+            }
+        }
+
+    }
 }
+
+
 
 
