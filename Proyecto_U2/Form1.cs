@@ -29,7 +29,7 @@ namespace Proyecto_U2
             cargarDatosCustomers("Select * From Customers");
             cargarDatosOrders("Select * From Orders");
             cargarDatosOrderDetails();
-            cargarDatosCategories();           
+            cargarDatosCategories();
             cargarDatosProducts();
             cargarDatosSuppliers();
             cargarDatosShippers();
@@ -110,8 +110,8 @@ namespace Proyecto_U2
             if (ds != null)
             {
                 dgvCategories.DataSource = ds.Tables[0];
-                
-               // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
+
+                // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
             }
         }
 
@@ -300,6 +300,26 @@ namespace Proyecto_U2
         private void dgvCategories_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ajustarCategories();
+        }
+
+        private void Territory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cargarDatos("Select * From Territories");
+        }
+
+        private void btnNuevoTerritory_Click(object sender, EventArgs e)
+        {
+            FrmTerritory territory = new FrmTerritory();
+
+            territory.FormClosed += Territory_FormClosed;
+
+            territory.Show();
+
+        }
+
+        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

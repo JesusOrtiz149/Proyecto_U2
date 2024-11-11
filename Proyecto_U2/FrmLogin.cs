@@ -25,7 +25,7 @@ namespace Proyecto_U2
 
 
 
-            using (SqlConnection conexion = new SqlConnection(@"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            using (SqlConnection conexion = new SqlConnection(/*@"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"*/@"Data Source = DESKTOP-3KGVR4J\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind"))
             {
                 try
                 {

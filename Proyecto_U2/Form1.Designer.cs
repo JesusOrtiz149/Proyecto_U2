@@ -49,10 +49,12 @@
             tabPage3 = new TabPage();
             dtgCustomers = new DataGridView();
             tabPage2 = new TabPage();
+            btnNuevoEmpleado = new Button();
             cmbPais = new ComboBox();
             rbtCiudad = new RadioButton();
             dtgEmployees = new DataGridView();
             tabPage1 = new TabPage();
+            btnNuevoTerritory = new Button();
             chkTerritorios = new CheckBox();
             chkRegion = new CheckBox();
             dtgTerritory = new DataGridView();
@@ -138,9 +140,9 @@
             // dgvEmpT
             // 
             dgvEmpT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpT.Location = new Point(240, 79);
+            dgvEmpT.Location = new Point(387, 25);
             dgvEmpT.Name = "dgvEmpT";
-            dgvEmpT.Size = new Size(558, 231);
+            dgvEmpT.Size = new Size(305, 385);
             dgvEmpT.TabIndex = 2;
             // 
             // tabPage9
@@ -157,9 +159,9 @@
             // dgvShippers
             // 
             dgvShippers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvShippers.Location = new Point(272, 91);
+            dgvShippers.Location = new Point(333, 179);
             dgvShippers.Name = "dgvShippers";
-            dgvShippers.Size = new Size(558, 231);
+            dgvShippers.Size = new Size(343, 102);
             dgvShippers.TabIndex = 1;
             // 
             // tabPage8
@@ -176,9 +178,9 @@
             // dgvSuppliers
             // 
             dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSuppliers.Location = new Point(209, 103);
+            dgvSuppliers.Location = new Point(9, 84);
             dgvSuppliers.Name = "dgvSuppliers";
-            dgvSuppliers.Size = new Size(558, 231);
+            dgvSuppliers.Size = new Size(1091, 323);
             dgvSuppliers.TabIndex = 0;
             // 
             // tabPage7
@@ -194,12 +196,12 @@
             // 
             // dgvCategories
             // 
-            dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCategories.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategories.Location = new Point(203, 3);
+            dgvCategories.Location = new Point(180, 40);
             dgvCategories.Name = "dgvCategories";
-            dgvCategories.Size = new Size(586, 407);
+            dgvCategories.Size = new Size(788, 367);
             dgvCategories.TabIndex = 0;
             dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
             // 
@@ -217,9 +219,9 @@
             // dgvProducts
             // 
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(165, 40);
+            dgvProducts.Location = new Point(6, 60);
             dgvProducts.Name = "dgvProducts";
-            dgvProducts.Size = new Size(731, 347);
+            dgvProducts.Size = new Size(1091, 347);
             dgvProducts.TabIndex = 1;
             // 
             // tabCategories
@@ -236,9 +238,9 @@
             // dgvOrderDetails
             // 
             dgvOrderDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOrderDetails.Location = new Point(29, 44);
+            dgvOrderDetails.Location = new Point(276, 60);
             dgvOrderDetails.Name = "dgvOrderDetails";
-            dgvOrderDetails.Size = new Size(731, 347);
+            dgvOrderDetails.Size = new Size(582, 347);
             dgvOrderDetails.TabIndex = 0;
             // 
             // tabPage4
@@ -256,11 +258,11 @@
             // dtgOrders
             // 
             dtgOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgOrders.Location = new Point(31, 180);
+            dtgOrders.Location = new Point(6, 66);
             dtgOrders.Margin = new Padding(3, 2, 3, 2);
             dtgOrders.Name = "dtgOrders";
             dtgOrders.RowHeadersWidth = 51;
-            dtgOrders.Size = new Size(1060, 218);
+            dtgOrders.Size = new Size(1088, 343);
             dtgOrders.TabIndex = 0;
             // 
             // tabPage3
@@ -278,15 +280,16 @@
             // dtgCustomers
             // 
             dtgCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgCustomers.Location = new Point(25, 158);
+            dtgCustomers.Location = new Point(11, 63);
             dtgCustomers.Margin = new Padding(3, 2, 3, 2);
             dtgCustomers.Name = "dtgCustomers";
             dtgCustomers.RowHeadersWidth = 51;
-            dtgCustomers.Size = new Size(784, 230);
+            dtgCustomers.Size = new Size(1086, 346);
             dtgCustomers.TabIndex = 0;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btnNuevoEmpleado);
             tabPage2.Controls.Add(cmbPais);
             tabPage2.Controls.Add(rbtCiudad);
             tabPage2.Controls.Add(dtgEmployees);
@@ -298,6 +301,16 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Employees";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevoEmpleado
+            // 
+            btnNuevoEmpleado.Location = new Point(38, 83);
+            btnNuevoEmpleado.Name = "btnNuevoEmpleado";
+            btnNuevoEmpleado.Size = new Size(75, 23);
+            btnNuevoEmpleado.TabIndex = 4;
+            btnNuevoEmpleado.Text = "Nuevo";
+            btnNuevoEmpleado.UseVisualStyleBackColor = true;
+            btnNuevoEmpleado.Click += btnNuevoEmpleado_Click;
             // 
             // cmbPais
             // 
@@ -324,15 +337,16 @@
             // dtgEmployees
             // 
             dtgEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgEmployees.Location = new Point(22, 182);
+            dtgEmployees.Location = new Point(22, 111);
             dtgEmployees.Margin = new Padding(3, 2, 3, 2);
             dtgEmployees.Name = "dtgEmployees";
             dtgEmployees.RowHeadersWidth = 51;
-            dtgEmployees.Size = new Size(1029, 220);
+            dtgEmployees.Size = new Size(1075, 291);
             dtgEmployees.TabIndex = 0;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnNuevoTerritory);
             tabPage1.Controls.Add(chkTerritorios);
             tabPage1.Controls.Add(chkRegion);
             tabPage1.Controls.Add(dtgTerritory);
@@ -346,6 +360,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabTerritory";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevoTerritory
+            // 
+            btnNuevoTerritory.Location = new Point(332, 41);
+            btnNuevoTerritory.Name = "btnNuevoTerritory";
+            btnNuevoTerritory.Size = new Size(75, 23);
+            btnNuevoTerritory.TabIndex = 9;
+            btnNuevoTerritory.Text = "Nuevo";
+            btnNuevoTerritory.UseVisualStyleBackColor = true;
+            btnNuevoTerritory.Click += btnNuevoTerritory_Click;
             // 
             // chkTerritorios
             // 
@@ -490,5 +514,8 @@
         private TabControl tabControl1;
         private DataGridView dgvCustomerCustomerDemo;
         private DataGridView dgvCustomerDemographics;
+        private Button btnNuevoTerritory;
+        private Button btnNuevoEmpleado;
+        
     }
 }

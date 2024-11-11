@@ -47,11 +47,8 @@ namespace Proyecto_U2
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, northwindToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-
-            menuStrip1.Size = new Size(1529, 28);
-
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
-          
+            menuStrip1.Size = new Size(1529, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -65,10 +62,7 @@ namespace Proyecto_U2
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-
-            salirToolStripMenuItem.Size = new Size(119, 26);
-
-            salirToolStripMenuItem.Size = new Size(180, 22);
+            salirToolStripMenuItem.Size = new Size(95, 22);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -82,11 +76,7 @@ namespace Proyecto_U2
             // mostrarToolStripMenuItem
             // 
             mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
-
-            mostrarToolStripMenuItem.Size = new Size(143, 26);
-
-           
-
+            mostrarToolStripMenuItem.Size = new Size(115, 22);
             mostrarToolStripMenuItem.Text = "mostrar";
             mostrarToolStripMenuItem.Click += mostrarToolStripMenuItem_Click;
             // 
@@ -99,7 +89,6 @@ namespace Proyecto_U2
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
@@ -108,7 +97,7 @@ namespace Proyecto_U2
             label1.ForeColor = SystemColors.ActiveCaptionText;
             label1.Location = new Point(806, 538);
             label1.Name = "label1";
-            label1.Size = new Size(637, 136);
+            label1.Size = new Size(512, 109);
             label1.TabIndex = 2;
             label1.Text = "Northwind";
             // 
@@ -116,13 +105,10 @@ namespace Proyecto_U2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-
             BackColor = Color.LightBlue;
             ClientSize = new Size(1529, 704);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-
-
             Controls.Add(menuStrip1);
             ForeColor = SystemColors.ActiveCaption;
             MainMenuStrip = menuStrip1;
@@ -130,7 +116,6 @@ namespace Proyecto_U2
             Name = "FrmMenuPrincipal";
             Text = "MenuPrincipal";
             WindowState = FormWindowState.Maximized;
-            Load += FrmMenuPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
