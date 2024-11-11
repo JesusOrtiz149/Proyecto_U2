@@ -51,7 +51,7 @@ namespace Proyecto_U2
                     }
                     else
                     {
-                        MessageBox.Show("Su usuario no existe");
+                        MessageBox.Show("Su usuario no existe","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
 
                     lector.Close();

@@ -47,12 +47,12 @@ namespace Proyecto_U2
 
                     SqlDataReader lector = comando.ExecuteReader();
 
-
+                    DialogResult dr;
 
                     if (lector.HasRows)
                     {
 
-                        MessageBox.Show("Bienvenido Usuario");
+                        MessageBox.Show("Bienvenido Usuario","Sistema",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                         this.Hide();
                         FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
                         frmMenu.ShowDialog();
@@ -66,7 +66,7 @@ namespace Proyecto_U2
                         if (lectorAdmin.HasRows)
                         {
                             lectorAdmin.Close(); 
-                            MessageBox.Show("Bienvenido Admin");
+                            MessageBox.Show("Bienvenido Admin","Home",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                             this.Hide();
                             FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
                             frmMenu.ShowDialog();
@@ -76,7 +76,7 @@ namespace Proyecto_U2
                         else
                         {
 
-                            MessageBox.Show("Usuario o ID incorrectos");
+                            MessageBox.Show("Usuario o ID incorrectos","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         }
 
                     }
