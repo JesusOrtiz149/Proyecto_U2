@@ -52,7 +52,7 @@ namespace Proyecto_U2
                     if (lector.HasRows)
                     {
 
-                        MessageBox.Show("Bienvenido Usuario","Sistema",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Bienvenido Usuario","Sistema",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                         this.Hide();
                         FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
                         frmMenu.ShowDialog();
@@ -66,7 +66,7 @@ namespace Proyecto_U2
                         if (lectorAdmin.HasRows)
                         {
                             lectorAdmin.Close(); 
-                            MessageBox.Show("Bienvenido Admin","Home",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Bienvenido Admin","Home",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                             this.Hide();
                             FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
                             frmMenu.ShowDialog();
