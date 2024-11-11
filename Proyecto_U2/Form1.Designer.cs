@@ -377,6 +377,7 @@
             chkTerritorios.TabIndex = 8;
             chkTerritorios.Text = "Territorios";
             chkTerritorios.UseVisualStyleBackColor = true;
+            chkTerritorios.CheckedChanged += chkTerritorios_CheckedChanged;
             // 
             // chkRegion
             // 
@@ -406,6 +407,7 @@
             cmbTerritorio.Name = "cmbTerritorio";
             cmbTerritorio.Size = new Size(151, 28);
             cmbTerritorio.TabIndex = 6;
+            cmbTerritorio.SelectedIndexChanged += cmbTerritorio_SelectedIndexChanged;
             // 
             // comboBox1
             // 

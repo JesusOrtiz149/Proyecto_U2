@@ -34,28 +34,52 @@ namespace Proyecto_U2
 
 
                     string consulta = "SELECT * FROM Employees WHERE FirstName = @FirstName AND EmployeeID = @EmployeeID";
+                    string con = "SELECT * FROM Admin WHERE nombre = @nombre AND Password = @Password"; ;
                     SqlCommand comando = new SqlCommand(consulta, conexion);
 
 
                     comando.Parameters.AddWithValue("@FirstName", txtUsuario.Text);
                     comando.Parameters.AddWithValue("@EmployeeID", txtContra.Text);
+                    SqlCommand comandoAdmin = new SqlCommand(con, conexion);
+                    comandoAdmin.Parameters.AddWithValue("@nombre", txtUsuario.Text);
+                    comandoAdmin.Parameters.AddWithValue("@Password", txtContra.Text);
 
 
                     SqlDataReader lector = comando.ExecuteReader();
 
+
+
                     if (lector.HasRows)
                     {
-                        MessageBox.Show("Bienvenido");
+
+                        MessageBox.Show("Bienvenido Usuario");
                         this.Hide();
                         FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
                         frmMenu.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("Usuario o ID incorrectos");
-                    }
+                        lector.Close();
 
-                    lector.Close();
+
+                        SqlDataReader lectorAdmin = comandoAdmin.ExecuteReader();
+                        if (lectorAdmin.HasRows)
+                        {
+                            lectorAdmin.Close(); 
+                            MessageBox.Show("Bienvenido Admin");
+                            this.Hide();
+                            FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
+                            frmMenu.ShowDialog();
+
+
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Usuario o ID incorrectos");
+                        }
+
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -74,6 +98,12 @@ namespace Proyecto_U2
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmData frmData = new FrmData();
+            frmData.Show();
         }
     }
 }
