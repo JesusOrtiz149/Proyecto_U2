@@ -29,7 +29,7 @@ namespace Proyecto_U2
             cargarDatosCustomers("Select * From Customers");
             cargarDatosOrders("Select * From Orders");
             cargarDatosOrderDetails();
-            cargarDatosCategories();           
+            cargarDatosCategories();
             cargarDatosProducts();
             cargarDatosSuppliers();
             cargarDatosShippers();
@@ -110,8 +110,8 @@ namespace Proyecto_U2
             if (ds != null)
             {
                 dgvCategories.DataSource = ds.Tables[0];
-                
-               // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
+
+                // dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
             }
         }
 
@@ -301,8 +301,18 @@ namespace Proyecto_U2
         {
             ajustarCategories();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+    }
     }
 
-}
+
 
 

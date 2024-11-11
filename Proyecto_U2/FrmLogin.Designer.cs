@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             groupBox1 = new GroupBox();
-            btnSalir = new Button();
             btnIngresar = new Button();
             txtContra = new TextBox();
             txtUsuario = new TextBox();
@@ -38,6 +37,7 @@
             label1 = new Label();
             label3 = new Label();
             pictureBox1 = new PictureBox();
+            btnSalir = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -59,25 +59,13 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Ingrese datos requeridos :";
             // 
-            // btnSalir
-            // 
-            btnSalir.BackColor = SystemColors.ControlLight;
-            btnSalir.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(324, 313);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(161, 40);
-            btnSalir.TabIndex = 5;
-            btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += btnSalir_Click;
-            // 
             // btnIngresar
             // 
             btnIngresar.BackColor = SystemColors.ControlLight;
             btnIngresar.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIngresar.Location = new Point(43, 313);
+            btnIngresar.Location = new Point(47, 322);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(161, 40);
+            btnIngresar.Size = new Size(178, 50);
             btnIngresar.TabIndex = 4;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
@@ -114,6 +102,7 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ImageAlign = ContentAlignment.MiddleLeft;
             label1.Location = new Point(62, 104);
             label1.Name = "label1";
             label1.Size = new Size(99, 27);
@@ -136,10 +125,24 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(558, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(149, 138);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.Size = new Size(149, 128);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.LightCoral;
+            btnSalir.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Image = (Image)resources.GetObject("btnSalir.Image");
+            btnSalir.ImageAlign = ContentAlignment.MiddleRight;
+            btnSalir.Location = new Point(371, 322);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(199, 50);
+            btnSalir.TabIndex = 5;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // FrmLogin
             // 
@@ -150,6 +153,7 @@
             Controls.Add(label3);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmLogin";
             Text = "Log-in";
             Load += FrmLogin_Load;
@@ -167,9 +171,9 @@
         private TextBox txtUsuario;
         private Label label2;
         private Label label1;
-        private Button btnSalir;
         private Button btnIngresar;
         private Label label3;
         private PictureBox pictureBox1;
+        private Button btnSalir;
     }
 }

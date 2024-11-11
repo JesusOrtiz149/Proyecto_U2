@@ -47,66 +47,60 @@ namespace Proyecto_U2
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, northwindToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-
-            menuStrip1.Size = new Size(1529, 28);
-
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-          
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(1747, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // archivoToolStripMenuItem
             // 
             archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
+            archivoToolStripMenuItem.Image = (Image)resources.GetObject("archivoToolStripMenuItem.Image");
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(60, 20);
+            archivoToolStripMenuItem.Size = new Size(93, 24);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
             // salirToolStripMenuItem
             // 
+            salirToolStripMenuItem.Image = (Image)resources.GetObject("salirToolStripMenuItem.Image");
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-
-            salirToolStripMenuItem.Size = new Size(119, 26);
-
-            salirToolStripMenuItem.Size = new Size(180, 22);
+            salirToolStripMenuItem.Size = new Size(224, 26);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // northwindToolStripMenuItem
             // 
             northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem });
+            northwindToolStripMenuItem.Image = (Image)resources.GetObject("northwindToolStripMenuItem.Image");
             northwindToolStripMenuItem.Name = "northwindToolStripMenuItem";
-            northwindToolStripMenuItem.Size = new Size(76, 20);
+            northwindToolStripMenuItem.Size = new Size(113, 24);
             northwindToolStripMenuItem.Text = "Northwind";
             // 
             // mostrarToolStripMenuItem
             // 
+            mostrarToolStripMenuItem.Image = (Image)resources.GetObject("mostrarToolStripMenuItem.Image");
             mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
-
-            mostrarToolStripMenuItem.Size = new Size(143, 26);
-
-           
-
+            mostrarToolStripMenuItem.Size = new Size(224, 26);
             mostrarToolStripMenuItem.Text = "mostrar";
             mostrarToolStripMenuItem.Click += mostrarToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(889, 77);
+            pictureBox1.Location = new Point(671, 99);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(439, 428);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.Size = new Size(607, 506);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Georgia", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(806, 538);
+            label1.Location = new Point(671, 664);
             label1.Name = "label1";
             label1.Size = new Size(637, 136);
             label1.TabIndex = 2;
@@ -114,23 +108,19 @@ namespace Proyecto_U2
             // 
             // FrmMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-
             BackColor = Color.LightBlue;
-            ClientSize = new Size(1529, 704);
+            ClientSize = new Size(1747, 939);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-
-
             Controls.Add(menuStrip1);
             ForeColor = SystemColors.ActiveCaption;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
             Text = "MenuPrincipal";
             WindowState = FormWindowState.Maximized;
-            Load += FrmMenuPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
