@@ -27,5 +27,7 @@ namespace Proyecto_U2
         {
             this.Close();
         }
+
+        
     }
 }
