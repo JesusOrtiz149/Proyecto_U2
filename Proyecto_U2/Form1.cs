@@ -314,6 +314,25 @@ namespace Proyecto_U2
         {
             ajustarCategories();
         }
+        private void Territory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cargarDatos("Select * From Territories");
+        }
+
+        private void btnNuevoTerritory_Click(object sender, EventArgs e)
+        {
+            FrmTerritory territory = new FrmTerritory();
+
+            territory.FormClosed += Territory_FormClosed;
+
+            territory.Show();
+
+        }
+
+        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

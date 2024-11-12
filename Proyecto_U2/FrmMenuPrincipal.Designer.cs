@@ -102,7 +102,7 @@ namespace Proyecto_U2
             label1.ForeColor = SystemColors.ActiveCaptionText;
             label1.Location = new Point(671, 664);
             label1.Name = "label1";
-            label1.Size = new Size(637, 136);
+            label1.Size = new Size(512, 109);
             label1.TabIndex = 2;
             label1.Text = "Northwind";
             // 
