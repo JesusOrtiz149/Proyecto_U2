@@ -257,7 +257,7 @@ namespace Proyecto_U2
         }
         private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (rbtCiudad.Checked)
             {
                 cargarDatos1("SELECT   Nortwind.FirstName,Employees.City " +
@@ -267,37 +267,37 @@ namespace Proyecto_U2
             }
 
         }
-      
+
 
         private void CargarTerritorios()
         {
-            
+
             using (SqlConnection conexion = new SqlConnection(@"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
             {
                 try
                 {
                     conexion.Open();
 
-                    
+
                     string consulta = "SELECT TerritoryDescription FROM Northwind.dbo.Territories";
 
                     SqlCommand comando = new SqlCommand(consulta, conexion);
 
-                    
+
                     SqlDataReader lector = comando.ExecuteReader();
 
                     List<string> territorios = new List<string>();
 
-                    
+
                     while (lector.Read())
                     {
                         territorios.Add(lector["TerritoryDescription"].ToString());
                     }
 
-                    
+
                     cmbTerritorio.DataSource = territorios;
 
-                    
+
                     lector.Close();
                 }
                 catch (Exception ex)
@@ -345,7 +345,7 @@ namespace Proyecto_U2
 
         private void cmbTerritorio_SelectedIndexChanged(object sender, EventArgs e)
         {
-           CargarTerritorios();
+            CargarTerritorios();
         }
 
         private void chkRegion_CheckedChanged(object sender, EventArgs e)
@@ -368,6 +368,19 @@ namespace Proyecto_U2
             }
         }
 
+        private void Customers_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cargarDatosCustomers("Select * From Customers");
+        }
+
+
+        private void btnNuevoCustomer_Click(object sender, EventArgs e)
+        {
+            FrmCustomers customers = new FrmCustomers();
+            customers.FormClosed += Customers_FormClosed;
+            customers.Show();
+
+        }
     }
 }
 

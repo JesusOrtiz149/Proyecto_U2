@@ -16,7 +16,7 @@ namespace Proyecto_U2
     {
         bool bandera = false;
         string id;
-        Datos dt= new Datos();
+        Datos dt = new Datos();
         public FrmTerritory()
         {
             InitializeComponent();
@@ -37,59 +37,64 @@ namespace Proyecto_U2
         public string nAleatorio()
         {
             Random rnd = new Random();
-            int n = rnd.Next(10000,99999);
+            int n = rnd.Next(10000, 99999);
             return n.ToString();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
-                if (MessageBox.Show("¿Los datos son correctos?", "Territories",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+
+            if (MessageBox.Show("¿Los datos son correctos?", "Territories",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (bandera == true)
                 {
-                    if (bandera == true)
+
+
+                    bool j = dt.ejecutarABC("Update Territories Set TerritoryDescription = '" +
+                        txtTerritory.Text + "', RegionID = " + (cmbRegion.SelectedIndex+1) +
+                        " Where TerritoryID = '" + id + "'");
+
+                    if (j == true)
                     {
-                        
-
-                        bool j = dt.ejecutarABC("Update Territories Set TerritoryDescription = '" +
-                            txtTerritory.Text + "', RegionID = " + cmbRegion.SelectedIndex +
-                            " Where TerritoryID = '" + id + "'");
-
-                        if (j == true)
-                        {
-                            MessageBox.Show("Datos Actualizados", "Territories",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error", "Territories", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Datos Actualizados", "Territories",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
-                    else  
+                    else
                     {
-                   
-                        bool j = dt.ejecutarABC("Insert Into Territories (TerritoryID, TerritoryDescription, RegionID) " +
-                            "Values ('" + nAleatorio() + "', '" + txtTerritory.Text + "', " + cmbRegion.SelectedIndex + ")");
+                        MessageBox.Show("Error", "Territories", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
 
-                        if (j == true)
-                        {
-                            MessageBox.Show("Territorio añadido", "Territories",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtTerritory.Clear();
-                            cmbRegion.Text = "";
-                            cmbRegion.SelectedIndex = 0;    
+                    bool j = dt.ejecutarABC("Insert Into Territories (TerritoryID, TerritoryDescription, RegionID) " +
+                        "Values ('" + nAleatorio() + "', '" + txtTerritory.Text + "', " + (cmbRegion.SelectedIndex+1) + ")");
 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error", "Territories", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
+                    if (j == true)
+                    {
+                        MessageBox.Show("Territorio añadido", "Territories",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtTerritory.Clear();
+                        cmbRegion.Text = "";
+                        //cmbRegion.SelectedIndex = 0;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error", "Territories", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+}
 

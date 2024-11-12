@@ -49,9 +49,9 @@
             tabPage4 = new TabPage();
             dtgOrders = new DataGridView();
             tabPage3 = new TabPage();
+            btnNuevoCustomer = new Button();
             dtgCustomers = new DataGridView();
             tabPage2 = new TabPage();
-            btnNuevoEmpleado = new Button();
             cmbPais = new ComboBox();
             rbtCiudad = new RadioButton();
             dtgEmployees = new DataGridView();
@@ -99,7 +99,7 @@
             tabPage12.Controls.Add(dgvCustomerCustomerDemo);
             tabPage12.Location = new Point(4, 24);
             tabPage12.Name = "tabPage12";
-            tabPage12.Padding = new Padding(3, 3, 3, 3);
+            tabPage12.Padding = new Padding(3);
             tabPage12.Size = new Size(1103, 413);
             tabPage12.TabIndex = 11;
             tabPage12.Text = "CustomerCustomerDemo";
@@ -119,7 +119,7 @@
             tabPage11.Controls.Add(dgvCustomerDemographics);
             tabPage11.Location = new Point(4, 24);
             tabPage11.Name = "tabPage11";
-            tabPage11.Padding = new Padding(3, 3, 3, 3);
+            tabPage11.Padding = new Padding(3);
             tabPage11.Size = new Size(1103, 413);
             tabPage11.TabIndex = 10;
             tabPage11.Text = "CustomerDemographics";
@@ -139,7 +139,7 @@
             tabPage10.Controls.Add(dgvEmpT);
             tabPage10.Location = new Point(4, 24);
             tabPage10.Name = "tabPage10";
-            tabPage10.Padding = new Padding(3, 3, 3, 3);
+            tabPage10.Padding = new Padding(3);
             tabPage10.Size = new Size(1103, 413);
             tabPage10.TabIndex = 9;
             tabPage10.Text = "EmployeeTerritories";
@@ -159,7 +159,7 @@
             tabPage9.Controls.Add(dgvShippers);
             tabPage9.Location = new Point(4, 24);
             tabPage9.Name = "tabPage9";
-            tabPage9.Padding = new Padding(3, 3, 3, 3);
+            tabPage9.Padding = new Padding(3);
             tabPage9.Size = new Size(1103, 413);
             tabPage9.TabIndex = 8;
             tabPage9.Text = "Shippers";
@@ -179,7 +179,7 @@
             tabPage8.Controls.Add(dgvSuppliers);
             tabPage8.Location = new Point(4, 24);
             tabPage8.Name = "tabPage8";
-            tabPage8.Padding = new Padding(3, 3, 3, 3);
+            tabPage8.Padding = new Padding(3);
             tabPage8.Size = new Size(1103, 413);
             tabPage8.TabIndex = 7;
             tabPage8.Text = "Suppliers";
@@ -199,7 +199,7 @@
             tabPage7.Controls.Add(dgvCategories);
             tabPage7.Location = new Point(4, 24);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3, 3, 3, 3);
+            tabPage7.Padding = new Padding(3);
             tabPage7.Size = new Size(1103, 413);
             tabPage7.TabIndex = 6;
             tabPage7.Text = "Categories";
@@ -210,10 +210,10 @@
             dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCategories.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategories.Location = new Point(203, 3);
+            dgvCategories.Location = new Point(148, 6);
             dgvCategories.Name = "dgvCategories";
             dgvCategories.RowHeadersWidth = 51;
-            dgvCategories.Size = new Size(586, 407);
+            dgvCategories.Size = new Size(838, 407);
             dgvCategories.TabIndex = 0;
             dgvCategories.DataBindingComplete += dgvCategories_DataBindingComplete;
             // 
@@ -222,7 +222,7 @@
             tabProducts.Controls.Add(dgvProducts);
             tabProducts.Location = new Point(4, 24);
             tabProducts.Name = "tabProducts";
-            tabProducts.Padding = new Padding(3, 3, 3, 3);
+            tabProducts.Padding = new Padding(3);
             tabProducts.Size = new Size(1103, 413);
             tabProducts.TabIndex = 5;
             tabProducts.Text = "Products";
@@ -242,7 +242,7 @@
             tabCategories.Controls.Add(dgvOrderDetails);
             tabCategories.Location = new Point(4, 24);
             tabCategories.Name = "tabCategories";
-            tabCategories.Padding = new Padding(3, 3, 3, 3);
+            tabCategories.Padding = new Padding(3);
             tabCategories.Size = new Size(1103, 413);
             tabCategories.TabIndex = 4;
             tabCategories.Text = "Order Details";
@@ -281,6 +281,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(btnNuevoCustomer);
             tabPage3.Controls.Add(dtgCustomers);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
@@ -290,6 +291,17 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Customers";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevoCustomer
+            // 
+            btnNuevoCustomer.Location = new Point(44, 24);
+            btnNuevoCustomer.Margin = new Padding(3, 2, 3, 2);
+            btnNuevoCustomer.Name = "btnNuevoCustomer";
+            btnNuevoCustomer.Size = new Size(66, 24);
+            btnNuevoCustomer.TabIndex = 5;
+            btnNuevoCustomer.Text = "Nuevo";
+            btnNuevoCustomer.UseVisualStyleBackColor = true;
+            btnNuevoCustomer.Click += btnNuevoCustomer_Click;
             // 
             // dtgCustomers
             // 
@@ -303,7 +315,6 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(btnNuevoEmpleado);
             tabPage2.Controls.Add(cmbPais);
             tabPage2.Controls.Add(rbtCiudad);
             tabPage2.Controls.Add(dtgEmployees);
@@ -315,17 +326,6 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Employees";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnNuevoEmpleado
-            // 
-            btnNuevoEmpleado.Location = new Point(33, 62);
-            btnNuevoEmpleado.Margin = new Padding(3, 2, 3, 2);
-            btnNuevoEmpleado.Name = "btnNuevoEmpleado";
-            btnNuevoEmpleado.Size = new Size(66, 17);
-            btnNuevoEmpleado.TabIndex = 4;
-            btnNuevoEmpleado.Text = "Nuevo";
-            btnNuevoEmpleado.UseVisualStyleBackColor = true;
-            btnNuevoEmpleado.Click += btnNuevoEmpleado_Click;
             // 
             // cmbPais
             // 
@@ -373,7 +373,7 @@
             tabPage1.Padding = new Padding(3, 2, 3, 2);
             tabPage1.Size = new Size(1103, 413);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabTerritory";
+            tabPage1.Text = "Territories";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnNuevoTerritory
@@ -556,9 +556,9 @@
         private DataGridView dgvCustomerCustomerDemo;
         private DataGridView dgvCustomerDemographics;
         private Button btnNuevoTerritory;
-        private Button btnNuevoEmpleado;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem editarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
+        private Button btnNuevoCustomer;
     }
 }

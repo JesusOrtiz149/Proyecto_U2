@@ -60,6 +60,7 @@
             label1.Size = new Size(138, 15);
             label1.TabIndex = 2;
             label1.Text = "Descripción del Territorio";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -73,7 +74,7 @@
             // cmbRegion
             // 
             cmbRegion.FormattingEnabled = true;
-            cmbRegion.Items.AddRange(new object[] { "", "Eastern", "Western", "Northern", "Southern" });
+            cmbRegion.Items.AddRange(new object[] { "Eastern", "Western", "Northern", "Southern" });
             cmbRegion.Location = new Point(420, 54);
             cmbRegion.Name = "cmbRegion";
             cmbRegion.Size = new Size(121, 23);
@@ -90,7 +91,7 @@
             Controls.Add(txtTerritory);
             Controls.Add(btnAceptar);
             Name = "FrmTerritory";
-            Text = "FrmTerritory";
+            Text = "Territories";
             ResumeLayout(false);
             PerformLayout();
         }
