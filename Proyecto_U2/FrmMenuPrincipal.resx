@@ -151,7 +151,11 @@
   <data name="mostrarToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+
+        cwAAEnMBjCK5BwAAAPlJREFUeF7tmsEJwkAQRVOKpViKpaQTS7EEISlgo1uIZpfPEMPIDh5cCO/Bv33X
+=======
         cQAAEnEB89x6jgAAAPlJREFUeF7tmsEJwkAQRVOKpViKpaQTS7EEISlgo1uIZpfPEMPIDh5cCO/Bv33X
+
         mXcIa3AAAAAAAADYck/pNKd8bkX1D7xe72i0ONPjeZ2X/GpFdaN+odPrmbKLxouDAAQgAAHeYfuobiAA
         AQg4hoCyyJSel1ZUN8oN0uv1TNlF4wEAxKgPjyXfWlHdqD+jnV7XpDxqvDjcAxCAAAR4h+2juoEABCDg
         GALWRcb1w/7FYhPVDQlwu71SLnUaDwAgRnmYbV8rfYvqxmFeiXEPQAACEOAdto/qBgIQgAAEeL2e+UlA
@@ -161,7 +165,11 @@
   <data name="northwindToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAD8AAAA/CAYAAABXXxDfAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+
+        cwAAEnMBjCK5BwAABORJREFUaEPtmVtoXEUYxxPv1hsKotQrasUqkUKrBbEKInjBWhS2UDVtkk022Wio
+
         cQAAEnEB89x6jgAABORJREFUaEPtmVtoXEUYxxPv1hsKotQrasUqkUKrBbEKInjBWhS2UDVtkk022Wio
+
         sVAVX1K0+lJpFayXPgjSolYfpOCDL714QWwREVtBQW0tRZHqg/Ya2+jvW78dZr8zZ7Mrmz1HmT/82WS+
         /8z8vzkzc86c0xEREREREREREREREVEPo6Ojp/f3988bGBhYODg4uJjfu/j/Yg0HUSqVTkZ3H/qS1JP6
         PT09p2k4/8DwTMy/TSIH4V8BfkFiD46NjZ2gVWpA/E2jl3begteoJJ8gqScxeUxNT8aPGKgLtKoD5efA

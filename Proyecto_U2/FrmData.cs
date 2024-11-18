@@ -29,21 +29,39 @@ namespace Proyecto_U2
 
 
                     string consulta = "SELECT * FROM Employees WHERE LastName = @LastName AND TitleOfCourtesy = @TitleOfCourtesy ";
+                    string con = "SELECT * FROM Admin Where Apat = @Apat AND Tadmin = @Tadmin";
 
                     SqlCommand comando = new SqlCommand(consulta, conexion);
-
+                    SqlCommand comandoAdmin = new SqlCommand(con, conexion);
                     comando.Parameters.AddWithValue("@LastName", txtLastName.Text);
                     comando.Parameters.AddWithValue("@TitleOfCourtesy", txtTitle.Text);
-
+                    comandoAdmin.Parameters.AddWithValue("@Apat", txtLastName.Text);
+                    comandoAdmin.Parameters.AddWithValue("@Tadmin", txtTitle.Text);
 
                     SqlDataReader lector = comando.ExecuteReader();
+                    SqlDataReader lectorA = comandoAdmin.ExecuteReader();
+                    if (lectorA.HasRows)
+                    {
+                        while (lectorA.Read())
+                        {
+                            MessageBox.Show("Your Password: " + lectorA["@Password"].ToString());
+                        }
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Su usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    lectorA.Close();
+
 
                     if (lector.HasRows)
                     {
                         while (lector.Read())
                         {
 
-                         MessageBox.Show( "Your ID: " + lector["EmployeeID"].ToString());
+                            MessageBox.Show("Your ID: " + lector["EmployeeID"].ToString());
                         }
 
                         this.Hide();
@@ -51,11 +69,14 @@ namespace Proyecto_U2
                     }
                     else
                     {
-                        MessageBox.Show("Su usuario no existe","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Su usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     lector.Close();
                 }
+                
+        
+
                 catch (Exception ex)
                 {
 
