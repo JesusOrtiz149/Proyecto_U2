@@ -34,6 +34,14 @@ namespace Proyecto_U2
             salirToolStripMenuItem = new ToolStripMenuItem();
             northwindToolStripMenuItem = new ToolStripMenuItem();
             mostrarToolStripMenuItem = new ToolStripMenuItem();
+            empleadosToolStripMenuItem = new ToolStripMenuItem();
+            clientesToolStripMenuItem = new ToolStripMenuItem();
+            proveedoresToolStripMenuItem = new ToolStripMenuItem();
+            órdenesToolStripMenuItem = new ToolStripMenuItem();
+            detallesDeLasÓrdenesToolStripMenuItem = new ToolStripMenuItem();
+            productosToolStripMenuItem = new ToolStripMenuItem();
+            embarcaderosToolStripMenuItem = new ToolStripMenuItem();
+            territorioToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             employeesToolStripMenuItem = new ToolStripMenuItem();
@@ -51,8 +59,8 @@ namespace Proyecto_U2
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, northwindToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(6, 3, 0, 3);
-            menuStrip1.Size = new Size(1747, 30);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(1529, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -61,23 +69,26 @@ namespace Proyecto_U2
             archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
             archivoToolStripMenuItem.Image = (Image)resources.GetObject("archivoToolStripMenuItem.Image");
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(93, 24);
+            archivoToolStripMenuItem.Size = new Size(80, 24);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Image = (Image)resources.GetObject("salirToolStripMenuItem.Image");
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+
             salirToolStripMenuItem.Size = new Size(119, 26);
+
+            salirToolStripMenuItem.Size = new Size(95, 22);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // northwindToolStripMenuItem
             // 
-            northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem });
+            northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem, empleadosToolStripMenuItem, clientesToolStripMenuItem, proveedoresToolStripMenuItem, órdenesToolStripMenuItem, productosToolStripMenuItem, embarcaderosToolStripMenuItem, territorioToolStripMenuItem });
             northwindToolStripMenuItem.Image = (Image)resources.GetObject("northwindToolStripMenuItem.Image");
             northwindToolStripMenuItem.Name = "northwindToolStripMenuItem";
-            northwindToolStripMenuItem.Size = new Size(113, 24);
+            northwindToolStripMenuItem.Size = new Size(96, 24);
             northwindToolStripMenuItem.Text = "Northwind";
             // 
             // mostrarToolStripMenuItem
@@ -85,17 +96,73 @@ namespace Proyecto_U2
             mostrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { employeesToolStripMenuItem });
             mostrarToolStripMenuItem.Image = (Image)resources.GetObject("mostrarToolStripMenuItem.Image");
             mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
-            mostrarToolStripMenuItem.Size = new Size(224, 26);
+            mostrarToolStripMenuItem.Size = new Size(184, 26);
             mostrarToolStripMenuItem.Text = "mostrar";
             mostrarToolStripMenuItem.Click += mostrarToolStripMenuItem_Click;
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            empleadosToolStripMenuItem.Size = new Size(184, 26);
+            empleadosToolStripMenuItem.Text = "Empleados";
+            empleadosToolStripMenuItem.Click += empleadosToolStripMenuItem_Click;
+            // 
+            // clientesToolStripMenuItem
+            // 
+            clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            clientesToolStripMenuItem.Size = new Size(184, 26);
+            clientesToolStripMenuItem.Text = "Clientes";
+            clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
+            // 
+            // proveedoresToolStripMenuItem
+            // 
+            proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
+            proveedoresToolStripMenuItem.Size = new Size(184, 26);
+            proveedoresToolStripMenuItem.Text = "Proveedores";
+            proveedoresToolStripMenuItem.Click += proveedoresToolStripMenuItem_Click;
+            // 
+            // órdenesToolStripMenuItem
+            // 
+            órdenesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { detallesDeLasÓrdenesToolStripMenuItem });
+            órdenesToolStripMenuItem.Name = "órdenesToolStripMenuItem";
+            órdenesToolStripMenuItem.Size = new Size(184, 26);
+            órdenesToolStripMenuItem.Text = "Órdenes";
+            órdenesToolStripMenuItem.Click += órdenesToolStripMenuItem_Click;
+            // 
+            // detallesDeLasÓrdenesToolStripMenuItem
+            // 
+            detallesDeLasÓrdenesToolStripMenuItem.Name = "detallesDeLasÓrdenesToolStripMenuItem";
+            detallesDeLasÓrdenesToolStripMenuItem.Size = new Size(193, 22);
+            detallesDeLasÓrdenesToolStripMenuItem.Text = "Detalles de las órdenes";
+            detallesDeLasÓrdenesToolStripMenuItem.Click += detallesDeLasÓrdenesToolStripMenuItem_Click;
+            // 
+            // productosToolStripMenuItem
+            // 
+            productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            productosToolStripMenuItem.Size = new Size(184, 26);
+            productosToolStripMenuItem.Text = "Productos";
+            productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
+            // 
+            // embarcaderosToolStripMenuItem
+            // 
+            embarcaderosToolStripMenuItem.Name = "embarcaderosToolStripMenuItem";
+            embarcaderosToolStripMenuItem.Size = new Size(184, 26);
+            embarcaderosToolStripMenuItem.Text = "Embarcaderos";
+            embarcaderosToolStripMenuItem.Click += embarcaderosToolStripMenuItem_Click;
+            // 
+            // territorioToolStripMenuItem
+            // 
+            territorioToolStripMenuItem.Name = "territorioToolStripMenuItem";
+            territorioToolStripMenuItem.Size = new Size(184, 26);
+            territorioToolStripMenuItem.Text = "Territorios";
+            territorioToolStripMenuItem.Click += territorioToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(671, 99);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(587, 74);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(607, 506);
+            pictureBox1.Size = new Size(531, 380);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -105,9 +172,9 @@ namespace Proyecto_U2
             label1.AutoSize = true;
             label1.Font = new Font("Georgia", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(671, 664);
+            label1.Location = new Point(587, 498);
             label1.Name = "label1";
-            label1.Size = new Size(637, 136);
+            label1.Size = new Size(512, 109);
             label1.TabIndex = 2;
             label1.Text = "Northwind";
             // 
@@ -138,16 +205,17 @@ namespace Proyecto_U2
             // 
             // FrmMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
-            ClientSize = new Size(1747, 939);
+            ClientSize = new Size(1529, 704);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             ForeColor = SystemColors.ActiveCaption;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
             Text = "MenuPrincipal";
             WindowState = FormWindowState.Maximized;
@@ -167,9 +235,20 @@ namespace Proyecto_U2
         private ToolStripMenuItem mostrarToolStripMenuItem;
         private PictureBox pictureBox1;
         private Label label1;
+
         private ToolStripMenuItem employeesToolStripMenuItem;
         private ToolStripMenuItem territoriesToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem ordersToolStripMenuItem;
+
+        private ToolStripMenuItem empleadosToolStripMenuItem;
+        private ToolStripMenuItem clientesToolStripMenuItem;
+        private ToolStripMenuItem órdenesToolStripMenuItem;
+        private ToolStripMenuItem productosToolStripMenuItem;
+        private ToolStripMenuItem proveedoresToolStripMenuItem;
+        private ToolStripMenuItem embarcaderosToolStripMenuItem;
+        private ToolStripMenuItem detallesDeLasÓrdenesToolStripMenuItem;
+        private ToolStripMenuItem territorioToolStripMenuItem;
+
     }
 }

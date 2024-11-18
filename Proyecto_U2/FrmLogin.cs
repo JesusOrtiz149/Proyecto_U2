@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Proyecto_U2
 {
+
+
     public partial class FrmLogin : Form
     {
         DataSet ds;
@@ -24,7 +26,12 @@ namespace Proyecto_U2
         {
 
 
+
             using (SqlConnection conexion = new SqlConnection(@"Data Source=LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog=Northwind"))
+
+
+            using (SqlConnection conexion = new SqlConnection(/*@"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"*/@"Data Source = DESKTOP-3KGVR4J\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind"))
+
             {
                 try
                 {
@@ -57,7 +64,16 @@ namespace Proyecto_U2
 
                     SqlDataReader lector = comando.ExecuteReader();
 
+
                     if (lector.Read())
+
+                        MessageBox.Show("Bienvenido Usuario","Sistema",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
+                        this.Hide();
+                        FrmMenuPrincipal frmMenu = new FrmMenuPrincipal(txtContra.Text);
+                        frmMenu.ShowDialog();
+                    }
+                    else
+
                     {
                         int employeeID = Convert.ToInt32(lector["EmployeeID"]);
                         string role = lector["Title"].ToString();
@@ -65,6 +81,7 @@ namespace Proyecto_U2
 
                         if (employeeID == 2)
                         {
+
                             DialogResult result = MessageBox.Show("Bienvenido Dr.Andrew", "Home", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                             if (result == DialogResult.OK)
                             {
@@ -92,6 +109,13 @@ namespace Proyecto_U2
                                 return;
 
                             }
+
+                            lectorAdmin.Close(); 
+                            MessageBox.Show("Bienvenido Admin","Home",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
+                            this.Hide();
+                            FrmMenuPrincipal frmMenu = new FrmMenuPrincipal(txtContra.Text);
+                            frmMenu.ShowDialog();
+
                         }
                         else
                         {
