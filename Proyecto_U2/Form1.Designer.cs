@@ -294,7 +294,7 @@
             // 
             // btnNuevoCustomer
             // 
-            btnNuevoCustomer.Location = new Point(44, 24);
+            btnNuevoCustomer.Location = new Point(80, 88);
             btnNuevoCustomer.Margin = new Padding(3, 2, 3, 2);
             btnNuevoCustomer.Name = "btnNuevoCustomer";
             btnNuevoCustomer.Size = new Size(66, 24);

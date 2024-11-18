@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Proyecto_U2
 {
+
+
     public partial class FrmLogin : Form
     {
         DataSet ds;
@@ -54,7 +56,7 @@ namespace Proyecto_U2
 
                         MessageBox.Show("Bienvenido Usuario","Sistema",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                         this.Hide();
-                        FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
+                        FrmMenuPrincipal frmMenu = new FrmMenuPrincipal(txtContra.Text);
                         frmMenu.ShowDialog();
                     }
                     else
@@ -68,9 +70,8 @@ namespace Proyecto_U2
                             lectorAdmin.Close(); 
                             MessageBox.Show("Bienvenido Admin","Home",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                             this.Hide();
-                            FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
+                            FrmMenuPrincipal frmMenu = new FrmMenuPrincipal(txtContra.Text);
                             frmMenu.ShowDialog();
-
 
                         }
                         else

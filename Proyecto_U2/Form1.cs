@@ -321,7 +321,7 @@ namespace Proyecto_U2
 
         private void btnNuevoTerritory_Click(object sender, EventArgs e)
         {
-            FrmTerritory territory = new FrmTerritory();
+            FrmAddTerritory territory = new FrmAddTerritory();
 
             territory.FormClosed += Territory_FormClosed;
 
@@ -376,7 +376,7 @@ namespace Proyecto_U2
 
         private void btnNuevoCustomer_Click(object sender, EventArgs e)
         {
-            FrmCustomers customers = new FrmCustomers();
+            FrmAddCustomers customers = new FrmAddCustomers();
             customers.FormClosed += Customers_FormClosed;
             customers.Show();
 

@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_U2
 {
-    partial class FrmTerritory
+    partial class FrmAddTerritory
     {
         /// <summary>
         /// Required designer variable.

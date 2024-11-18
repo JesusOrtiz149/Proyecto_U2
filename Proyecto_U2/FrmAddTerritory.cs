@@ -12,18 +12,18 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Proyecto_U2
 {
-    public partial class FrmTerritory : Form
+    public partial class FrmAddTerritory : Form
     {
         bool bandera = false;
         string id;
         Datos dt = new Datos();
-        public FrmTerritory()
+        public FrmAddTerritory()
         {
             InitializeComponent();
 
         }
 
-        public FrmTerritory(string territoryID, string TerritoryDescription, int Region)
+        public FrmAddTerritory(string territoryID, string TerritoryDescription, int Region)
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_U2
 {
-    partial class FrmCustomers
+    partial class FrmAddCustomers
     {
         /// <summary>
         /// Required designer variable.
@@ -248,8 +248,7 @@
             Controls.Add(txtNombreCompany);
             Controls.Add(btnAceptar);
             Name = "FrmCustomers";
-            Text = "Customers";
-//            FormClosed += FrmCustomers_FormClosed;
+            Text = "Agregar Cliente";
             Load += FrmCustomers_Load;
             ResumeLayout(false);
             PerformLayout();

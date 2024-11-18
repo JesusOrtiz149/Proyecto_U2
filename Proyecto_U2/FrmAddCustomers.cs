@@ -12,18 +12,18 @@ using System.Windows.Forms;
 
 namespace Proyecto_U2
 {
-    public partial class FrmCustomers : Form
+    public partial class FrmAddCustomers : Form
     {
         bool bandera = false;
         Datos dt = new Datos();
         string customerID;
 
-        public FrmCustomers()
+        public FrmAddCustomers()
         {
             InitializeComponent();
         }
 
-        private FrmCustomers(string customerID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigop, string pais, string tel, string fax)
+        private FrmAddCustomers(string customerID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigop, string pais, string tel, string fax)
         {
             this.customerID = customerID;
             txtNombreCompany.Text = Company;
