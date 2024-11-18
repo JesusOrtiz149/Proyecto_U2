@@ -36,6 +36,10 @@ namespace Proyecto_U2
             mostrarToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            employeesToolStripMenuItem = new ToolStripMenuItem();
+            territoriesToolStripMenuItem = new ToolStripMenuItem();
+            pedidosToolStripMenuItem = new ToolStripMenuItem();
+            ordersToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -64,7 +68,7 @@ namespace Proyecto_U2
             // 
             salirToolStripMenuItem.Image = (Image)resources.GetObject("salirToolStripMenuItem.Image");
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(224, 26);
+            salirToolStripMenuItem.Size = new Size(119, 26);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -78,6 +82,7 @@ namespace Proyecto_U2
             // 
             // mostrarToolStripMenuItem
             // 
+            mostrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { employeesToolStripMenuItem });
             mostrarToolStripMenuItem.Image = (Image)resources.GetObject("mostrarToolStripMenuItem.Image");
             mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
             mostrarToolStripMenuItem.Size = new Size(224, 26);
@@ -105,6 +110,31 @@ namespace Proyecto_U2
             label1.Size = new Size(637, 136);
             label1.TabIndex = 2;
             label1.Text = "Northwind";
+            // 
+            // employeesToolStripMenuItem
+            // 
+            employeesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { territoriesToolStripMenuItem, pedidosToolStripMenuItem, ordersToolStripMenuItem });
+            employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
+            employeesToolStripMenuItem.Size = new Size(224, 26);
+            employeesToolStripMenuItem.Text = "Employees";
+            // 
+            // territoriesToolStripMenuItem
+            // 
+            territoriesToolStripMenuItem.Name = "territoriesToolStripMenuItem";
+            territoriesToolStripMenuItem.Size = new Size(224, 26);
+            territoriesToolStripMenuItem.Text = "Territories";
+            // 
+            // pedidosToolStripMenuItem
+            // 
+            pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            pedidosToolStripMenuItem.Size = new Size(224, 26);
+            pedidosToolStripMenuItem.Text = "Pedidos";
+            // 
+            // ordersToolStripMenuItem
+            // 
+            ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
+            ordersToolStripMenuItem.Size = new Size(224, 26);
+            ordersToolStripMenuItem.Text = "Orders";
             // 
             // FrmMenuPrincipal
             // 
@@ -137,5 +167,9 @@ namespace Proyecto_U2
         private ToolStripMenuItem mostrarToolStripMenuItem;
         private PictureBox pictureBox1;
         private Label label1;
+        private ToolStripMenuItem employeesToolStripMenuItem;
+        private ToolStripMenuItem territoriesToolStripMenuItem;
+        private ToolStripMenuItem pedidosToolStripMenuItem;
+        private ToolStripMenuItem ordersToolStripMenuItem;
     }
 }
