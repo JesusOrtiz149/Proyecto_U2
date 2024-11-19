@@ -1,14 +1,14 @@
-namespace Proyecto_U2
+﻿namespace Proyecto_U2
 {
     partial class Form1
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,16 +23,11 @@ namespace Proyecto_U2
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-
-            dgtEmpleados = new DataGridView();
-            button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgtEmpleados).BeginInit();
-
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabPage12 = new TabPage();
@@ -97,19 +92,10 @@ namespace Proyecto_U2
             ((System.ComponentModel.ISupportInitialize)dtgTerritory).BeginInit();
             tabControl1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
-
             SuspendLayout();
             // 
-            // dgtEmpleados
+            // tabPage12
             // 
-
-            dgtEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgtEmpleados.Location = new Point(34, 217);
-            dgtEmpleados.Name = "dgtEmpleados";
-            dgtEmpleados.RowHeadersWidth = 51;
-            dgtEmpleados.Size = new Size(712, 424);
-            dgtEmpleados.TabIndex = 0;
-
             tabPage12.Controls.Add(dgvCustomerCustomerDemo);
             tabPage12.Location = new Point(4, 24);
             tabPage12.Name = "tabPage12";
@@ -118,18 +104,9 @@ namespace Proyecto_U2
             tabPage12.TabIndex = 11;
             tabPage12.Text = "CustomerCustomerDemo";
             tabPage12.UseVisualStyleBackColor = true;
-
             // 
-            // button1
+            // dgvCustomerCustomerDemo
             // 
-
-            button1.Location = new Point(593, 85);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-
             dgvCustomerCustomerDemo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCustomerCustomerDemo.Location = new Point(272, 91);
             dgvCustomerCustomerDemo.Name = "dgvCustomerCustomerDemo";
@@ -503,32 +480,49 @@ namespace Proyecto_U2
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             eliminarToolStripMenuItem.Size = new Size(117, 22);
             eliminarToolStripMenuItem.Text = "Eliminar";
-
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-
-            ClientSize = new Size(800, 672);
-            Controls.Add(button1);
-            Controls.Add(dgtEmpleados);
-
             ClientSize = new Size(1200, 529);
             Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-
             Name = "Form1";
             Text = "Northwind";
-            ((System.ComponentModel.ISupportInitialize)dgtEmpleados).EndInit();
+            Load += Form1_Load;
+            tabPage12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCustomerCustomerDemo).EndInit();
+            tabPage11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCustomerDemographics).EndInit();
+            tabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvEmpT).EndInit();
+            tabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvShippers).EndInit();
+            tabPage8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSuppliers).EndInit();
+            tabPage7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCategories).EndInit();
+            tabProducts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            tabCategories.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvOrderDetails).EndInit();
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dtgOrders).EndInit();
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dtgCustomers).EndInit();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgEmployees).EndInit();
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgTerritory).EndInit();
+            tabControl1.ResumeLayout(false);
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-
-        private DataGridView dgtEmpleados;
-        private Button button1;
 
         private TabPage tabPage12;
         private TabPage tabPage11;
@@ -566,6 +560,5 @@ namespace Proyecto_U2
         private ToolStripMenuItem editarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
         private Button btnNuevoCustomer;
-
     }
 }

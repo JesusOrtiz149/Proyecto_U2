@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,45 +27,32 @@ namespace Proyecto_U2
 
 
 
-            using (SqlConnection conexion = new SqlConnection(@"Data Source=LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog=Northwind"))
-
-
             using (SqlConnection conexion = new SqlConnection(/*@"Data Source = LAPTOP-9P0KPF56\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"*/@"Data Source = DESKTOP-3KGVR4J\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind"))
-
             {
                 try
                 {
+
                     conexion.Open();
 
-                    string updateAdminQuery = "UPDATE Employees SET Title = 'admin' WHERE EmployeeID = 2";
-                    SqlCommand commandAdmin = new SqlCommand(updateAdminQuery, conexion);
-                    commandAdmin.ExecuteNonQuery();
 
-                    string updateUserQuery = "UPDATE Employees SET Title = 'Sales Representative' WHERE EmployeeID IN (1, 3, 4, 6, 7, 9)";
-                    SqlCommand commandUser = new SqlCommand(updateUserQuery, conexion);
-                    commandUser.ExecuteNonQuery();
-
-                    string updateManagerQuery = "UPDATE Employees SET Title = 'Sales Manager' WHERE EmployeeID = 5";
-                    SqlCommand commandManager = new SqlCommand(updateManagerQuery, conexion);
-                    commandManager.ExecuteNonQuery();
+                    string consulta = "SELECT * FROM Employees WHERE FirstName = @FirstName AND EmployeeID = @EmployeeID";
+                    string con = "SELECT * FROM Admin WHERE nombre = @nombre AND Password = @Password"; ;
+                    SqlCommand comando = new SqlCommand(consulta, conexion);
 
 
-                    int employeeIDInput;
-                    if (!int.TryParse(txtContra.Text, out employeeIDInput))
-                    {
-                        MessageBox.Show("El ID ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    comando.Parameters.AddWithValue("@FirstName", txtUsuario.Text);
+                    comando.Parameters.AddWithValue("@EmployeeID", txtContra.Text);
+                    SqlCommand comandoAdmin = new SqlCommand(con, conexion);
+                    comandoAdmin.Parameters.AddWithValue("@nombre", txtUsuario.Text);
+                    comandoAdmin.Parameters.AddWithValue("@Password", txtContra.Text);
 
-
-                    string checkRoleQuery = "SELECT EmployeeID, Title FROM Employees WHERE EmployeeID = @EmployeeID";
-                    SqlCommand comando = new SqlCommand(checkRoleQuery, conexion);
-                    comando.Parameters.AddWithValue("@EmployeeID", employeeIDInput);
 
                     SqlDataReader lector = comando.ExecuteReader();
 
+                    DialogResult dr;
 
-                    if (lector.Read())
+                    if (lector.HasRows)
+                    {
 
                         MessageBox.Show("Bienvenido Usuario","Sistema",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                         this.Hide();
@@ -73,43 +60,13 @@ namespace Proyecto_U2
                         frmMenu.ShowDialog();
                     }
                     else
-
                     {
-                        int employeeID = Convert.ToInt32(lector["EmployeeID"]);
-                        string role = lector["Title"].ToString();
                         lector.Close();
 
-                        if (employeeID == 2)
+
+                        SqlDataReader lectorAdmin = comandoAdmin.ExecuteReader();
+                        if (lectorAdmin.HasRows)
                         {
-
-                            DialogResult result = MessageBox.Show("Bienvenido Dr.Andrew", "Home", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                            if (result == DialogResult.OK)
-                            {
-                                this.Hide();
-                                FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
-                                frmMenu.ShowDialog();
-                            }
-                            else if (result == DialogResult.Cancel)
-                            {
-                                return;
-                            }
-                        }
-                        else if (employeeID == 5)
-                        {
-                            DialogResult result = MessageBox.Show("Bienvenido Mr.Steven", "Home", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-                            if (result == DialogResult.OK)
-                            {
-                                this.Hide();
-                                FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
-                                frmMenu.ShowDialog();
-                            }
-                            else if (result == DialogResult.Cancel)
-                            {
-                                return;
-
-                            }
-
                             lectorAdmin.Close(); 
                             MessageBox.Show("Bienvenido Admin","Home",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                             this.Hide();
@@ -120,41 +77,21 @@ namespace Proyecto_U2
                         else
                         {
 
-                            DialogResult result = MessageBox.Show("Bienvenido Usuario", "Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-                            if (result == DialogResult.OK)
-                            {
-                                this.Hide();
-                                FrmMenuPrincipal frmMenu = new FrmMenuPrincipal();
-                                frmMenu.ShowDialog();
-
-                            }
-                            else
-                            {
-                                return;
-                            }
+                            MessageBox.Show("Usuario o ID incorrectos","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         }
-                    }
-                
 
-                    else
-                    {
-                        lector.Close();
-                        MessageBox.Show("Usuario o ID incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                        
-                    }
-                
+                }
                 catch (Exception ex)
                 {
+
                     MessageBox.Show("Error: " + ex.Message);
                 }
-
                 conexion.Close();
-
             }
         }
 
-            private void btnSalir_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
