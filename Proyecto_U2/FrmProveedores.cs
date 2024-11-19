@@ -16,10 +16,15 @@ namespace Proyecto_U2
         {
             InitializeComponent();
         }
+        private void Proveedores_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cargarDatosSuppliers();
+        }
 
         private void btnNuevoProveedor_Click(object sender, EventArgs e)
         {
             FrmAddSupplier frmAddSupplier = new FrmAddSupplier();
+            frmAddSupplier.FormClosed += Proveedores_FormClosed;
             frmAddSupplier.ShowDialog();
         }
 
@@ -27,6 +32,7 @@ namespace Proyecto_U2
         {
             cargarDatosSuppliers();
         }
+  
 
         public void cargarDatosSuppliers()
         {

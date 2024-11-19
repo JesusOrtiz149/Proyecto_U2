@@ -65,14 +65,14 @@
             txtNombreCompany.Location = new Point(15, 35);
             txtNombreCompany.Name = "txtNombreCompany";
             txtNombreCompany.Size = new Size(197, 23);
-            txtNombreCompany.TabIndex = 4;
+            txtNombreCompany.TabIndex = 1;
             // 
             // btnAceptar
             // 
             btnAceptar.Location = new Point(214, 270);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
-            btnAceptar.TabIndex = 3;
+            btnAceptar.TabIndex = 11;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
@@ -91,7 +91,7 @@
             txtContactoNombre.Location = new Point(15, 80);
             txtContactoNombre.Name = "txtContactoNombre";
             txtContactoNombre.Size = new Size(197, 23);
-            txtContactoNombre.TabIndex = 6;
+            txtContactoNombre.TabIndex = 2;
             // 
             // label3
             // 
@@ -107,7 +107,7 @@
             txtContactoCargo.Location = new Point(15, 126);
             txtContactoCargo.Name = "txtContactoCargo";
             txtContactoCargo.Size = new Size(197, 23);
-            txtContactoCargo.TabIndex = 8;
+            txtContactoCargo.TabIndex = 3;
             // 
             // label4
             // 
@@ -123,7 +123,7 @@
             txtEstado.Location = new Point(296, 80);
             txtEstado.Name = "txtEstado";
             txtEstado.Size = new Size(197, 23);
-            txtEstado.TabIndex = 14;
+            txtEstado.TabIndex = 7;
             // 
             // label5
             // 
@@ -139,7 +139,7 @@
             txtCiudad.Location = new Point(296, 126);
             txtCiudad.Name = "txtCiudad";
             txtCiudad.Size = new Size(197, 23);
-            txtCiudad.TabIndex = 12;
+            txtCiudad.TabIndex = 8;
             // 
             // label6
             // 
@@ -171,7 +171,7 @@
             txtPais.Location = new Point(296, 35);
             txtPais.Name = "txtPais";
             txtPais.Size = new Size(197, 23);
-            txtPais.TabIndex = 18;
+            txtPais.TabIndex = 6;
             // 
             // label8
             // 
@@ -187,7 +187,7 @@
             txtCodigoP.Location = new Point(296, 176);
             txtCodigoP.Name = "txtCodigoP";
             txtCodigoP.Size = new Size(197, 23);
-            txtCodigoP.TabIndex = 16;
+            txtCodigoP.TabIndex = 9;
             // 
             // label9
             // 
@@ -203,7 +203,7 @@
             txtFax.Location = new Point(15, 220);
             txtFax.Name = "txtFax";
             txtFax.Size = new Size(197, 23);
-            txtFax.TabIndex = 22;
+            txtFax.TabIndex = 5;
             // 
             // label10
             // 
@@ -219,9 +219,9 @@
             txtTel.Location = new Point(15, 176);
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(197, 23);
-            txtTel.TabIndex = 20;
+            txtTel.TabIndex = 4;
             // 
-            // FrmCustomers
+            // FrmAddCustomers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -247,7 +247,7 @@
             Controls.Add(label1);
             Controls.Add(txtNombreCompany);
             Controls.Add(btnAceptar);
-            Name = "FrmCustomers";
+            Name = "FrmAddCustomers";
             Text = "Agregar Cliente";
             Load += FrmCustomers_Load;
             ResumeLayout(false);

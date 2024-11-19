@@ -43,8 +43,6 @@ namespace Proyecto_U2
 
         }
 
-
-
         private string calcularID(string idC)
         {
             // Divide el nombre completo en partes (asumiendo que están separados por espacio)
@@ -134,6 +132,7 @@ namespace Proyecto_U2
                             txtPais.Clear();
                             txtTel.Clear();
                             txtFax.Clear();
+                            
                         }
                         else
                         {
