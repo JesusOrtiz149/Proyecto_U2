@@ -37,17 +37,13 @@ namespace Proyecto_U2
             empleadosToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
             proveedoresToolStripMenuItem = new ToolStripMenuItem();
-            贸rdenesToolStripMenuItem = new ToolStripMenuItem();
-            detallesDeLas脫rdenesToolStripMenuItem = new ToolStripMenuItem();
+            髍denesToolStripMenuItem = new ToolStripMenuItem();
+            detallesDeLas觬denesToolStripMenuItem = new ToolStripMenuItem();
             productosToolStripMenuItem = new ToolStripMenuItem();
             embarcaderosToolStripMenuItem = new ToolStripMenuItem();
             territorioToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            employeesToolStripMenuItem = new ToolStripMenuItem();
-            territoriesToolStripMenuItem = new ToolStripMenuItem();
-            pedidosToolStripMenuItem = new ToolStripMenuItem();
-            ordersToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -76,16 +72,13 @@ namespace Proyecto_U2
             // 
             salirToolStripMenuItem.Image = (Image)resources.GetObject("salirToolStripMenuItem.Image");
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-
-            salirToolStripMenuItem.Size = new Size(119, 26);
-
             salirToolStripMenuItem.Size = new Size(95, 22);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // northwindToolStripMenuItem
             // 
-            northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem, empleadosToolStripMenuItem, clientesToolStripMenuItem, proveedoresToolStripMenuItem, 贸rdenesToolStripMenuItem, productosToolStripMenuItem, embarcaderosToolStripMenuItem, territorioToolStripMenuItem });
+            northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem, empleadosToolStripMenuItem, clientesToolStripMenuItem, proveedoresToolStripMenuItem, 髍denesToolStripMenuItem, productosToolStripMenuItem, embarcaderosToolStripMenuItem, territorioToolStripMenuItem });
             northwindToolStripMenuItem.Image = (Image)resources.GetObject("northwindToolStripMenuItem.Image");
             northwindToolStripMenuItem.Name = "northwindToolStripMenuItem";
             northwindToolStripMenuItem.Size = new Size(96, 24);
@@ -93,7 +86,6 @@ namespace Proyecto_U2
             // 
             // mostrarToolStripMenuItem
             // 
-            mostrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { employeesToolStripMenuItem });
             mostrarToolStripMenuItem.Image = (Image)resources.GetObject("mostrarToolStripMenuItem.Image");
             mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
             mostrarToolStripMenuItem.Size = new Size(184, 26);
@@ -121,20 +113,20 @@ namespace Proyecto_U2
             proveedoresToolStripMenuItem.Text = "Proveedores";
             proveedoresToolStripMenuItem.Click += proveedoresToolStripMenuItem_Click;
             // 
-            // 贸rdenesToolStripMenuItem
+            // 髍denesToolStripMenuItem
             // 
-            贸rdenesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { detallesDeLas脫rdenesToolStripMenuItem });
-            贸rdenesToolStripMenuItem.Name = "贸rdenesToolStripMenuItem";
-            贸rdenesToolStripMenuItem.Size = new Size(184, 26);
-            贸rdenesToolStripMenuItem.Text = "脫rdenes";
-            贸rdenesToolStripMenuItem.Click += 贸rdenesToolStripMenuItem_Click;
+            髍denesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { detallesDeLas觬denesToolStripMenuItem });
+            髍denesToolStripMenuItem.Name = "髍denesToolStripMenuItem";
+            髍denesToolStripMenuItem.Size = new Size(184, 26);
+            髍denesToolStripMenuItem.Text = "觬denes";
+            髍denesToolStripMenuItem.Click += 髍denesToolStripMenuItem_Click;
             // 
-            // detallesDeLas脫rdenesToolStripMenuItem
+            // detallesDeLas觬denesToolStripMenuItem
             // 
-            detallesDeLas脫rdenesToolStripMenuItem.Name = "detallesDeLas脫rdenesToolStripMenuItem";
-            detallesDeLas脫rdenesToolStripMenuItem.Size = new Size(193, 22);
-            detallesDeLas脫rdenesToolStripMenuItem.Text = "Detalles de las 贸rdenes";
-            detallesDeLas脫rdenesToolStripMenuItem.Click += detallesDeLas脫rdenesToolStripMenuItem_Click;
+            detallesDeLas觬denesToolStripMenuItem.Name = "detallesDeLas觬denesToolStripMenuItem";
+            detallesDeLas觬denesToolStripMenuItem.Size = new Size(193, 22);
+            detallesDeLas觬denesToolStripMenuItem.Text = "Detalles de las 髍denes";
+            detallesDeLas觬denesToolStripMenuItem.Click += detallesDeLas觬denesToolStripMenuItem_Click;
             // 
             // productosToolStripMenuItem
             // 
@@ -178,31 +170,6 @@ namespace Proyecto_U2
             label1.TabIndex = 2;
             label1.Text = "Northwind";
             // 
-            // employeesToolStripMenuItem
-            // 
-            employeesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { territoriesToolStripMenuItem, pedidosToolStripMenuItem, ordersToolStripMenuItem });
-            employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            employeesToolStripMenuItem.Size = new Size(224, 26);
-            employeesToolStripMenuItem.Text = "Employees";
-            // 
-            // territoriesToolStripMenuItem
-            // 
-            territoriesToolStripMenuItem.Name = "territoriesToolStripMenuItem";
-            territoriesToolStripMenuItem.Size = new Size(224, 26);
-            territoriesToolStripMenuItem.Text = "Territories";
-            // 
-            // pedidosToolStripMenuItem
-            // 
-            pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(224, 26);
-            pedidosToolStripMenuItem.Text = "Pedidos";
-            // 
-            // ordersToolStripMenuItem
-            // 
-            ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            ordersToolStripMenuItem.Size = new Size(224, 26);
-            ordersToolStripMenuItem.Text = "Orders";
-            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -235,20 +202,13 @@ namespace Proyecto_U2
         private ToolStripMenuItem mostrarToolStripMenuItem;
         private PictureBox pictureBox1;
         private Label label1;
-
-        private ToolStripMenuItem employeesToolStripMenuItem;
-        private ToolStripMenuItem territoriesToolStripMenuItem;
-        private ToolStripMenuItem pedidosToolStripMenuItem;
-        private ToolStripMenuItem ordersToolStripMenuItem;
-
         private ToolStripMenuItem empleadosToolStripMenuItem;
         private ToolStripMenuItem clientesToolStripMenuItem;
-        private ToolStripMenuItem 贸rdenesToolStripMenuItem;
+        private ToolStripMenuItem 髍denesToolStripMenuItem;
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem proveedoresToolStripMenuItem;
         private ToolStripMenuItem embarcaderosToolStripMenuItem;
-        private ToolStripMenuItem detallesDeLas脫rdenesToolStripMenuItem;
+        private ToolStripMenuItem detallesDeLas觬denesToolStripMenuItem;
         private ToolStripMenuItem territorioToolStripMenuItem;
-
     }
 }
