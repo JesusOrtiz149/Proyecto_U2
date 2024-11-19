@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_U2
 {
-    public partial class FrmAddOrder : Form
+    public partial class FrmAddCategory : Form
     {
-        public FrmAddOrder()
+        public FrmAddCategory()
         {
             InitializeComponent();
-        }
-
-        private void FrmAddOrder_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

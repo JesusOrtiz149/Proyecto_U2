@@ -36,11 +36,11 @@
             // dtgCustomers
             // 
             dtgCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgCustomers.Location = new Point(3, 128);
+            dtgCustomers.Location = new Point(3, 39);
             dtgCustomers.Margin = new Padding(3, 2, 3, 2);
             dtgCustomers.Name = "dtgCustomers";
             dtgCustomers.RowHeadersWidth = 51;
-            dtgCustomers.Size = new Size(1087, 230);
+            dtgCustomers.Size = new Size(1087, 372);
             dtgCustomers.TabIndex = 1;
             // 
             // btnNuevoCustomer

@@ -12,6 +12,7 @@ namespace Proyecto_U2
 {
     public partial class FrmTerritorios : Form
     {
+        DataSet ds;
         public FrmTerritorios()
         {
             InitializeComponent();
@@ -21,6 +22,21 @@ namespace Proyecto_U2
         {
             FrmAddTerritory frmAddTerritory = new FrmAddTerritory();
             frmAddTerritory.ShowDialog();
+        }
+
+        private void FrmTerritorios_Load(object sender, EventArgs e)
+        {
+            cargarDatos("Select * From Territories");
+        }
+
+        public void cargarDatos(String comando)
+        {
+            Datos dt = new Datos();
+            ds = dt.ejecutarConsulta(comando);
+            if (ds != null)
+            {
+                dtgTerritory.DataSource = ds.Tables[0];
+            }
         }
     }
 }

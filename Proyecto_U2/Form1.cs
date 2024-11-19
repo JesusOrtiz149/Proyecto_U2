@@ -48,8 +48,6 @@ namespace Proyecto_U2
             {
                 dtgEmployees.DataSource = ds.Tables[0];
             }
-
-
         }
         public void cargarDatosCustomers(String comando)
         {

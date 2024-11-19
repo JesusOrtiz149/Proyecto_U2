@@ -36,15 +36,15 @@
             // dgvProducts
             // 
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(29, 178);
+            dgvProducts.Location = new Point(29, 41);
             dgvProducts.Name = "dgvProducts";
             dgvProducts.RowHeadersWidth = 51;
-            dgvProducts.Size = new Size(731, 260);
+            dgvProducts.Size = new Size(731, 397);
             dgvProducts.TabIndex = 2;
             // 
             // btnNuevoProducto
             // 
-            btnNuevoProducto.Location = new Point(344, 149);
+            btnNuevoProducto.Location = new Point(335, 12);
             btnNuevoProducto.Name = "btnNuevoProducto";
             btnNuevoProducto.Size = new Size(75, 23);
             btnNuevoProducto.TabIndex = 3;
@@ -60,7 +60,8 @@
             Controls.Add(btnNuevoProducto);
             Controls.Add(dgvProducts);
             Name = "FrmProductos";
-            Text = "FrmProductos";
+            Text = "Productos";
+            Load += FrmProductos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             ResumeLayout(false);
         }

@@ -12,6 +12,7 @@ namespace Proyecto_U2
 {
     public partial class FrmOrdenes : Form
     {
+        DataSet ds;
         public FrmOrdenes()
         {
             InitializeComponent();
@@ -23,5 +24,26 @@ namespace Proyecto_U2
             frmAddOrder.Show();
 
         }
+
+        private void FrmOrdenes_Load(object sender, EventArgs e)
+        {
+            cargarDatosOrders("Select * From Orders");
+        }
+        public void cargarDatosOrders(String comando)
+        {
+
+            dtgOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgOrders.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+            Datos dt = new Datos();
+            ds = dt.ejecutarConsulta(comando);
+            if (ds != null)
+            {
+                dtgOrders.DataSource = ds.Tables[0];
+            }
+        }
+
+
     }
 }

@@ -12,6 +12,7 @@ namespace Proyecto_U2
 {
     public partial class FrmEmpleados : Form
     {
+        DataSet ds;
         public FrmEmpleados()
         {
             InitializeComponent();
@@ -23,5 +24,20 @@ namespace Proyecto_U2
             frmAddEmployee.ShowDialog();
 
         }
+
+        private void FrmEmpleados_Load(object sender, EventArgs e)
+        {
+            cargarDatos1("Select * From Employees");
+        }
+        public void cargarDatos1(String comando)
+        {
+            Datos dt = new Datos();
+            ds = dt.ejecutarConsulta(comando);
+            if (ds != null)
+            {
+                dgvEmployees.DataSource = ds.Tables[0];
+            }
+        }
+
     }
 }

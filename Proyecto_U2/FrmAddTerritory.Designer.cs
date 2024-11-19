@@ -80,7 +80,7 @@
             cmbRegion.Size = new Size(121, 23);
             cmbRegion.TabIndex = 4;
             // 
-            // FrmTerritory
+            // FrmAddTerritory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -90,8 +90,8 @@
             Controls.Add(label1);
             Controls.Add(txtTerritory);
             Controls.Add(btnAceptar);
-            Name = "FrmTerritory";
-            Text = "Territories";
+            Name = "FrmAddTerritory";
+            Text = "Agregar Territorio";
             ResumeLayout(false);
             PerformLayout();
         }

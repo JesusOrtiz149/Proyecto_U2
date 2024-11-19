@@ -36,15 +36,15 @@
             // dgvSuppliers
             // 
             dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSuppliers.Location = new Point(12, 207);
+            dgvSuppliers.Location = new Point(12, 41);
             dgvSuppliers.Name = "dgvSuppliers";
             dgvSuppliers.RowHeadersWidth = 51;
-            dgvSuppliers.Size = new Size(795, 231);
+            dgvSuppliers.Size = new Size(795, 397);
             dgvSuppliers.TabIndex = 1;
             // 
             // btnNuevoProveedor
             // 
-            btnNuevoProveedor.Location = new Point(373, 102);
+            btnNuevoProveedor.Location = new Point(318, 12);
             btnNuevoProveedor.Name = "btnNuevoProveedor";
             btnNuevoProveedor.Size = new Size(159, 23);
             btnNuevoProveedor.TabIndex = 2;
@@ -60,7 +60,8 @@
             Controls.Add(btnNuevoProveedor);
             Controls.Add(dgvSuppliers);
             Name = "FrmProveedores";
-            Text = "FormProveedores";
+            Text = "Proveedores";
+            Load += FrmProveedores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).EndInit();
             ResumeLayout(false);
         }

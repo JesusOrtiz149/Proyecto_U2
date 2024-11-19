@@ -12,6 +12,7 @@ namespace Proyecto_U2
 {
     public partial class FrmEmbarcaderos : Form
     {
+        DataSet ds;
         public FrmEmbarcaderos()
         {
             InitializeComponent();
@@ -19,8 +20,31 @@ namespace Proyecto_U2
 
         private void btnNuevoEmbarcadero_Click(object sender, EventArgs e)
         {
-            FrmAddShippers frmAddShippers = new FrmAddShippers();   
+            FrmAddShippers frmAddShippers = new FrmAddShippers();
             frmAddShippers.ShowDialog();
+        }
+
+
+
+        private void FrmEmbarcaderos_Load(object sender, EventArgs e)
+        {
+            cargarDatosShippers();
+        }
+
+        public void cargarDatosShippers()
+        {
+            dgvShippers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvShippers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Shippers");
+
+            if (ds != null)
+            {
+                dgvShippers.DataSource = ds.Tables[0];
+                //dgvSuppliers.DataBindingComplete += dgvCategories_DataBindingComplete;
+            }
         }
     }
 }

@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             label9 = new Label();
-            txtFax = new TextBox();
-            label10 = new Label();
-            txtTel = new TextBox();
             label7 = new Label();
             txtPais = new TextBox();
             label8 = new Label();
@@ -45,10 +42,13 @@
             label3 = new Label();
             txtContactoCargo = new TextBox();
             label2 = new Label();
-            txtContactoNombre = new TextBox();
             label1 = new Label();
             btnAceptar = new Button();
             dtpOrderDate = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker2 = new DateTimePicker();
+            label11 = new Label();
+            cmbIDbarco = new ComboBox();
             SuspendLayout();
             // 
             // label9
@@ -56,32 +56,9 @@
             label9.AutoSize = true;
             label9.Location = new Point(120, 245);
             label9.Name = "label9";
-            label9.Size = new Size(25, 15);
+            label9.Size = new Size(51, 15);
             label9.TabIndex = 44;
-            label9.Text = "Fax";
-            // 
-            // txtFax
-            // 
-            txtFax.Location = new Point(120, 263);
-            txtFax.Name = "txtFax";
-            txtFax.Size = new Size(197, 23);
-            txtFax.TabIndex = 43;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(120, 201);
-            label10.Name = "label10";
-            label10.Size = new Size(52, 15);
-            label10.TabIndex = 42;
-            label10.Text = "Teléfono";
-            // 
-            // txtTel
-            // 
-            txtTel.Location = new Point(120, 219);
-            txtTel.Name = "txtTel";
-            txtTel.Size = new Size(197, 23);
-            txtTel.TabIndex = 41;
+            label9.Text = "ID barco";
             // 
             // label7
             // 
@@ -166,15 +143,15 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(120, 151);
+            label3.Location = new Point(120, 60);
             label3.Name = "label3";
-            label3.Size = new Size(108, 15);
+            label3.Size = new Size(58, 15);
             label3.TabIndex = 30;
-            label3.Text = "Cargo del contacto";
+            label3.Text = "Cliente ID";
             // 
             // txtContactoCargo
             // 
-            txtContactoCargo.Location = new Point(120, 169);
+            txtContactoCargo.Location = new Point(123, 79);
             txtContactoCargo.Name = "txtContactoCargo";
             txtContactoCargo.Size = new Size(197, 23);
             txtContactoCargo.TabIndex = 29;
@@ -182,27 +159,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(120, 105);
+            label2.Location = new Point(120, 151);
             label2.Name = "label2";
-            label2.Size = new Size(117, 15);
+            label2.Size = new Size(97, 15);
             label2.TabIndex = 28;
-            label2.Text = "Nombre de contacto";
-            // 
-            // txtContactoNombre
-            // 
-            txtContactoNombre.Location = new Point(120, 123);
-            txtContactoNombre.Name = "txtContactoNombre";
-            txtContactoNombre.Size = new Size(197, 23);
-            txtContactoNombre.TabIndex = 27;
+            label2.Text = "Fecha de entrega";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(120, 60);
+            label1.Location = new Point(120, 105);
             label1.Name = "label1";
-            label1.Size = new Size(135, 15);
+            label1.Size = new Size(100, 15);
             label1.TabIndex = 26;
-            label1.Text = "Nombre de la compañía";
+            label1.Text = "Fecha de la orden";
             // 
             // btnAceptar
             // 
@@ -215,23 +185,59 @@
             // 
             // dtpOrderDate
             // 
-            dtpOrderDate.Location = new Point(120, 79);
+            dtpOrderDate.Location = new Point(120, 125);
             dtpOrderDate.MaxDate = new DateTime(2099, 12, 31, 0, 0, 0, 0);
             dtpOrderDate.MinDate = new DateTime(1800, 12, 31, 0, 0, 0, 0);
             dtpOrderDate.Name = "dtpOrderDate";
             dtpOrderDate.Size = new Size(200, 23);
             dtpOrderDate.TabIndex = 45;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(120, 169);
+            dateTimePicker1.MaxDate = new DateTime(2099, 12, 31, 0, 0, 0, 0);
+            dateTimePicker1.MinDate = new DateTime(1800, 12, 31, 0, 0, 0, 0);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 46;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(117, 219);
+            dateTimePicker2.MaxDate = new DateTime(2099, 12, 31, 0, 0, 0, 0);
+            dateTimePicker2.MinDate = new DateTime(1800, 12, 31, 0, 0, 0, 0);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.TabIndex = 48;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(117, 195);
+            label11.Name = "label11";
+            label11.Size = new Size(111, 15);
+            label11.TabIndex = 47;
+            label11.Text = "Fecha de embarque";
+            // 
+            // cmbIDbarco
+            // 
+            cmbIDbarco.FormattingEnabled = true;
+            cmbIDbarco.Location = new Point(117, 263);
+            cmbIDbarco.Name = "cmbIDbarco";
+            cmbIDbarco.Size = new Size(121, 23);
+            cmbIDbarco.TabIndex = 50;
+            // 
             // FrmAddOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(718, 397);
+            Controls.Add(cmbIDbarco);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(label11);
+            Controls.Add(dateTimePicker1);
             Controls.Add(dtpOrderDate);
             Controls.Add(label9);
-            Controls.Add(txtFax);
-            Controls.Add(label10);
-            Controls.Add(txtTel);
             Controls.Add(label7);
             Controls.Add(txtPais);
             Controls.Add(label8);
@@ -245,11 +251,11 @@
             Controls.Add(label3);
             Controls.Add(txtContactoCargo);
             Controls.Add(label2);
-            Controls.Add(txtContactoNombre);
             Controls.Add(label1);
             Controls.Add(btnAceptar);
             Name = "FrmAddOrder";
-            Text = "FrmAddOrder";
+            Text = "Agregar Orden";
+            Load += FrmAddOrder_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -257,9 +263,6 @@
         #endregion
 
         private Label label9;
-        private TextBox txtFax;
-        private Label label10;
-        private TextBox txtTel;
         private Label label7;
         private TextBox txtPais;
         private Label label8;
@@ -273,9 +276,12 @@
         private Label label3;
         private TextBox txtContactoCargo;
         private Label label2;
-        private TextBox txtContactoNombre;
         private Label label1;
         private Button btnAceptar;
         private DateTimePicker dtpOrderDate;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
+        private Label label11;
+        private ComboBox cmbIDbarco;
     }
 }

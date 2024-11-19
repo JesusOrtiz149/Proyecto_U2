@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_U2
 {
-    partial class FrmAddShippers
+    partial class FrmAddCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // FrmAddShippers
+            // FrmAddCategory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Name = "FrmAddShippers";
-            Text = "Agregar Embarcadero";
+            Name = "FrmAddCategory";
+            Text = "Agregar Categoría";
             ResumeLayout(false);
         }
 

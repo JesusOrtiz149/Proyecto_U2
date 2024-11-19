@@ -36,16 +36,16 @@
             // dtgOrders
             // 
             dtgOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgOrders.Location = new Point(25, 198);
+            dtgOrders.Location = new Point(12, 40);
             dtgOrders.Margin = new Padding(3, 2, 3, 2);
             dtgOrders.Name = "dtgOrders";
             dtgOrders.RowHeadersWidth = 51;
-            dtgOrders.Size = new Size(1060, 218);
+            dtgOrders.Size = new Size(1073, 399);
             dtgOrders.TabIndex = 1;
             // 
             // btnNuevaOrden
             // 
-            btnNuevaOrden.Location = new Point(391, 68);
+            btnNuevaOrden.Location = new Point(430, 12);
             btnNuevaOrden.Name = "btnNuevaOrden";
             btnNuevaOrden.Size = new Size(116, 23);
             btnNuevaOrden.TabIndex = 2;
@@ -61,7 +61,8 @@
             Controls.Add(btnNuevaOrden);
             Controls.Add(dtgOrders);
             Name = "FrmOrdenes";
-            Text = "FrmOrdenes";
+            Text = "Ordenes";
+            Load += FrmOrdenes_Load;
             ((System.ComponentModel.ISupportInitialize)dtgOrders).EndInit();
             ResumeLayout(false);
         }

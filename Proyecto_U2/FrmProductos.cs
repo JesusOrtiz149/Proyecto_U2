@@ -19,8 +19,24 @@ namespace Proyecto_U2
 
         private void btnNuevoProducto_Click(object sender, EventArgs e)
         {
-            FrmAddProduct frmAddProduct = new FrmAddProduct();  
+            FrmAddProduct frmAddProduct = new FrmAddProduct();
             frmAddProduct.ShowDialog();
         }
+
+        private void FrmProductos_Load(object sender, EventArgs e)
+        {
+            cargarDatosProducts();
+        }
+        public void cargarDatosProducts()
+        {
+            Datos dt = new Datos();
+            DataSet ds;
+            ds = dt.ejecutarConsulta("Select * from Products");
+            if (ds != null)
+            {
+                dgvProducts.DataSource = ds.Tables[0];
+            }
+        }
+
     }
 }

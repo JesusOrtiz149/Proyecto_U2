@@ -44,6 +44,7 @@ namespace Proyecto_U2
             territorioToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            categoríasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -130,6 +131,7 @@ namespace Proyecto_U2
             // 
             // productosToolStripMenuItem
             // 
+            productosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { categoríasToolStripMenuItem });
             productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             productosToolStripMenuItem.Size = new Size(184, 26);
             productosToolStripMenuItem.Text = "Productos";
@@ -169,6 +171,13 @@ namespace Proyecto_U2
             label1.Size = new Size(512, 109);
             label1.TabIndex = 2;
             label1.Text = "Northwind";
+            // 
+            // categoríasToolStripMenuItem
+            // 
+            categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
+            categoríasToolStripMenuItem.Size = new Size(180, 22);
+            categoríasToolStripMenuItem.Text = "Categorías";
+            categoríasToolStripMenuItem.Click += categoríasToolStripMenuItem_Click;
             // 
             // FrmMenuPrincipal
             // 
@@ -210,5 +219,6 @@ namespace Proyecto_U2
         private ToolStripMenuItem embarcaderosToolStripMenuItem;
         private ToolStripMenuItem detallesDeLasÓrdenesToolStripMenuItem;
         private ToolStripMenuItem territorioToolStripMenuItem;
+        private ToolStripMenuItem categoríasToolStripMenuItem;
     }
 }

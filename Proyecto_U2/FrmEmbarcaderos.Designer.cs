@@ -35,16 +35,17 @@
             // 
             // dgvShippers
             // 
+            dgvShippers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvShippers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvShippers.Location = new Point(114, 207);
+            dgvShippers.Location = new Point(1, 83);
             dgvShippers.Name = "dgvShippers";
             dgvShippers.RowHeadersWidth = 51;
-            dgvShippers.Size = new Size(558, 231);
+            dgvShippers.Size = new Size(373, 123);
             dgvShippers.TabIndex = 2;
             // 
             // btnNuevoEmbarcadero
             // 
-            btnNuevoEmbarcadero.Location = new Point(293, 115);
+            btnNuevoEmbarcadero.Location = new Point(121, 12);
             btnNuevoEmbarcadero.Name = "btnNuevoEmbarcadero";
             btnNuevoEmbarcadero.Size = new Size(139, 23);
             btnNuevoEmbarcadero.TabIndex = 3;
@@ -56,11 +57,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(376, 268);
             Controls.Add(btnNuevoEmbarcadero);
             Controls.Add(dgvShippers);
             Name = "FrmEmbarcaderos";
-            Text = "FrmEmbarcaderoscs";
+            Text = "Embarcaderos";
+            Load += FrmEmbarcaderos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvShippers).EndInit();
             ResumeLayout(false);
         }

@@ -36,15 +36,15 @@
             // dgvEmployees
             // 
             dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployees.Location = new Point(12, 207);
+            dgvEmployees.Location = new Point(12, 41);
             dgvEmployees.Name = "dgvEmployees";
             dgvEmployees.RowHeadersWidth = 51;
-            dgvEmployees.Size = new Size(776, 231);
+            dgvEmployees.Size = new Size(776, 397);
             dgvEmployees.TabIndex = 1;
             // 
             // btnNuevoEmpleado
             // 
-            btnNuevoEmpleado.Location = new Point(235, 99);
+            btnNuevoEmpleado.Location = new Point(312, 12);
             btnNuevoEmpleado.Name = "btnNuevoEmpleado";
             btnNuevoEmpleado.Size = new Size(129, 23);
             btnNuevoEmpleado.TabIndex = 2;
@@ -60,7 +60,8 @@
             Controls.Add(btnNuevoEmpleado);
             Controls.Add(dgvEmployees);
             Name = "FrmEmpleados";
-            Text = "FrmEmpleados";
+            Text = "Empleados";
+            Load += FrmEmpleados_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).EndInit();
             ResumeLayout(false);
         }

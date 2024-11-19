@@ -40,6 +40,7 @@
             // dtgTerritory
             // 
             dtgTerritory.AllowUserToAddRows = false;
+            dtgTerritory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgTerritory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgTerritory.Location = new Point(12, 111);
             dtgTerritory.Name = "dtgTerritory";
@@ -110,7 +111,8 @@
             Controls.Add(comboBox1);
             Controls.Add(dtgTerritory);
             Name = "FrmTerritorios";
-            Text = "FrmTerritorios";
+            Text = "Territorios";
+            Load += FrmTerritorios_Load;
             ((System.ComponentModel.ISupportInitialize)dtgTerritory).EndInit();
             ResumeLayout(false);
             PerformLayout();

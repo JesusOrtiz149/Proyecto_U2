@@ -45,7 +45,7 @@ namespace Proyecto_U2
                 mostrarToolStripMenuItem.Visible = true;
                 empleadosToolStripMenuItem.Visible = false;
                 clientesToolStripMenuItem.Visible = true;
-                proveedoresToolStripMenuItem.Visible= false;
+                proveedoresToolStripMenuItem.Visible = false;
                 ÛrdenesToolStripMenuItem.Visible = true;
                 detallesDeLas”rdenesToolStripMenuItem.Visible = true;
                 productosToolStripMenuItem.Visible = true;
@@ -122,7 +122,14 @@ namespace Proyecto_U2
 
         private void detallesDeLas”rdenesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            FrmDetallesOrdenes frmDetallesOrdenes = new FrmDetallesOrdenes();
+            frmDetallesOrdenes.Show();
+        }
+
+        private void categorÌasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCategorias frmCategorias = new FrmCategorias();  
+            frmCategorias.Show();
         }
     }
 }
