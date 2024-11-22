@@ -17,10 +17,15 @@ namespace Proyecto_U2
         {
             InitializeComponent();
         }
+        private void Ordenes_FormClosed(Object sender, FormClosedEventArgs e)
+        {
+            cargarDatosOrders("Select * from Orders");
+        }
 
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             FrmAddOrder frmAddOrder = new FrmAddOrder();
+            frmAddOrder.FormClosed += Ordenes_FormClosed;
             frmAddOrder.Show();
 
         }
