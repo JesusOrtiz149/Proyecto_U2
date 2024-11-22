@@ -29,13 +29,10 @@
         private void InitializeComponent()
         {
             label9 = new Label();
-            txtFax = new TextBox();
             label10 = new Label();
-            txtTel = new TextBox();
             label7 = new Label();
             txtPais = new TextBox();
             label8 = new Label();
-            txtCodigoP = new TextBox();
             label4 = new Label();
             txtEstado = new TextBox();
             label5 = new Label();
@@ -52,6 +49,9 @@
             label11 = new Label();
             txtPagWeb = new TextBox();
             btnCancelar = new Button();
+            mtbTel = new MaskedTextBox();
+            mtbCodigoP = new MaskedTextBox();
+            mtbFax = new MaskedTextBox();
             SuspendLayout();
             // 
             // label9
@@ -63,13 +63,6 @@
             label9.TabIndex = 44;
             label9.Text = "Fax";
             // 
-            // txtFax
-            // 
-            txtFax.Location = new Point(12, 216);
-            txtFax.Name = "txtFax";
-            txtFax.Size = new Size(197, 23);
-            txtFax.TabIndex = 5;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -78,13 +71,6 @@
             label10.Size = new Size(52, 15);
             label10.TabIndex = 42;
             label10.Text = "Teléfono";
-            // 
-            // txtTel
-            // 
-            txtTel.Location = new Point(12, 172);
-            txtTel.Name = "txtTel";
-            txtTel.Size = new Size(197, 23);
-            txtTel.TabIndex = 4;
             // 
             // label7
             // 
@@ -110,13 +96,6 @@
             label8.Size = new Size(81, 15);
             label8.TabIndex = 38;
             label8.Text = "Código Postal";
-            // 
-            // txtCodigoP
-            // 
-            txtCodigoP.Location = new Point(293, 172);
-            txtCodigoP.Name = "txtCodigoP";
-            txtCodigoP.Size = new Size(197, 23);
-            txtCodigoP.TabIndex = 10;
             // 
             // label4
             // 
@@ -250,22 +229,46 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // mtbTel
+            // 
+            mtbTel.Location = new Point(12, 172);
+            mtbTel.Mask = "(999)000-0000";
+            mtbTel.Name = "mtbTel";
+            mtbTel.Size = new Size(100, 23);
+            mtbTel.TabIndex = 47;
+            // 
+            // mtbCodigoP
+            // 
+            mtbCodigoP.Location = new Point(293, 172);
+            mtbCodigoP.Mask = "00000";
+            mtbCodigoP.Name = "mtbCodigoP";
+            mtbCodigoP.Size = new Size(100, 23);
+            mtbCodigoP.TabIndex = 48;
+            // 
+            // mtbFax
+            // 
+            mtbFax.Location = new Point(12, 216);
+            mtbFax.Mask = "(0000)-00-0000";
+            mtbFax.Name = "mtbFax";
+            mtbFax.Size = new Size(100, 23);
+            mtbFax.TabIndex = 49;
+            // 
             // FrmAddSupplier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(517, 450);
+            ClientSize = new Size(517, 370);
+            Controls.Add(mtbFax);
+            Controls.Add(mtbCodigoP);
+            Controls.Add(mtbTel);
             Controls.Add(btnCancelar);
             Controls.Add(label11);
             Controls.Add(txtPagWeb);
             Controls.Add(label9);
-            Controls.Add(txtFax);
             Controls.Add(label10);
-            Controls.Add(txtTel);
             Controls.Add(label7);
             Controls.Add(txtPais);
             Controls.Add(label8);
-            Controls.Add(txtCodigoP);
             Controls.Add(label4);
             Controls.Add(txtEstado);
             Controls.Add(label5);
@@ -289,13 +292,10 @@
         #endregion
 
         private Label label9;
-        private TextBox txtFax;
         private Label label10;
-        private TextBox txtTel;
         private Label label7;
         private TextBox txtPais;
         private Label label8;
-        private TextBox txtCodigoP;
         private Label label4;
         private TextBox txtEstado;
         private Label label5;
@@ -312,5 +312,8 @@
         private Label label11;
         private TextBox txtPagWeb;
         private Button btnCancelar;
+        private MaskedTextBox mtbTel;
+        private MaskedTextBox mtbCodigoP;
+        private MaskedTextBox mtbFax;
     }
 }

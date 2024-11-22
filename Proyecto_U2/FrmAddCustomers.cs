@@ -25,6 +25,7 @@ namespace Proyecto_U2
 
         private FrmAddCustomers(string customerID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigop, string pais, string tel, string fax)
         {
+            InitializeComponent();
             this.customerID = customerID;
             txtNombreCompany.Text = Company;
             txtContactoNombre.Text = contactoNombre;
@@ -32,10 +33,10 @@ namespace Proyecto_U2
             txtDireccion.Text = direccion;
             txtCiudad.Text = ciudad;
             txtEstado.Text = region;
-            txtCodigoP.Text = codigop;
+            mtbCodigoP.Text = codigop;
             txtPais.Text = pais;
-            txtTel.Text = tel;
-            txtFax.Text = fax;
+            mtbTel.Text = tel;
+            mtbFax.Text = fax;
         }
 
         private void FrmCustomers_Load(object sender, EventArgs e)
@@ -82,10 +83,10 @@ namespace Proyecto_U2
                                                 "', Address = '" + txtDireccion.Text +
                                                 "', City = '" + txtCiudad.Text +
                                                 "', Region = '" + txtEstado.Text +
-                                                "', PostalCode  = '" + txtCodigoP.Text +
+                                                "', PostalCode  = '" + mtbCodigoP.Text +
                                                 "', Country = '" + txtPais.Text +
-                                                "', Phone = '" + txtTel.Text +
-                                                "', Fax = '" + txtFax.Text +
+                                                "', Phone = '" + mtbTel.Text +
+                                                "', Fax = '" + mtbFax.Text +
                         " Where CustomerID = '" + customerID + "'");
 
                     if (j == true)
@@ -104,41 +105,41 @@ namespace Proyecto_U2
                 {
                     //try
                     //{
-                        MessageBox.Show(calcularID(txtNombreCompany.Text));
-                        bool j = dt.ejecutarABC("Insert Into Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address" +
-                                                 ",City, Region, PostalCode, Country, Phone, Fax ) " +
-                            "Values ('" + calcularID(txtNombreCompany.Text) + "', '" + txtNombreCompany.Text +
-                                                          "','" + txtContactoNombre.Text +
-                                                          "','" + txtContactoCargo.Text +
-                                                          "','" + txtDireccion.Text +
-                                                          "','" + txtCiudad.Text +
-                                                          "','" + txtEstado.Text +
-                                                          "','" + txtCodigoP.Text +
-                                                          "','" + txtPais.Text +
-                                                          "','" + txtTel.Text +
-                                                          "','" + txtFax.Text + "')");
+                    MessageBox.Show(calcularID(txtNombreCompany.Text));
+                    bool j = dt.ejecutarABC("Insert Into Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address" +
+                                             ",City, Region, PostalCode, Country, Phone, Fax ) " +
+                        "Values ('" + calcularID(txtNombreCompany.Text) + "', '" + txtNombreCompany.Text +
+                                                      "','" + txtContactoNombre.Text +
+                                                      "','" + txtContactoCargo.Text +
+                                                      "','" + txtDireccion.Text +
+                                                      "','" + txtCiudad.Text +
+                                                      "','" + txtEstado.Text +
+                                                      "','" + mtbCodigoP.Text +
+                                                      "','" + txtPais.Text +
+                                                      "','" + mtbTel.Text +
+                                                      "','" + mtbFax.Text + "')");
 
-                        if (j == true)
-                        {
-                            MessageBox.Show("Cliente añadido", "Customers",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtNombreCompany.Clear();
-                            txtContactoNombre.Clear();
-                            txtContactoCargo.Clear();
-                            txtDireccion.Clear();
-                            txtCiudad.Clear();
-                            txtEstado.Clear();
-                            txtCodigoP.Clear();
-                            txtPais.Clear();
-                            txtTel.Clear();
-                            txtFax.Clear();
-                            
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error", "Customers", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
+                    if (j == true)
+                    {
+                        MessageBox.Show("Cliente añadido", "Customers",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtNombreCompany.Clear();
+                        txtContactoNombre.Clear();
+                        txtContactoCargo.Clear();
+                        txtDireccion.Clear();
+                        txtCiudad.Clear();
+                        txtEstado.Clear();
+                        mtbCodigoP.Clear();
+                        txtPais.Clear();
+                        mtbTel.Clear();
+                        mtbFax.Clear();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error", "Customers", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                     /*}catch(Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
@@ -147,6 +148,9 @@ namespace Proyecto_U2
             }
         }
 
-        
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

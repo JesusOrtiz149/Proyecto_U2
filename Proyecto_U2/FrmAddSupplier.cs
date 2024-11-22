@@ -30,10 +30,10 @@ namespace Proyecto_U2
             txtDireccion.Text = direccion;
             txtCiudad.Text = ciudad;
             txtEstado.Text = region;
-            txtCodigoP.Text = codigoP;
+            mtbCodigoP.Text = codigoP;
             txtPais.Text = pais;
-            txtTel.Text = tel;
-            txtFax.Text = fax;
+            mtbTel.Text = tel;
+            mtbFax.Text = fax;
             txtPagWeb.Text = pagWeb;
         }
 
@@ -53,10 +53,10 @@ namespace Proyecto_U2
                                                 "', Address = '" + txtDireccion.Text +
                                                 "', City = '" + txtCiudad.Text +
                                                 "', Region = '" + txtEstado.Text +
-                                                "', PostalCode  = '" + txtCodigoP.Text +
+                                                "', PostalCode  = '" + mtbCodigoP.Text +
                                                 "', Country = '" + txtPais.Text +
-                                                "', Phone = '" + txtTel.Text +
-                                                "', Fax = '" + txtFax.Text +
+                                                "', Phone = '" + mtbTel.Text +
+                                                "', Fax = '" + mtbFax.Text +
                                                 "', HomePage = ' " + txtPagWeb.Text +
                                                 " Where SupplierID = '" + ID + "'");
 
@@ -85,10 +85,10 @@ namespace Proyecto_U2
                                                       "','" + txtDireccion.Text +
                                                       "','" + txtCiudad.Text +
                                                       "','" + txtEstado.Text +
-                                                      "','" + txtCodigoP.Text +
+                                                      "','" + mtbCodigoP.Text +
                                                       "','" + txtPais.Text +
-                                                      "','" + txtTel.Text +
-                                                      "','" + txtFax.Text +
+                                                      "','" + mtbTel.Text +
+                                                      "','" + mtbFax.Text +
                                                       "','" + txtPagWeb.Text + "')");
 
                     if (j == true)
@@ -101,10 +101,10 @@ namespace Proyecto_U2
                         txtDireccion.Clear();
                         txtCiudad.Clear();
                         txtEstado.Clear();
-                        txtCodigoP.Clear();
+                        mtbCodigoP.Clear();
                         txtPais.Clear();
-                        txtTel.Clear();
-                        txtFax.Clear();
+                        mtbTel.Clear();
+                        mtbFax.Clear();
                         txtPagWeb.Clear();
                     }
                     else

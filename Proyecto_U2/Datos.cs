@@ -63,6 +63,27 @@ namespace Proyecto_U2
                 return false;
             }
         }
+        public bool ejecutarABCModificado(String comando, Dictionary<string, object> parametros)
+        {
+            try
+            {
+
+                using (SqlCommand command = new SqlCommand(comando, abrirConexion())) { 
+                    foreach(var parametro in parametros)
+                    {
+                        command.Parameters.AddWithValue(parametro.Key, parametro.Value ?? DBNull.Value);
+                    }
+                    command.ExecuteNonQuery();
+                    cerrarConexion();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+        }
 
         public DataSet ejecutarConsulta (String comando)
         {

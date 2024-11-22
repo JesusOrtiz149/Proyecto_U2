@@ -17,9 +17,15 @@ namespace Proyecto_U2
             InitializeComponent();
         }
 
+        private void Productos_FormClosed(Object sender, FormClosedEventArgs e)
+        {
+            cargarDatosProducts();
+        }
+
         private void btnNuevoProducto_Click(object sender, EventArgs e)
         {
             FrmAddProduct frmAddProduct = new FrmAddProduct();
+            frmAddProduct.FormClosed += Productos_FormClosed;
             frmAddProduct.ShowDialog();
         }
 
@@ -37,6 +43,9 @@ namespace Proyecto_U2
                 dgvProducts.DataSource = ds.Tables[0];
             }
         }
+
+
+
 
     }
 }
