@@ -40,11 +40,12 @@ namespace Proyecto_U2
             órdenesToolStripMenuItem = new ToolStripMenuItem();
             detallesDeLasÓrdenesToolStripMenuItem = new ToolStripMenuItem();
             productosToolStripMenuItem = new ToolStripMenuItem();
+            categoríasToolStripMenuItem = new ToolStripMenuItem();
             embarcaderosToolStripMenuItem = new ToolStripMenuItem();
             territorioToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            categoríasToolStripMenuItem = new ToolStripMenuItem();
+            infoTerritoriosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -79,7 +80,7 @@ namespace Proyecto_U2
             // 
             // northwindToolStripMenuItem
             // 
-            northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem, empleadosToolStripMenuItem, clientesToolStripMenuItem, proveedoresToolStripMenuItem, órdenesToolStripMenuItem, productosToolStripMenuItem, embarcaderosToolStripMenuItem, territorioToolStripMenuItem });
+            northwindToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mostrarToolStripMenuItem, empleadosToolStripMenuItem, clientesToolStripMenuItem, proveedoresToolStripMenuItem, órdenesToolStripMenuItem, productosToolStripMenuItem, embarcaderosToolStripMenuItem, territorioToolStripMenuItem, infoTerritoriosToolStripMenuItem });
             northwindToolStripMenuItem.Image = (Image)resources.GetObject("northwindToolStripMenuItem.Image");
             northwindToolStripMenuItem.Name = "northwindToolStripMenuItem";
             northwindToolStripMenuItem.Size = new Size(96, 24);
@@ -137,6 +138,13 @@ namespace Proyecto_U2
             productosToolStripMenuItem.Text = "Productos";
             productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
             // 
+            // categoríasToolStripMenuItem
+            // 
+            categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
+            categoríasToolStripMenuItem.Size = new Size(130, 22);
+            categoríasToolStripMenuItem.Text = "Categorías";
+            categoríasToolStripMenuItem.Click += categoríasToolStripMenuItem_Click;
+            // 
             // embarcaderosToolStripMenuItem
             // 
             embarcaderosToolStripMenuItem.Name = "embarcaderosToolStripMenuItem";
@@ -172,12 +180,12 @@ namespace Proyecto_U2
             label1.TabIndex = 2;
             label1.Text = "Northwind";
             // 
-            // categoríasToolStripMenuItem
+            // infoTerritoriosToolStripMenuItem
             // 
-            categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            categoríasToolStripMenuItem.Size = new Size(180, 22);
-            categoríasToolStripMenuItem.Text = "Categorías";
-            categoríasToolStripMenuItem.Click += categoríasToolStripMenuItem_Click;
+            infoTerritoriosToolStripMenuItem.Name = "infoTerritoriosToolStripMenuItem";
+            infoTerritoriosToolStripMenuItem.Size = new Size(184, 26);
+            infoTerritoriosToolStripMenuItem.Text = "InfoTerritorios";
+            infoTerritoriosToolStripMenuItem.Click += infoTerritoriosToolStripMenuItem_Click;
             // 
             // FrmMenuPrincipal
             // 
@@ -220,5 +228,6 @@ namespace Proyecto_U2
         private ToolStripMenuItem detallesDeLasÓrdenesToolStripMenuItem;
         private ToolStripMenuItem territorioToolStripMenuItem;
         private ToolStripMenuItem categoríasToolStripMenuItem;
+        private ToolStripMenuItem infoTerritoriosToolStripMenuItem;
     }
 }

@@ -128,8 +128,14 @@ namespace Proyecto_U2
 
         private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCategorias frmCategorias = new FrmCategorias();  
+            FrmCategorias frmCategorias = new FrmCategorias();
             frmCategorias.Show();
+        }
+
+        private void infoTerritoriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEmpleadoTerritorio frmEmpleadoTerritorio = new FrmEmpleadoTerritorio();
+            frmEmpleadoTerritorio.Show();
         }
     }
 }

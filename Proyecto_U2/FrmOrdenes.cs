@@ -33,6 +33,7 @@ namespace Proyecto_U2
         private void FrmOrdenes_Load(object sender, EventArgs e)
         {
             cargarDatosOrders("Select * From Orders");
+            
         }
         public void cargarDatosOrders(String comando)
         {
