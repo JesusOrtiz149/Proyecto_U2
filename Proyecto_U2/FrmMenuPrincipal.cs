@@ -65,10 +65,10 @@ namespace Proyecto_U2
                     archivoToolStripMenuItem.Visible = true;
                     salirToolStripMenuItem.Visible = true;
                     //add
-                    btnClientes.Visible= true;
+                    /*btnClientes.Visible= true;
                     btnSuppliers.Visible= true;
                     btnEmbarca.Visible= true;
-                    btnProductos.Visible = true;
+                    btnProductos.Visible = true;*/
                     
                     
 
