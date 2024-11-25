@@ -161,7 +161,7 @@ namespace Proyecto_U2
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             FrmAddOrder frmAddOrder = new FrmAddOrder();
-            frmAddOrder.FormClosed += Ordenes_FormClosed;
+            //frmAddOrder.FormClosed += Ordenes_FormClosed;
             frmAddOrder.Show();
         }
 
