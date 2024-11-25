@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dtgOrders = new DataGridView();
             btnNuevaOrden = new Button();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editarToolStripMenuItem = new ToolStripMenuItem();
+            eliminarToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dtgOrders).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dtgOrders
             // 
             dtgOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgOrders.ContextMenuStrip = contextMenuStrip1;
             dtgOrders.Location = new Point(12, 40);
             dtgOrders.Margin = new Padding(3, 2, 3, 2);
             dtgOrders.Name = "dtgOrders";
@@ -53,6 +59,26 @@
             btnNuevaOrden.UseVisualStyleBackColor = true;
             btnNuevaOrden.Click += btnNuevaOrden_Click;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, eliminarToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 70);
+            // 
+            // editarToolStripMenuItem
+            // 
+            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            editarToolStripMenuItem.Size = new Size(180, 22);
+            editarToolStripMenuItem.Text = "Editar";
+            editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Text = "Eliminar";
+            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            // 
             // FrmOrdenes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -64,6 +90,7 @@
             Text = "Ordenes";
             Load += FrmOrdenes_Load;
             ((System.ComponentModel.ISupportInitialize)dtgOrders).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -71,5 +98,8 @@
 
         private DataGridView dtgOrders;
         private Button btnNuevaOrden;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editarToolStripMenuItem;
+        private ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }

@@ -46,11 +46,12 @@ namespace Proyecto_U2
 
         private string calcularID(string idC)
         {
+
             // Divide el nombre completo en partes (asumiendo que están separados por espacio)
             string[] partes = idC.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             string primerNombre = partes[0];
-            string segundoNombre = partes[1];
+            string segundoNombre = partes.Length > 1 ? partes[1] : "";
 
             //  las primeras tres letras del primer nombre
             string parte1 = primerNombre.Length >= 3
@@ -66,6 +67,11 @@ namespace Proyecto_U2
             string id = (parte1 + parte2).ToUpper();
 
             return id;
+
+
+
+
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

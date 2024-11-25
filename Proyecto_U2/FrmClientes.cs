@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Proyecto_U2
-{  
+{
     public partial class FrmClientes : Form
     {
+        Datos dt = new Datos();
         DataSet ds;
         public FrmClientes()
         {
@@ -40,6 +42,47 @@ namespace Proyecto_U2
             FrmAddCustomers customers = new FrmAddCustomers();
             customers.FormClosed += Customers_FormClosed;
             customers.Show();
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dtgCustomers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona una fila para eliminar.", "Advertencia",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string x = dtgCustomers[0, dtgCustomers.SelectedRows[0].Index].Value.ToString();
+            //dtgCustomers[0]
+
+            if (MessageBox.Show("Deseas Eliminar a " +
+                dtgCustomers[1, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                "Sistema",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+
+            {
+                MessageBox.Show(x+" lol");
+                bool s = dt.ejecutarABC("Delete from Customers Where CustomerID = '" +  x + "'");
+                if (s)
+                {
+                    MessageBox.Show("Registro eliminado", "Sistema", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Error", "Sistema", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void FrmClientes_Load(object sender, EventArgs e)
+        {
+            //eliminarToolStripMenuItem.Click += new EventHandler(eliminarToolStripMenuItem_Click);
         }
     }
 }

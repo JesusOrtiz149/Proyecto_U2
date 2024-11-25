@@ -12,6 +12,7 @@ namespace Proyecto_U2
 {
     public partial class FrmProveedores : Form
     {
+        Datos dt = new Datos();
         public FrmProveedores()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace Proyecto_U2
         {
             cargarDatosSuppliers();
         }
-  
+
 
         public void cargarDatosSuppliers()
         {
@@ -50,6 +51,50 @@ namespace Proyecto_U2
             }
         }
 
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvSuppliers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona una fila para eliminar.", "Advertencia",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string x = dgvSuppliers[0, dgvSuppliers.SelectedRows[0].Index].Value.ToString();
+
+            // Confirmar eliminación
+            if (MessageBox.Show("¿Deseas eliminar a " +
+                dgvSuppliers[1, dgvSuppliers.SelectedRows[0].Index].Value.ToString() + "?",
+                "Confirmar eliminación",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                string consulta = "DELETE FROM Suppliers WHERE SupplierID = @SupplierID";
+
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "@SupplierID", x }
+                };
+
+                bool s = dt.ejecutarABCModificado(consulta, parametros);
+
+                if (s)
+                {
+                    MessageBox.Show("Registro eliminado con éxito.", "Sistema",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    cargarDatosSuppliers();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el registro.", "Sistema",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 
 

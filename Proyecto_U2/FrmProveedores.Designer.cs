@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvSuppliers = new DataGridView();
             btnNuevoProveedor = new Button();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editarToolStripMenuItem = new ToolStripMenuItem();
+            eliminarToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSuppliers
             // 
             dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSuppliers.ContextMenuStrip = contextMenuStrip1;
             dgvSuppliers.Location = new Point(12, 41);
             dgvSuppliers.Name = "dgvSuppliers";
             dgvSuppliers.RowHeadersWidth = 51;
@@ -52,6 +58,26 @@
             btnNuevoProveedor.UseVisualStyleBackColor = true;
             btnNuevoProveedor.Click += btnNuevoProveedor_Click;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, eliminarToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 70);
+            // 
+            // editarToolStripMenuItem
+            // 
+            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            editarToolStripMenuItem.Size = new Size(180, 22);
+            editarToolStripMenuItem.Text = "Editar";
+            editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Text = "Eliminar";
+            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            // 
             // FrmProveedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -63,6 +89,7 @@
             Text = "Proveedores";
             Load += FrmProveedores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -70,5 +97,8 @@
 
         private DataGridView dgvSuppliers;
         private Button btnNuevoProveedor;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editarToolStripMenuItem;
+        private ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }

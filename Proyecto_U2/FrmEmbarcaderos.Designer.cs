@@ -28,15 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvShippers = new DataGridView();
             btnNuevoEmbarcadero = new Button();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editarToolStripMenuItem = new ToolStripMenuItem();
+            eliminarToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvShippers).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvShippers
             // 
             dgvShippers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvShippers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvShippers.ContextMenuStrip = contextMenuStrip1;
             dgvShippers.Location = new Point(1, 83);
             dgvShippers.Name = "dgvShippers";
             dgvShippers.RowHeadersWidth = 51;
@@ -45,13 +51,33 @@
             // 
             // btnNuevoEmbarcadero
             // 
-            btnNuevoEmbarcadero.Location = new Point(121, 12);
+            btnNuevoEmbarcadero.Location = new Point(109, 12);
             btnNuevoEmbarcadero.Name = "btnNuevoEmbarcadero";
             btnNuevoEmbarcadero.Size = new Size(139, 23);
             btnNuevoEmbarcadero.TabIndex = 3;
             btnNuevoEmbarcadero.Text = "Nuevo Embarcadero";
             btnNuevoEmbarcadero.UseVisualStyleBackColor = true;
             btnNuevoEmbarcadero.Click += btnNuevoEmbarcadero_Click;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, eliminarToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 70);
+            // 
+            // editarToolStripMenuItem
+            // 
+            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            editarToolStripMenuItem.Size = new Size(180, 22);
+            editarToolStripMenuItem.Text = "Editar";
+            editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Text = "Eliminar";
+            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
             // FrmEmbarcaderos
             // 
@@ -64,6 +90,7 @@
             Text = "Embarcaderos";
             Load += FrmEmbarcaderos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvShippers).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -71,5 +98,8 @@
 
         private DataGridView dgvShippers;
         private Button btnNuevoEmbarcadero;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editarToolStripMenuItem;
+        private ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }

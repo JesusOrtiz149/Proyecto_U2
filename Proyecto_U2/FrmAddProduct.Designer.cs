@@ -208,7 +208,7 @@
             // cmbDescontinuado
             // 
             cmbDescontinuado.FormattingEnabled = true;
-            cmbDescontinuado.Items.AddRange(new object[] { "Si", "No" });
+            cmbDescontinuado.Items.AddRange(new object[] { "No", "Sí" });
             cmbDescontinuado.Location = new Point(260, 172);
             cmbDescontinuado.Name = "cmbDescontinuado";
             cmbDescontinuado.Size = new Size(121, 23);

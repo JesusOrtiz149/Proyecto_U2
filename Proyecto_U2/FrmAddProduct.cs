@@ -17,6 +17,7 @@ namespace Proyecto_U2
         Datos dt = new Datos();
         bool bandera;
         int productID;
+        FrmProductos productos = new FrmProductos();
         public FrmAddProduct()
         {
             InitializeComponent();
@@ -129,6 +130,7 @@ namespace Proyecto_U2
                     {
                         MessageBox.Show("Producto añadido", "Products",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        productos.cargarDatosProducts();
                         mtbSuppID.Clear();
                         txtNombreProduct.Clear();
                         mtbUnInv.Clear();
@@ -136,6 +138,8 @@ namespace Proyecto_U2
                         mtbPrecio.Clear();
                         mtbUnOnOrder.Clear();
                         mtbNivelReorder.Clear();
+                        cmbCategoria.Items.Clear();
+                        cmbDescontinuado.Items.Clear(); 
 
                     }
                     else

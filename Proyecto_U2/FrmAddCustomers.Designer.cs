@@ -239,7 +239,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(519, 309);
+            ClientSize = new Size(519, 455);
             Controls.Add(btnCancelar);
             Controls.Add(mtbFax);
             Controls.Add(mtbCodigoP);
