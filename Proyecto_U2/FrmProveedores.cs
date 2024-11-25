@@ -16,11 +16,25 @@ namespace Proyecto_U2
         {
             InitializeComponent();
         }
+        public void CargarProv()
+        {
+            Datos dt = new Datos();
+            DataSet ds = dt.ejecutarConsulta("SELECT * FROM Suppliers");
+            if (ds != null)
+            {
+                dgvSuppliers.DataSource = ds.Tables[0];
+            }
+        }
 
         private void btnNuevoProveedor_Click(object sender, EventArgs e)
         {
             FrmAddSupplier frmAddSupplier = new FrmAddSupplier();
             frmAddSupplier.ShowDialog();
+        }
+
+        private void FrmProveedores_Load(object sender, EventArgs e)
+        {
+            CargarProv();
         }
     }
 

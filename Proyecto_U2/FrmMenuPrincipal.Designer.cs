@@ -101,7 +101,7 @@ namespace Proyecto_U2
             btnEmpleados.ForeColor = SystemColors.ActiveCaptionText;
             btnEmpleados.Image = (Image)resources.GetObject("btnEmpleados.Image");
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleados.Location = new Point(641, 320);
+            btnEmpleados.Location = new Point(658, 320);
             btnEmpleados.Name = "btnEmpleados";
             btnEmpleados.Size = new Size(449, 153);
             btnEmpleados.TabIndex = 4;
@@ -115,7 +115,7 @@ namespace Proyecto_U2
             btnTerritorios.ForeColor = SystemColors.ActiveCaptionText;
             btnTerritorios.Image = (Image)resources.GetObject("btnTerritorios.Image");
             btnTerritorios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTerritorios.Location = new Point(641, 508);
+            btnTerritorios.Location = new Point(658, 508);
             btnTerritorios.Name = "btnTerritorios";
             btnTerritorios.Size = new Size(449, 153);
             btnTerritorios.TabIndex = 5;
@@ -185,7 +185,7 @@ namespace Proyecto_U2
             btnEmbarca.ForeColor = SystemColors.ActiveCaptionText;
             btnEmbarca.Image = (Image)resources.GetObject("btnEmbarca.Image");
             btnEmbarca.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmbarca.Location = new Point(641, 709);
+            btnEmbarca.Location = new Point(658, 708);
             btnEmbarca.Name = "btnEmbarca";
             btnEmbarca.Size = new Size(449, 153);
             btnEmbarca.TabIndex = 9;

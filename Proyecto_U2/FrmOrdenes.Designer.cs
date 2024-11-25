@@ -184,6 +184,7 @@
             ClientSize = new Size(1354, 685);
             Controls.Add(tabOrders);
             Controls.Add(btnRegresar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmOrdenes";
             Text = "Ordenes";
