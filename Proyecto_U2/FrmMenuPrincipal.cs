@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,132 +11,144 @@ using System.Windows.Forms;
 
 namespace Proyecto_U2
 {
+    using System;
+    using System.Windows.Forms;
+
     public partial class FrmMenuPrincipal : Form
     {
-        public FrmMenuPrincipal(string contra)
+        private string role; 
+        private string userName;
+        
+
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
-            ConfigurarMenu(contra);
+
+         
+            this.role = UserSession.Role;
+            this.userName = UserSession.UserName;
+
+            ConfigurarMenu();
         }
-        //lo que hace es mostrar las opciones del menustrip dependiendo de quién inició sesión
-        private void ConfigurarMenu(string contra)
+
+        private void ConfigurarMenu()
         {
-            if (contra == "2")
-            {
-                // Mostrar todas las opciones porque es el admin
-                archivoToolStripMenuItem.Visible = true;
-                salirToolStripMenuItem.Visible = true;
-                northwindToolStripMenuItem.Visible = true;
-                mostrarToolStripMenuItem.Visible = true;
-                empleadosToolStripMenuItem.Visible = true;
-                clientesToolStripMenuItem.Visible = true;
-                proveedoresToolStripMenuItem.Visible = true;
-                órdenesToolStripMenuItem.Visible = true;
-                detallesDeLasÓrdenesToolStripMenuItem.Visible = true;
-                embarcaderosToolStripMenuItem.Visible = true;
-                territorioToolStripMenuItem.Visible = true;
 
-            }
-            else if (contra == "1" || (int.TryParse(contra, out int passNum) && passNum >= 3 && passNum <= 7))
-            {
-                // Ocultar Empleados,proveedores, embarcaderos
-                archivoToolStripMenuItem.Visible = true;
-                salirToolStripMenuItem.Visible = true;
-                northwindToolStripMenuItem.Visible = true;
-                mostrarToolStripMenuItem.Visible = true;
-                empleadosToolStripMenuItem.Visible = false;
-                clientesToolStripMenuItem.Visible = true;
-                proveedoresToolStripMenuItem.Visible = false;
-                órdenesToolStripMenuItem.Visible = true;
-                detallesDeLasÓrdenesToolStripMenuItem.Visible = true;
-                productosToolStripMenuItem.Visible = true;
-                embarcaderosToolStripMenuItem.Visible = false;
-                territorioToolStripMenuItem.Visible = true;
+            archivoToolStripMenuItem.Visible = false;
+            salirToolStripMenuItem.Visible = false;
 
-            }
-            else
+            btnMostrar.Visible = false;
+            btnClientes.Visible = false;
+            btnSuppliers.Visible = false;
+            btnEmpleados.Visible = false;
+            btnEmbarca.Visible = false;
+            btnTerritorios.Visible = false;
+
+
+            switch (role)
             {
-                // Manejo para otras contraseñas (opcional)
-                MessageBox.Show("Acceso restringido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+                case "admin":
+                    archivoToolStripMenuItem.Visible = true;
+                    salirToolStripMenuItem.Visible = true;
+                    btnMostrar.Visible = true;
+                    btnClientes.Visible = true;
+                    btnSuppliers.Visible = true;
+                    btnEmpleados.Visible = true;
+                    btnEmbarca.Visible = true;
+                    btnTerritorios.Visible = true;
+                    break;
+
+                case "Sales Representative":
+                    btnMostrar.Visible = true;
+                    btnEmpleados.Visible = true;
+                    btnTerritorios.Visible = true;
+                    archivoToolStripMenuItem.Visible = true;
+                    salirToolStripMenuItem.Visible = true;
+                    break;
+
+                case "Sales Manager":
+                    archivoToolStripMenuItem.Visible = true;
+                    salirToolStripMenuItem.Visible = true;
+                    btnMostrar.Visible = true;
+                    btnClientes.Visible = true;
+                    btnTerritorios.Visible = true;
+                    break;
+
+                case "Inside Sales Coordinator":
+                    archivoToolStripMenuItem.Visible = true;
+                    salirToolStripMenuItem.Visible = true;
+                    btnMostrar.Visible = true;
+                    btnClientes.Visible = true;
+                    btnSuppliers.Visible = false; // Opcional, según requisitos
+                    btnTerritorios.Visible = true;
+                    break;
+
+                case "Proveedor":
+                    archivoToolStripMenuItem.Visible = true;
+                    salirToolStripMenuItem.Visible = true;
+                    btnMostrar.Visible = true;
+                    btnSuppliers.Visible = true;
+                    break;
+
+                case "Cliente":
+                    archivoToolStripMenuItem.Visible = true;
+                    salirToolStripMenuItem.Visible = true;
+                    btnMostrar.Visible = true;
+                    btnClientes.Visible = true;
+                    break;
+
+                default:
+                    MessageBox.Show("Acceso restringido. Rol no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    break;
             }
         }
 
-
-        private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1 mostrar = new Form1();
-            mostrar.Show();
-        }
-
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+            private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnMostrar_Click(object sender, EventArgs e)
         {
-            FrmEmpleados frmEmpleados = new FrmEmpleados();
-            frmEmpleados.Show();
 
+            FrmOrdenes frmorder = new FrmOrdenes();
+            frmorder.Show();
         }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnClientes_Click(object sender, EventArgs e)
         {
             FrmClientes clientes = new FrmClientes();
             clientes.Show();
-
         }
 
-        private void órdenesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmOrdenes orders = new FrmOrdenes();
-            orders.Show();
-        }
-
-        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnSuppliers_Click(object sender, EventArgs e)
         {
             FrmProveedores frmProveedores = new FrmProveedores();
             frmProveedores.Show();
-
         }
 
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            FrmProductos frmProductos = new FrmProductos();
-            frmProductos.Show();
-
+            FrmEmpleados frmEmpleados = new FrmEmpleados();
+            frmEmpleados.Show();
         }
 
-        private void embarcaderosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnEmbarca_Click(object sender, EventArgs e)
         {
             FrmEmbarcaderos frmEmbarcaderos = new FrmEmbarcaderos();
             frmEmbarcaderos.Show();
         }
 
-        private void territorioToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void btnTerritorios_Click(object sender, EventArgs e)
         {
             FrmTerritorios frmTerritorios = new FrmTerritorios();
             frmTerritorios.Show();
-
         }
 
-        private void detallesDeLasÓrdenesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnProductos_Click(object sender, EventArgs e)
         {
-            FrmDetallesOrdenes frmDetallesOrdenes = new FrmDetallesOrdenes();
-            frmDetallesOrdenes.Show();
-        }
-
-        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCategorias frmCategorias = new FrmCategorias();
-            frmCategorias.Show();
-        }
-
-        private void infoTerritoriosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmEmpleadoTerritorio frmEmpleadoTerritorio = new FrmEmpleadoTerritorio();
-            frmEmpleadoTerritorio.Show();
+            FrmProductos frmProductos = new FrmProductos();
+            frmProductos.Show();
         }
     }
 }

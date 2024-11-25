@@ -38,6 +38,10 @@
             label3 = new Label();
             pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
+            txtCustomers = new TextBox();
+            chkCustomers = new CheckBox();
+            txtSupplier = new TextBox();
+            chkSupplier = new CheckBox();
             linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -61,7 +65,7 @@
             // 
             btnIngresar.BackColor = SystemColors.ControlLight;
             btnIngresar.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIngresar.Location = new Point(149, 321);
+            btnIngresar.Location = new Point(130, 338);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(236, 39);
             btnIngresar.TabIndex = 4;
@@ -71,15 +75,15 @@
             // 
             // txtContra
             // 
-            txtContra.Location = new Point(225, 177);
+            txtContra.Location = new Point(139, 209);
             txtContra.Name = "txtContra";
             txtContra.PasswordChar = '*';
-            txtContra.Size = new Size(109, 34);
+            txtContra.Size = new Size(80, 34);
             txtContra.TabIndex = 3;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(188, 100);
+            txtUsuario.Location = new Point(139, 141);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(234, 34);
             txtUsuario.TabIndex = 2;
@@ -89,7 +93,7 @@
             label2.AutoSize = true;
             label2.BackColor = SystemColors.Control;
             label2.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(91, 177);
+            label2.Location = new Point(74, 212);
             label2.Name = "label2";
             label2.Size = new Size(45, 27);
             label2.TabIndex = 1;
@@ -101,7 +105,7 @@
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ImageAlign = ContentAlignment.MiddleLeft;
-            label1.Location = new Point(60, 103);
+            label1.Location = new Point(20, 141);
             label1.Name = "label1";
             label1.Size = new Size(99, 27);
             label1.TabIndex = 0;
@@ -131,6 +135,10 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtCustomers);
+            groupBox1.Controls.Add(chkCustomers);
+            groupBox1.Controls.Add(txtSupplier);
+            groupBox1.Controls.Add(chkSupplier);
             groupBox1.Controls.Add(linkLabel1);
             groupBox1.Controls.Add(btnIngresar);
             groupBox1.Controls.Add(btnSalir);
@@ -146,11 +154,51 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Ingrese los Datos Requeridos";
             // 
+            // txtCustomers
+            // 
+            txtCustomers.Location = new Point(139, 209);
+            txtCustomers.Name = "txtCustomers";
+            txtCustomers.Size = new Size(125, 34);
+            txtCustomers.TabIndex = 10;
+            txtCustomers.Visible = false;
+            // 
+            // chkCustomers
+            // 
+            chkCustomers.AutoSize = true;
+            chkCustomers.Font = new Font("Georgia", 11F);
+            chkCustomers.Location = new Point(422, 91);
+            chkCustomers.Name = "chkCustomers";
+            chkCustomers.Size = new Size(91, 27);
+            chkCustomers.TabIndex = 9;
+            chkCustomers.Text = "Cliente";
+            chkCustomers.UseVisualStyleBackColor = true;
+            chkCustomers.CheckedChanged += chkCustomers_CheckedChanged;
+            // 
+            // txtSupplier
+            // 
+            txtSupplier.Location = new Point(139, 209);
+            txtSupplier.Name = "txtSupplier";
+            txtSupplier.Size = new Size(89, 34);
+            txtSupplier.TabIndex = 8;
+            txtSupplier.Visible = false;
+            // 
+            // chkSupplier
+            // 
+            chkSupplier.AutoSize = true;
+            chkSupplier.Font = new Font("Georgia", 11F);
+            chkSupplier.Location = new Point(422, 58);
+            chkSupplier.Name = "chkSupplier";
+            chkSupplier.Size = new Size(109, 27);
+            chkSupplier.TabIndex = 7;
+            chkSupplier.Text = "Provedor";
+            chkSupplier.UseVisualStyleBackColor = true;
+            chkSupplier.CheckedChanged += chkSupplier_CheckedChanged;
+            // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Georgia", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel1.Location = new Point(207, 287);
+            linkLabel1.Location = new Point(184, 303);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(127, 20);
             linkLabel1.TabIndex = 6;
@@ -170,8 +218,6 @@
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmLogin";
-            Text = "Log-in";
-            Load += FrmLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -190,5 +236,9 @@
         private Button btnSalir;
         private GroupBox groupBox1;
         private LinkLabel linkLabel1;
+        private CheckBox chkSupplier;
+        private TextBox txtSupplier;
+        private CheckBox chkCustomers;
+        private TextBox txtCustomers;
     }
 }
