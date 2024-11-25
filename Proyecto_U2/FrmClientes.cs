@@ -62,8 +62,8 @@ namespace Proyecto_U2
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
 
             {
-                MessageBox.Show(x+" lol");
-                bool s = dt.ejecutarABC("Delete from Customers Where CustomerID = '" +  x + "'");
+                MessageBox.Show(x + " lol");
+                bool s = dt.ejecutarABC("Delete from Customers Where CustomerID = '" + x + "'");
                 if (s)
                 {
                     MessageBox.Show("Registro eliminado", "Sistema", MessageBoxButtons.OK,
@@ -83,6 +83,32 @@ namespace Proyecto_U2
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             //eliminarToolStripMenuItem.Click += new EventHandler(eliminarToolStripMenuItem_Click);
+        }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dtgCustomers.SelectedRows.Count > 0)
+            {
+                FrmAddCustomers edit = new FrmAddCustomers(
+                    dtgCustomers[0, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[1, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[2, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[3, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[4, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[5, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[6, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[7, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[8, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[9, dtgCustomers.SelectedRows[0].Index].Value.ToString(),
+                    dtgCustomers[10, dtgCustomers.SelectedRows[0].Index].Value.ToString());
+                edit.ShowDialog();
+                cargarDatosCustomers("Select * From Customers");
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
         }
     }
 }

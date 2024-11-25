@@ -15,31 +15,35 @@ namespace Proyecto_U2
     public partial class FrmAddProduct : Form
     {
         Datos dt = new Datos();
-        bool bandera;
-        int productID;
+        bool bandera = false;
+        int idProducto;
+        int cmbIntCategoria;
         FrmProductos productos = new FrmProductos();
+
         public FrmAddProduct()
         {
             InitializeComponent();
         }    
-        public FrmAddProduct(int ProductID, string NombreProducto, int supplierID, int categoryID,
-                            string unidadxCantidad, double unidadPrecio, int unidadStock,
-                            int unidadSobPedido, int nivelPedidos, int descontinuado)
+        public FrmAddProduct(string ProductID, string NombreProducto, string supplierID,string categoryID,
+                            string unidadxCantidad, string unidadPrecio, string unidadStock,
+                            string unidadSobPedido, string nivelPedidos, string descontinuado)
         {
-
+             
             InitializeComponent();
             poblarComboCategory();
-           // int checkdesc = chkDescotinuado.Checked ? 1 : 0;
-            this.productID = ProductID;
+
+            cmbIntCategoria = Convert.ToInt32(categoryID);
+            this.idProducto = Convert.ToInt32(ProductID);
             txtNombreProduct.Text = NombreProducto;
-            mtbSuppID.Text = supplierID.ToString();
-            cmbCategoria.SelectedIndex = categoryID;
+            mtbSuppID.Text = supplierID;
+            cmbCategoria.SelectedIndex = cmbIntCategoria-1;
             txtUnidadxCantidad.Text = unidadxCantidad;
-            mtbPrecio.Text = unidadPrecio.ToString();
-            mtbUnInv.Text = unidadStock.ToString();
-            mtbUnOnOrder.Text = unidadSobPedido.ToString();
-            mtbNivelReorder.Text = nivelPedidos.ToString();
-            cmbDescontinuado.Text = descontinuado.ToString();
+            mtbPrecio.Text = unidadPrecio;
+            mtbUnInv.Text = unidadStock;
+            mtbUnOnOrder.Text = unidadSobPedido;
+            mtbNivelReorder.Text = nivelPedidos;
+            cmbDescontinuado.SelectedValue = descontinuado;
+            bandera = true;
 
         }
         public void poblarComboCategory()
@@ -76,35 +80,61 @@ namespace Proyecto_U2
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
             if (MessageBox.Show("¿Los datos son correctos?", "Products",
                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 if (bandera == true)
-                {           
+                {
+                    MessageBox.Show("descontinuado "+Convert.ToInt32(cmbDescontinuado.SelectedValue).ToString());
+                    MessageBox.Show(Convert.ToInt32(cmbCategoria.SelectedValue).ToString());
+                    string consultaUpdate = @"UPDATE Products 
+                                      SET ProductName = @ProductName, 
+                                          SupplierID = @SupplierID, 
+                                          CategoryID = @CategoryID, 
+                                          QuantityPerUnit = @QuantityPerUnit, 
+                                          UnitPrice = @UnitPrice, 
+                                          UnitsInStock = @UnitsInStock, 
+                                          UnitsOnOrder = @UnitsOnOrder, 
+                                          ReorderLevel = @ReorderLevel, 
+                                          Discontinued = @Discontinued
+                                      WHERE ProductID = @ProductID";
 
-                    bool j = dt.ejecutarABC("Update Products Set " +
-                        "                           ProductName = '" + txtNombreProduct.Text +
-                                                "', SupplierID = '" + mtbSuppID.Text +
-                                                "', CateogryID = '" + cmbCategoria.SelectedIndex+1 +
-                                                "', QuantityPerUnit = '" +  txtUnidadxCantidad.Text +
-                                                "', UnitPrice = '" + mtbPrecio.Text +
-                                                "', UnitsInStock = '" + mtbUnInv.Text +
-                                                "', UnitsOnOrder  = '" + mtbUnOnOrder.Text +
-                                                "', ReorderLevel = '" + mtbNivelReorder.Text +
-                                                "', Discontinued = '" + cmbDescontinuado.SelectedIndex +
-                        " Where ProductID = '" + productID + "'"
-                        );
+                    /* bool j = dt.ejecutarABC("Update Products Set " +
+                         "                           ProductName = '" + txtNombreProduct.Text +
+                                                 "', SupplierID = '" + mtbSuppID.Text +
+                                                 "', CateogryID = '" + cmbCategoria.SelectedIndex+1 +
+                                                 "', QuantityPerUnit = '" +  txtUnidadxCantidad.Text +
+                                                 "', UnitPrice = '" + mtbPrecio.Text +
+                                                 "', UnitsInStock = '" + mtbUnInv.Text +
+                                                 "', UnitsOnOrder  = '" + mtbUnOnOrder.Text +
+                                                 "', ReorderLevel = '" + mtbNivelReorder.Text +
+                                                 "', Discontinued = '" + cmbDescontinuado.SelectedIndex +
+                         " Where ProductID = '" + productID + "'"
+                         );*/
+                    parametros.Add("@ProductID", idProducto);
+                    parametros.Add("@ProductName", txtNombreProduct.Text);
+                    parametros.Add("@SupplierID", Convert.ToInt32(mtbSuppID.Text));
+                    parametros.Add("@CategoryID", Convert.ToInt32((cmbCategoria.SelectedIndex+1)));
+                    parametros.Add("@QuantityPerUnit", txtUnidadxCantidad.Text);
+                    parametros.Add("@UnitPrice", Convert.ToDecimal(mtbPrecio.Text));
+                    parametros.Add("@UnitsInStock", Convert.ToInt32(mtbUnInv.Text));
+                    parametros.Add("@UnitsOnOrder", Convert.ToInt32(mtbUnOnOrder.Text));
+                    parametros.Add("@ReorderLevel", Convert.ToInt32(mtbNivelReorder.Text));
+                    parametros.Add("Discontinued", cmbDescontinuado.SelectedIndex);
+
+                    bool j = dt.ejecutarABCModificado(consultaUpdate,parametros);
 
                     if (j == true)
                     {
                         MessageBox.Show("Datos Actualizados", "Products",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
-                        
                     }
                     else
                     {
-                        MessageBox.Show("Error", "Products", MessageBoxButtons.OK,
+                        MessageBox.Show("Error al actualizar", "Products", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }
@@ -113,7 +143,7 @@ namespace Proyecto_U2
                     //try
                     //{
                     //MessageBox.Show(calcularID(txtNombreCompany.Text));
-                    
+
                     bool j = dt.ejecutarABC("Insert Into Products (ProductName, SupplierID, CategoryID, QuantityPerUnit" +
                                              ",UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued) " +
                                                      "Values ('" + txtNombreProduct.Text + "'," 

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrdenes));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dtgOrders = new DataGridView();
             btnNuevaOrden = new Button();
             btnRegresar = new Button();
@@ -43,9 +44,11 @@
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             chtOrde = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            contextMenuStrip1 = new ContextMenuStrip(components);
             editarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editarToolStripMenuItem1 = new ToolStripMenuItem();
+            eliminarToolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dtgOrders).BeginInit();
             tabOrders.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -59,24 +62,22 @@
             dtgOrders.AllowUserToAddRows = false;
             dtgOrders.AllowUserToDeleteRows = false;
             dtgOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgOrders.Location = new Point(18, 125);
             dtgOrders.ContextMenuStrip = contextMenuStrip1;
-            dtgOrders.Location = new Point(12, 40);
+            dtgOrders.Location = new Point(24, 93);
             dtgOrders.Margin = new Padding(3, 2, 3, 2);
             dtgOrders.Name = "dtgOrders";
             dtgOrders.ReadOnly = true;
             dtgOrders.RowHeadersWidth = 51;
-            dtgOrders.Size = new Size(1211, 401);
+            dtgOrders.Size = new Size(1060, 301);
             dtgOrders.TabIndex = 1;
             dtgOrders.CellDoubleClick += dtgOrders_CellDoubleClick;
             // 
             // btnNuevaOrden
             // 
             btnNuevaOrden.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevaOrden.Location = new Point(1069, 83);
-            btnNuevaOrden.Margin = new Padding(3, 4, 3, 4);
+            btnNuevaOrden.Location = new Point(935, 62);
             btnNuevaOrden.Name = "btnNuevaOrden";
-            btnNuevaOrden.Size = new Size(147, 35);
+            btnNuevaOrden.Size = new Size(129, 26);
             btnNuevaOrden.TabIndex = 2;
             btnNuevaOrden.Text = "Nueva orden";
             btnNuevaOrden.UseVisualStyleBackColor = true;
@@ -89,8 +90,9 @@
             btnRegresar.ForeColor = SystemColors.ControlText;
             btnRegresar.Image = (Image)resources.GetObject("btnRegresar.Image");
             btnRegresar.Location = new Point(-2, 0);
+            btnRegresar.Margin = new Padding(3, 2, 3, 2);
             btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(110, 33);
+            btnRegresar.Size = new Size(96, 25);
             btnRegresar.TabIndex = 3;
             btnRegresar.UseVisualStyleBackColor = false;
             btnRegresar.Click += btnRegresar_Click;
@@ -98,26 +100,28 @@
             // cmbEmployeeID
             // 
             cmbEmployeeID.FormattingEnabled = true;
-            cmbEmployeeID.Location = new Point(28, 76);
+            cmbEmployeeID.Location = new Point(24, 57);
+            cmbEmployeeID.Margin = new Padding(3, 2, 3, 2);
             cmbEmployeeID.Name = "cmbEmployeeID";
-            cmbEmployeeID.Size = new Size(151, 28);
+            cmbEmployeeID.Size = new Size(133, 23);
             cmbEmployeeID.TabIndex = 4;
             cmbEmployeeID.SelectedIndexChanged += cmbEmployeeID_SelectedIndexChanged;
             // 
             // txtEmployeeName
             // 
-            txtEmployeeName.Location = new Point(374, 76);
+            txtEmployeeName.Location = new Point(327, 57);
+            txtEmployeeName.Margin = new Padding(3, 2, 3, 2);
             txtEmployeeName.Name = "txtEmployeeName";
-            txtEmployeeName.Size = new Size(237, 27);
+            txtEmployeeName.Size = new Size(208, 23);
             txtEmployeeName.TabIndex = 5;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(223, 77);
+            label1.Location = new Point(195, 58);
             label1.Name = "label1";
-            label1.Size = new Size(106, 24);
+            label1.Size = new Size(83, 18);
             label1.TabIndex = 6;
             label1.Text = "Empleado:";
             // 
@@ -125,9 +129,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(28, 41);
+            label2.Location = new Point(24, 31);
             label2.Name = "label2";
-            label2.Size = new Size(117, 21);
+            label2.Size = new Size(98, 18);
             label2.TabIndex = 7;
             label2.Text = "IDEmpleado:";
             // 
@@ -135,10 +139,11 @@
             // 
             tabOrders.Controls.Add(tabPage1);
             tabOrders.Controls.Add(tabPage2);
-            tabOrders.Location = new Point(12, 39);
+            tabOrders.Location = new Point(10, 29);
+            tabOrders.Margin = new Padding(3, 2, 3, 2);
             tabOrders.Name = "tabOrders";
             tabOrders.SelectedIndex = 0;
-            tabOrders.Size = new Size(1336, 639);
+            tabOrders.Size = new Size(1169, 479);
             tabOrders.TabIndex = 8;
             // 
             // tabPage1
@@ -149,10 +154,11 @@
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(dtgOrders);
             tabPage1.Controls.Add(cmbEmployeeID);
-            tabPage1.Location = new Point(4, 29);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1328, 606);
+            tabPage1.Padding = new Padding(3, 2, 3, 2);
+            tabPage1.Size = new Size(1161, 451);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Orders";
             tabPage1.UseVisualStyleBackColor = true;
@@ -160,58 +166,69 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(chtOrde);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1328, 606);
+            tabPage2.Padding = new Padding(3, 2, 3, 2);
+            tabPage2.Size = new Size(1161, 451);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // chtOrde
             // 
-            chartArea1.Name = "ChartArea1";
-            chtOrde.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chtOrde.Legends.Add(legend1);
-            chtOrde.Location = new Point(34, 29);
+            chartArea3.Name = "ChartArea1";
+            chtOrde.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chtOrde.Legends.Add(legend3);
+            chtOrde.Location = new Point(30, 22);
+            chtOrde.Margin = new Padding(3, 2, 3, 2);
             chtOrde.Name = "chtOrde";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "OrderCount";
-            chtOrde.Series.Add(series1);
-            chtOrde.Size = new Size(1214, 549);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "OrderCount";
+            chtOrde.Series.Add(series3);
+            chtOrde.Size = new Size(1062, 412);
             chtOrde.TabIndex = 0;
             chtOrde.Text = "OrderCount";
-            // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, eliminarToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 70);
             // 
             // editarToolStripMenuItem
             // 
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(180, 22);
-            editarToolStripMenuItem.Text = "Editar";
-            editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            editarToolStripMenuItem.Size = new Size(32, 19);
             // 
             // eliminarToolStripMenuItem
             // 
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(180, 22);
-            eliminarToolStripMenuItem.Text = "Eliminar";
-            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            eliminarToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem1, eliminarToolStripMenuItem1 });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(118, 48);
+            // 
+            // editarToolStripMenuItem1
+            // 
+            editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
+            editarToolStripMenuItem1.Size = new Size(180, 22);
+            editarToolStripMenuItem1.Text = "Editar";
+            editarToolStripMenuItem1.Click += editarToolStripMenuItem1_Click;
+            // 
+            // eliminarToolStripMenuItem1
+            // 
+            eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
+            eliminarToolStripMenuItem1.Size = new Size(180, 22);
+            eliminarToolStripMenuItem1.Text = "Eliminar";
+            eliminarToolStripMenuItem1.Click += eliminarToolStripMenuItem1_Click;
             // 
             // FrmOrdenes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1354, 685);
+            ClientSize = new Size(1185, 514);
             Controls.Add(tabOrders);
             Controls.Add(btnRegresar);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmOrdenes";
             Text = "Ordenes";
             Load += FrmOrdenes_Load;
@@ -229,7 +246,7 @@
 
         private DataGridView dtgOrders;
         private Button btnNuevaOrden;
-        private ContextMenuStrip contextMenuStrip1;
+        private ContextMenuStrip contextMenuStrip2;
         private ToolStripMenuItem editarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
         private Button btnRegresar;
@@ -241,5 +258,11 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtOrde;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editarToolStripMenuItem1;
+        private ToolStripMenuItem eliminarToolStripMenuItem1;
+        //  private ContextMenuStrip contextMenuStrip2;
+        //   private ToolStripMenuItem editarToolStripMenuItem1;
+        //   private ToolStripMenuItem eliminarToolStripMenuItem1;
     }
 }

@@ -17,16 +17,17 @@ namespace Proyecto_U2
         bool bandera = false;
         string id;
         Datos dt = new Datos();
+
         public FrmAddTerritory()
         {
             InitializeComponent();
 
         }
 
-        public FrmAddTerritory(string territoryID, string TerritoryDescription, int Region)
+        public FrmAddTerritory(string territoryID, string TerritoryDescription, string Region)
         {
-            InitializeComponent();
 
+            InitializeComponent();
             this.id = territoryID;
             txtTerritory.Text = TerritoryDescription;
             cmbRegion.SelectedValue = Region;
@@ -50,9 +51,8 @@ namespace Proyecto_U2
                 if (bandera == true)
                 {
 
-
                     bool j = dt.ejecutarABC("Update Territories Set TerritoryDescription = '" +
-                        txtTerritory.Text + "', RegionID = " + (cmbRegion.SelectedIndex+1) +
+                        txtTerritory.Text + "', RegionID = " + (cmbRegion.SelectedIndex + 1) +
                         " Where TerritoryID = '" + id + "'");
 
                     if (j == true)
@@ -71,7 +71,7 @@ namespace Proyecto_U2
                 {
 
                     bool j = dt.ejecutarABC("Insert Into Territories (TerritoryID, TerritoryDescription, RegionID) " +
-                        "Values ('" + nAleatorio() + "', '" + txtTerritory.Text + "', " + (cmbRegion.SelectedIndex+1) + ")");
+                        "Values ('" + nAleatorio() + "', '" + txtTerritory.Text + "', " + (cmbRegion.SelectedIndex + 1) + ")");
 
                     if (j == true)
                     {
@@ -92,6 +92,11 @@ namespace Proyecto_U2
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmAddTerritory_Load(object sender, EventArgs e)
         {
 
         }

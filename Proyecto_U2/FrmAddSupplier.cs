@@ -12,6 +12,7 @@ namespace Proyecto_U2
 {
     public partial class FrmAddSupplier : Form
     {
+        FrmProveedores frmProveedores = new FrmProveedores();
         bool bandera = false;
         Datos dt = new Datos();
         int ID;
@@ -20,10 +21,10 @@ namespace Proyecto_U2
         {
             InitializeComponent();
         }
-
-        private FrmAddSupplier(int supplierID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigoP, string pais, string tel, string fax, string pagWeb)
+        public FrmAddSupplier(string supplierID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigoP, string pais, string tel, string fax, string pagWeb)
         {
-            this.ID = supplierID;
+            InitializeComponent();
+            this.ID = Convert.ToInt32(supplierID);
             txtNombreCompany.Text = Company;
             txtContactoNombre.Text = contactoNombre;
             txtContactoCargo.Text = contactoCargo;
@@ -35,35 +36,53 @@ namespace Proyecto_U2
             mtbTel.Text = tel;
             mtbFax.Text = fax;
             txtPagWeb.Text = pagWeb;
+            bandera = true;
         }
-
-
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Los datos son correctos?", "Proveedores",
                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
+                Dictionary<string, object> parametros = new Dictionary<string, object>();
                 if (bandera == true)
                 {
-                    bool j = dt.ejecutarABC("Update Suppliers Set CompanyName = '" +
-                                                                       txtNombreCompany.Text +
-                                                "', ContactName = '" + txtContactoNombre.Text +
-                                                "', ContactTitle = '" + txtContactoCargo.Text +
-                                                "', Address = '" + txtDireccion.Text +
-                                                "', City = '" + txtCiudad.Text +
-                                                "', Region = '" + txtEstado.Text +
-                                                "', PostalCode  = '" + mtbCodigoP.Text +
-                                                "', Country = '" + txtPais.Text +
-                                                "', Phone = '" + mtbTel.Text +
-                                                "', Fax = '" + mtbFax.Text +
-                                                "', HomePage = ' " + txtPagWeb.Text +
-                                                " Where SupplierID = '" + ID + "'");
+                    //string consultaUpdate = "UPDATE Suppliers SET \" +\r\n\"CompanyName = @CompanyName, ContactName = @ContactName, \" +\r\n\"ContactTitle = @ContactTitle, Address = @Address, \" +\r\n\"City = @City, Region = @Region, PostalCode = @PostalCode, \" +\r\n\"Country = @Country, Phone = @Phone, Fax = @Fax, HomePage = @HomePage \" +\r\n\"WHERE SupplierID = @SupplierID";
+                    string consultaUpdate = @"UPDATE Suppliers 
+                                      SET CompanyName = @CompanyName, 
+                                          ContactName = @ContactName, 
+                                          ContactTitle = @ContactTitle, 
+                                          Address = @Address, 
+                                          City = @City, 
+                                          Region = @Region, 
+                                          PostalCode = @PostalCode, 
+                                          Country = @Country, 
+                                          Phone = @Phone, 
+                                          Fax = @Fax, 
+                                          HomePage = @HomePage 
+                                      WHERE SupplierID = @SupplierID";
+                        
+                    parametros.Add("@SupplierID", ID);
+                    parametros.Add("@CompanyName", txtNombreCompany.Text);
+                    parametros.Add("@ContactName", txtContactoNombre.Text);
+                    parametros.Add("@ContactTitle", txtContactoCargo.Text);
+                    parametros.Add("@Address", txtDireccion.Text);
+                    parametros.Add("@City", txtCiudad.Text);
+                    parametros.Add("@Region", txtEstado.Text);
+                    parametros.Add("@PostalCode", mtbCodigoP.Text);
+                    parametros.Add("@Country", txtPais.Text);
+                    parametros.Add("@Phone", mtbTel.Text);
+                    parametros.Add("@Fax", mtbFax.Text);
+                    parametros.Add("@HomePage", txtPagWeb.Text);
+
+                    bool j = dt.ejecutarABCModificado(consultaUpdate,parametros);
+
 
                     if (j == true)
                     {
                         MessageBox.Show("Datos Actualizados", "Proveedores",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmProveedores.cargarDatosSuppliers();
                         this.Close();
                     }
                     else
@@ -74,9 +93,6 @@ namespace Proyecto_U2
                 }
                 else
                 {
-                    //try
-                    //{
-                   // MessageBox.Show(txtNombreCompany.Text);
                     bool j = dt.ejecutarABC("Insert Into Suppliers (CompanyName, ContactName, ContactTitle, Address" +
                                              ",City, Region, PostalCode, Country, Phone, Fax, HomePage ) " +
                                                       "Values ('" + txtNombreCompany.Text +
@@ -106,6 +122,7 @@ namespace Proyecto_U2
                         mtbTel.Clear();
                         mtbFax.Clear();
                         txtPagWeb.Clear();
+                        frmProveedores.cargarDatosSuppliers();
                     }
                     else
                     {

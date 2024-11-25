@@ -12,17 +12,22 @@ namespace Proyecto_U2
 {
     public partial class FrmAddOrder : Form
     {
+        FrmOrdenes frmOrdenes = new FrmOrdenes();
+
         Datos dt = new Datos();
         int OrderID;
         bool bandera = false;
         string hora = DateTime.Now.ToString();
+        
+        int cmbIntEmpleado;
+        int cmbIntBarco;
 
         public FrmAddOrder()
         {
             InitializeComponent();
         }
-        public FrmAddOrder(int orderID, string IDCliente, int IDEmpleado,DateTime orderDate, 
-                            DateTime requiredDate, DateTime shippedDate, int IDbarco, double flete, 
+        public FrmAddOrder(string orderID, string IDCliente, string IDEmpleado,string  orderDate, 
+                            string requiredDate, string shippedDate, string IDbarco, string flete, 
                             string barcoNombre, string barcoDireccion, string barcoCiudad, 
                             string barcoRegion, string barcoCodigoP, string barcoPais)
         {
@@ -30,21 +35,68 @@ namespace Proyecto_U2
             InitializeComponent();
             poblarCmb(cmbIDbarco, "Select CompanyName from Shippers");
             poblarCmb(cmbEmpleado, "Select FirstName, LastName from Employees ");
-            OrderID = orderID;
+
+            cmbIntEmpleado = Convert.ToInt32(IDEmpleado);
+            cmbIntBarco = Convert.ToInt32(IDbarco);
+            dtpFechaEntrega.Format = DateTimePickerFormat.Custom;
+            dtpFechaEntrega.CustomFormat = "dd-MM-yyyy";
+
+            dtpFechaEmbarque.Format = DateTimePickerFormat.Custom;
+            dtpFechaEmbarque.CustomFormat = "dd-MM-yyyy";
+
+
+            OrderID = Convert.ToInt32(orderID);
+
             txtIDCliente.Text = IDCliente;
-            cmbEmpleado.SelectedIndex = IDEmpleado;
-            hora = orderDate.ToString();
-            dtpFechaEntrega.Text = requiredDate.ToString();
-            dtpFechaEmbarque.Text = shippedDate.ToString();
-            cmbIDbarco.SelectedIndex = IDbarco;
-            mtbFlete.Text = flete.ToString();
+
+
+
+            cmbEmpleado.SelectedIndex = cmbIntEmpleado - 1;
+
+         
+
+            if (!string.IsNullOrEmpty(orderDate) && DateTime.TryParse(orderDate, out DateTime parsedOrderDate))
+                hora = parsedOrderDate.ToString("dd-MM-yyyy");
+
+            if (!string.IsNullOrEmpty(requiredDate) && DateTime.TryParse(requiredDate, out DateTime parsedRequiredDate))
+            {
+                dtpFechaEntrega.Value = parsedRequiredDate;
+            }
+
+            if (!string.IsNullOrEmpty(shippedDate) && DateTime.TryParse(shippedDate, out DateTime parsedShippedDate))
+                dtpFechaEmbarque.Value = parsedShippedDate;
+
+
+
+            // hora = fecha;
+
+
+
+
+            //   dtpFechaEntrega.va = FECHAentrega;
+
+            //  dtpFechaEmbarque.Text = FECHAembarque;
+
+            /* MessageBox.Show("fecha entrega " + dtpFechaEntrega.Value.ToString("dd-MM-yyyy") + "fecha entrega ");
+
+             MessageBox.Show("fecha embarque " + dtpFechaEmbarque.Value.ToString("dd-MM-yyyy"));*/
+
+            cmbIDbarco.SelectedIndex = cmbIntBarco - 1;
+
+            //MessageBox.Show("cmbbarco " + cmbIDbarco.SelectedIndex);
+
+            mtbFlete.Text = flete;
+
+  
+
             txtNombre.Text = barcoNombre;
             txtDireccion.Text = barcoDireccion;
             txtCiudad.Text = barcoCiudad;
             txtEstado.Text = barcoRegion;
-            txtCodigoP.Text = barcoCodigoP;
+            mtbCodigoP.Text = barcoCodigoP;
             txtPais.Text = barcoPais;
 
+            bandera = true;
 
         }
         public void poblarCmb(ComboBox cmb, string consulta)
@@ -91,14 +143,35 @@ namespace Proyecto_U2
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
 
-            if(MessageBox.Show("¿Los datos son correctos?", "Orders",
+            if (MessageBox.Show("¿Los datos son correctos?", "Orders",
                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 if (bandera == true)
                 {
+                   /* MessageBox.Show(dtpFechaEntrega.Value.ToString("dd - MM - yyyy"));
+                    MessageBox.Show(dtpFechaEmbarque.Value.ToString("dd - MM - yyyy"));*/
+                    //MessageBox.Show((cmbEmpleado.SelectedIndex).ToString());
+                    //MessageBox.Show((cmbIDbarco.SelectedIndex).ToString());
 
-                    bool j = dt.ejecutarABC("Update Orders Set " +
+                    string consultaUpdate = @"UPDATE Orders 
+                                      SET CustomerID = @CustomerID, 
+                                          EmployeeID = @EmployeeID, 
+                                          OrderDate = @OrderDate, 
+                                          RequiredDate = @RequiredDate, 
+                                          ShippedDate = @ShippedDate, 
+                                          ShipVia = @ShipVia, 
+                                          Freight = @Freight, 
+                                          ShipName = @ShipName, 
+                                          ShipAddress = @ShipAddress,
+                                          ShipCity = @ShipCity, 
+                                          ShipRegion = @ShipRegion,
+                                          ShipPostalCode = @ShipPostalCode,
+                                          ShipCountry = @ShipCountry
+                                      WHERE OrderID = @OrderID";
+
+                    /*bool j = dt.ejecutarABC("Update Orders Set " +
                         "                           CustomerID = " + txtIDCliente.Text +
                                                 ",  EmployeeID = " + cmbEmpleado.Text +
                                                 ",  OrderDate = '" + hora +
@@ -113,12 +186,32 @@ namespace Proyecto_U2
                                                 "', ShipPostalCode = '" + txtCodigoP.Text +
                                                 "', ShipCountry = '" + txtPais.Text +
                         " Where OrderID = " + OrderID 
-                        );
+                        );*/
+                    parametros.Add("@OrderID", OrderID);
+                    parametros.Add("@CustomerID", txtIDCliente.Text);
+                    parametros.Add("@EmployeeID", Convert.ToInt32((cmbEmpleado.SelectedIndex+1)));
+                    parametros.Add("@OrderDate", hora);
+                    parametros.Add("@RequiredDate", dtpFechaEntrega.Value.ToString("dd-MM-yyyy"));
+                    parametros.Add("@ShippedDate", dtpFechaEmbarque.Value.ToString("dd-MM-yyyy"));
+                    parametros.Add("@ShipVia", Convert.ToInt32((cmbIDbarco.SelectedIndex+1)));
+                    parametros.Add("@Freight", double.Parse(mtbFlete.Text));
+                    parametros.Add("@ShipName", txtNombre.Text);
+                    parametros.Add("@ShipAddress", txtDireccion.Text);
+                    parametros.Add("@ShipCity", txtCiudad.Text);
+                    parametros.Add("@ShipRegion", txtEstado.Text);
+                    parametros.Add("@ShipPostalCode", mtbCodigoP.Text);
+                    parametros.Add("@ShipCountry", txtPais.Text);
+                    
+
+
+                    bool j = dt.ejecutarABCModificado(consultaUpdate,parametros);
+
 
                     if (j == true)
                     {
                         MessageBox.Show("Datos Actualizados", "Products",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmOrdenes.cargarDatosOrders();
                         this.Close();
 
                     }
@@ -143,8 +236,6 @@ namespace Proyecto_U2
                         string fechaEmbarque = fechaEmb.ToString("dd-MM-yyyy");
 
 
-
-
                         string consulta = "Insert Into Orders (CustomerID, EmployeeID, OrderDate, RequiredDate" +
                                                  ",ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity," +
                                                  "ShipRegion, ShipPostalCode, ShipCountry ) " +
@@ -159,7 +250,7 @@ namespace Proyecto_U2
                                                             + txtDireccion.Text + "','"
                                                             + txtCiudad.Text + "','"
                                                             + txtEstado.Text + "','"
-                                                            + txtCodigoP.Text + "','"
+                                                            + mtbCodigoP.Text + "','"
                                                             + txtPais.Text + "')";
 
 
@@ -185,12 +276,13 @@ namespace Proyecto_U2
                         {
                             MessageBox.Show("Producto añadido", "Orders",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            frmOrdenes.cargarDatosOrders();
                             txtNombre.Clear();
                             txtPais.Clear();
                             txtEstado.Clear();
                             txtCiudad.Clear();
                             txtDireccion.Clear();
-                            txtCodigoP.Clear();
+                            mtbCodigoP.Clear();
                             mtbFlete.Clear();
                             txtIDCliente.Clear();
 

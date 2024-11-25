@@ -55,7 +55,20 @@ namespace Proyecto_U2
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (dgvShippers.SelectedRows.Count > 0)
+            {
+                FrmAddShippers edit = new FrmAddShippers(
+                    dgvShippers[0, dgvShippers.SelectedRows[0].Index].Value.ToString(),
+                    dgvShippers[1, dgvShippers.SelectedRows[0].Index].Value.ToString(),
+                    dgvShippers[2, dgvShippers.SelectedRows[0].Index].Value.ToString());
+                edit.ShowDialog();
+                cargarDatosShippers();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)

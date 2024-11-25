@@ -92,6 +92,7 @@
             Controls.Add(btnAceptar);
             Name = "FrmAddTerritory";
             Text = "Agregar Territorio";
+            Load += FrmAddTerritory_Load;
             ResumeLayout(false);
             PerformLayout();
         }

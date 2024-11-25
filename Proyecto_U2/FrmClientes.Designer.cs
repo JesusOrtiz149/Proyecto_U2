@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             dtgCustomers = new DataGridView();
-            btnNuevoCustomer = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             editarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
+            btnNuevoCustomer = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgCustomers).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -49,6 +49,27 @@
             dtgCustomers.Size = new Size(1087, 372);
             dtgCustomers.TabIndex = 1;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, eliminarToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 70);
+            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
+            // 
+            // editarToolStripMenuItem
+            // 
+            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            editarToolStripMenuItem.Size = new Size(180, 22);
+            editarToolStripMenuItem.Text = "Editar";
+            editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Text = "Eliminar";
+            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            // 
             // btnNuevoCustomer
             // 
             btnNuevoCustomer.Location = new Point(514, 11);
@@ -59,26 +80,6 @@
             btnNuevoCustomer.Text = "Nuevo";
             btnNuevoCustomer.UseVisualStyleBackColor = true;
             btnNuevoCustomer.Click += btnNuevoCustomer_Click;
-            // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, eliminarToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(118, 48);
-            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
-            // 
-            // editarToolStripMenuItem
-            // 
-            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(117, 22);
-            editarToolStripMenuItem.Text = "Editar";
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(117, 22);
-            eliminarToolStripMenuItem.Text = "Eliminar";
-            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
             // FrmClientes
             // 

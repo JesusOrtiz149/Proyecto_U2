@@ -54,6 +54,29 @@ namespace Proyecto_U2
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            if (dgvSuppliers.SelectedRows.Count > 0)
+            {
+                FrmAddSupplier edit = new FrmAddSupplier(
+                    dgvSuppliers[0, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[1, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[2, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[3, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[4, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[5, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[6, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[7, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[8, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[9, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[10, dgvSuppliers.SelectedRows[0].Index].Value.ToString(),
+                    dgvSuppliers[11, dgvSuppliers.SelectedRows[0].Index].Value.ToString());
+                edit.ShowDialog();
+                cargarDatosSuppliers();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)

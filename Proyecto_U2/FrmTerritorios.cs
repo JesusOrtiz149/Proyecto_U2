@@ -42,6 +42,20 @@ namespace Proyecto_U2
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dtgTerritory.SelectedRows.Count > 0)
+            {
+                FrmAddTerritory edit = new FrmAddTerritory(
+                    dtgTerritory[0, dtgTerritory.SelectedRows[0].Index].Value.ToString(),
+                    dtgTerritory[1, dtgTerritory.SelectedRows[0].Index].Value.ToString(),
+                    dtgTerritory[2, dtgTerritory.SelectedRows[0].Index].Value.ToString());
+                edit.ShowDialog();
+                cargarDatos("Select * From Territories"); 
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
 
         }
 

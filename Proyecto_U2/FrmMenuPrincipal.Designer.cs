@@ -52,8 +52,8 @@ namespace Proyecto_U2
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(6, 3, 0, 3);
-            menuStrip1.Size = new Size(1747, 30);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(1529, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -62,24 +62,23 @@ namespace Proyecto_U2
             archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
             archivoToolStripMenuItem.Image = (Image)resources.GetObject("archivoToolStripMenuItem.Image");
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(93, 24);
+            archivoToolStripMenuItem.Size = new Size(80, 24);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Image = (Image)resources.GetObject("salirToolStripMenuItem.Image");
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(224, 26);
+            salirToolStripMenuItem.Size = new Size(95, 22);
             salirToolStripMenuItem.Text = "salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1387, 112);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(1214, 84);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(186, 160);
+            pictureBox1.Size = new Size(163, 120);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -89,9 +88,9 @@ namespace Proyecto_U2
             label1.AutoSize = true;
             label1.Font = new Font("Georgia", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(577, 153);
+            label1.Location = new Point(505, 115);
             label1.Name = "label1";
-            label1.Size = new Size(637, 136);
+            label1.Size = new Size(512, 109);
             label1.TabIndex = 2;
             label1.Text = "Northwind";
             // 
@@ -101,9 +100,10 @@ namespace Proyecto_U2
             btnEmpleados.ForeColor = SystemColors.ActiveCaptionText;
             btnEmpleados.Image = (Image)resources.GetObject("btnEmpleados.Image");
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleados.Location = new Point(641, 320);
+            btnEmpleados.Location = new Point(561, 240);
+            btnEmpleados.Margin = new Padding(3, 2, 3, 2);
             btnEmpleados.Name = "btnEmpleados";
-            btnEmpleados.Size = new Size(449, 153);
+            btnEmpleados.Size = new Size(393, 115);
             btnEmpleados.TabIndex = 4;
             btnEmpleados.Text = "Empleados";
             btnEmpleados.UseVisualStyleBackColor = true;
@@ -115,9 +115,10 @@ namespace Proyecto_U2
             btnTerritorios.ForeColor = SystemColors.ActiveCaptionText;
             btnTerritorios.Image = (Image)resources.GetObject("btnTerritorios.Image");
             btnTerritorios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTerritorios.Location = new Point(641, 508);
+            btnTerritorios.Location = new Point(561, 381);
+            btnTerritorios.Margin = new Padding(3, 2, 3, 2);
             btnTerritorios.Name = "btnTerritorios";
-            btnTerritorios.Size = new Size(449, 153);
+            btnTerritorios.Size = new Size(393, 115);
             btnTerritorios.TabIndex = 5;
             btnTerritorios.Text = "Territorios";
             btnTerritorios.UseVisualStyleBackColor = true;
@@ -129,9 +130,10 @@ namespace Proyecto_U2
             btnClientes.ForeColor = SystemColors.ActiveCaptionText;
             btnClientes.Image = (Image)resources.GetObject("btnClientes.Image");
             btnClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClientes.Location = new Point(1219, 320);
+            btnClientes.Location = new Point(1067, 240);
+            btnClientes.Margin = new Padding(3, 2, 3, 2);
             btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(449, 142);
+            btnClientes.Size = new Size(393, 106);
             btnClientes.TabIndex = 6;
             btnClientes.Text = "Clientes";
             btnClientes.UseVisualStyleBackColor = true;
@@ -143,9 +145,10 @@ namespace Proyecto_U2
             btnProductos.ForeColor = SystemColors.ActiveCaptionText;
             btnProductos.Image = (Image)resources.GetObject("btnProductos.Image");
             btnProductos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProductos.Location = new Point(1219, 508);
+            btnProductos.Location = new Point(1067, 381);
+            btnProductos.Margin = new Padding(3, 2, 3, 2);
             btnProductos.Name = "btnProductos";
-            btnProductos.Size = new Size(449, 153);
+            btnProductos.Size = new Size(393, 115);
             btnProductos.TabIndex = 7;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = true;
@@ -157,9 +160,10 @@ namespace Proyecto_U2
             btnMostrar.ForeColor = SystemColors.ActiveCaptionText;
             btnMostrar.Image = (Image)resources.GetObject("btnMostrar.Image");
             btnMostrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMostrar.Location = new Point(96, 320);
+            btnMostrar.Location = new Point(84, 240);
+            btnMostrar.Margin = new Padding(3, 2, 3, 2);
             btnMostrar.Name = "btnMostrar";
-            btnMostrar.Size = new Size(449, 153);
+            btnMostrar.Size = new Size(393, 115);
             btnMostrar.TabIndex = 1;
             btnMostrar.Text = "Ordenes";
             btnMostrar.UseVisualStyleBackColor = true;
@@ -171,9 +175,10 @@ namespace Proyecto_U2
             btnSuppliers.ForeColor = SystemColors.ActiveCaptionText;
             btnSuppliers.Image = (Image)resources.GetObject("btnSuppliers.Image");
             btnSuppliers.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSuppliers.Location = new Point(96, 508);
+            btnSuppliers.Location = new Point(84, 381);
+            btnSuppliers.Margin = new Padding(3, 2, 3, 2);
             btnSuppliers.Name = "btnSuppliers";
-            btnSuppliers.Size = new Size(449, 153);
+            btnSuppliers.Size = new Size(393, 115);
             btnSuppliers.TabIndex = 8;
             btnSuppliers.Text = "Provedores";
             btnSuppliers.UseVisualStyleBackColor = true;
@@ -185,9 +190,10 @@ namespace Proyecto_U2
             btnEmbarca.ForeColor = SystemColors.ActiveCaptionText;
             btnEmbarca.Image = (Image)resources.GetObject("btnEmbarca.Image");
             btnEmbarca.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmbarca.Location = new Point(641, 709);
+            btnEmbarca.Location = new Point(561, 532);
+            btnEmbarca.Margin = new Padding(3, 2, 3, 2);
             btnEmbarca.Name = "btnEmbarca";
-            btnEmbarca.Size = new Size(449, 153);
+            btnEmbarca.Size = new Size(393, 115);
             btnEmbarca.TabIndex = 9;
             btnEmbarca.Text = "Embarcaderos";
             btnEmbarca.UseVisualStyleBackColor = true;
@@ -195,10 +201,10 @@ namespace Proyecto_U2
             // 
             // FrmMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1747, 939);
+            ClientSize = new Size(1529, 704);
             Controls.Add(btnEmbarca);
             Controls.Add(btnSuppliers);
             Controls.Add(btnMostrar);
@@ -212,6 +218,7 @@ namespace Proyecto_U2
             ForeColor = SystemColors.ActiveCaption;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
             Text = "MenuPrincipal";
             WindowState = FormWindowState.Maximized;

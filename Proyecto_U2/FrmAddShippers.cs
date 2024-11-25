@@ -12,20 +12,24 @@ namespace Proyecto_U2
 {
     public partial class FrmAddShippers : Form
     {
+        
         Datos dt = new Datos();
-        bool bandera;
+        bool bandera = false;
         int id;
         FrmEmbarcaderos embarcadero = new FrmEmbarcaderos();
+
         public FrmAddShippers()
         {
             InitializeComponent();
         }
 
-        public FrmAddShippers(string suppID, string CompanyName, string Phone)
+        public FrmAddShippers(string shippID, string CompanyName, string Phone)
         {
-            id = Convert.ToInt32(suppID);
+            InitializeComponent();
+            id = Convert.ToInt32(shippID);
             txtCompanyName.Text = CompanyName;  
             mtbPhone.Text = Phone;
+            bandera = true;
         }
 
         private void FrmAddShippers_Load(object sender, EventArgs e)
@@ -45,11 +49,11 @@ namespace Proyecto_U2
                     //Dictionary<string, object> parametros = new Dictionary<string, object>();
                     string consultaUpdate= "Update Shippers Set " +
                                             "CompanyName = @CompanyName," +
-                                            "Phone = @Phone," + 
+                                            "Phone = @Phone" + 
                                             " Where ShipperID = @ShipperID ";
-
+                    parametros.Add("@ShipperID", id);
                     parametros.Add("@CompanyName", txtCompanyName.Text);
-                    parametros.Add("@Phone", mtbPhone);
+                    parametros.Add("@Phone", mtbPhone.Text);
 
                     bool j = dt.ejecutarABCModificado(consultaUpdate, parametros);
                     
@@ -59,11 +63,11 @@ namespace Proyecto_U2
                         MessageBox.Show("Datos Actualizados", "Shippers",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
-
+                        embarcadero.cargarDatosShippers();
                     }
                     else
                     {
-                        MessageBox.Show("Error", "Shippers", MessageBoxButtons.OK,
+                        MessageBox.Show("Error al actualizar", "Shippers", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }

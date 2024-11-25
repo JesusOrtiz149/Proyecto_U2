@@ -20,7 +20,7 @@ namespace Proyecto_U2
         public FrmOrdenes()
         {
             InitializeComponent();
-            
+
         }
         public void Chart(int employeeID)
         {
@@ -157,7 +157,7 @@ namespace Proyecto_U2
             }
         }
 
-     
+
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             FrmAddOrder frmAddOrder = new FrmAddOrder();
@@ -175,7 +175,7 @@ namespace Proyecto_U2
                 Chart(selectedEmployeeID);
                 cargarOrdersPorEmpleado(selectedEmployeeID);
                 cargarNombreEmpleado(selectedEmployeeID);
-               
+
             }
         }
 
@@ -194,7 +194,7 @@ namespace Proyecto_U2
         }
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            
+
             this.Hide();
 
         }
@@ -219,12 +219,36 @@ namespace Proyecto_U2
             }
         }
 
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            if (dtgOrders.SelectedRows.Count > 0)
+            {
+                FrmAddOrder edit = new FrmAddOrder(
+                    dtgOrders[0, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[1, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[2, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[3, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[4, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[5, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[6, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[7, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[8, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[9, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[10, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[11, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[12, dtgOrders.SelectedRows[0].Index].Value.ToString(),
+                    dtgOrders[13, dtgOrders.SelectedRows[0].Index].Value.ToString());
+                edit.ShowDialog();
+                cargarDatosOrders();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
         }
 
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (dtgOrders.SelectedRows.Count == 0)
             {
@@ -243,9 +267,9 @@ namespace Proyecto_U2
                 string consulta = "DELETE FROM Orders WHERE OrderID = @OrderID";
 
                 Dictionary<string, object> parametros = new Dictionary<string, object>
-                {
-                    { "@OrderID", x }
-                };
+                  {
+                      { "@OrderID", x }
+                  };
 
                 bool s = dt.ejecutarABCModificado(consulta, parametros);
 
@@ -264,6 +288,6 @@ namespace Proyecto_U2
             }
         }
 
-       
+        
     }
 }

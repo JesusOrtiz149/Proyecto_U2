@@ -14,18 +14,20 @@ namespace Proyecto_U2
 {
     public partial class FrmAddCustomers : Form
     {
+        FrmClientes frmClientes= new FrmClientes();
         bool bandera = false;
         Datos dt = new Datos();
         string customerID;
+        private string customerOriginal;
 
         public FrmAddCustomers()
         {
             InitializeComponent();
         }
-
-        private FrmAddCustomers(string customerID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigop, string pais, string tel, string fax)
+        public FrmAddCustomers(string customerID, string Company, string contactoNombre, string contactoCargo, string direccion, string ciudad, string region, string codigop, string pais, string tel, string fax)
         {
             InitializeComponent();
+            this.customerOriginal = customerID;
             this.customerID = customerID;
             txtNombreCompany.Text = Company;
             txtContactoNombre.Text = contactoNombre;
@@ -37,6 +39,8 @@ namespace Proyecto_U2
             txtPais.Text = pais;
             mtbTel.Text = tel;
             mtbFax.Text = fax;
+            bandera = true;
+
         }
 
         private void FrmCustomers_Load(object sender, EventArgs e)
@@ -68,21 +72,31 @@ namespace Proyecto_U2
 
             return id;
 
-
-
-
-
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
             if (MessageBox.Show("¿Los datos son correctos?", "Customers",
                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 if (bandera == true)
                 {
-
-                    bool j = dt.ejecutarABC("Update Customers Set CompanyName = '" +
+                    string customerNuevo = calcularID(txtNombreCompany.Text);
+                    string consultaUpdate = @"UPDATE Customers 
+                                      SET CustomerID = @customerNuevo,
+                                          CompanyName = @CompanyName, 
+                                          ContactName = @ContactName, 
+                                          ContactTitle = @ContactTitle, 
+                                          Address = @Address, 
+                                          City = @City, 
+                                          Region = @Region, 
+                                          PostalCode = @PostalCode, 
+                                          Country = @Country, 
+                                          Phone = @Phone, 
+                                          Fax = @Fax
+                                      WHERE CustomerID = @customerOriginal";
+                    /*bool j = dt.ejecutarABC("Update Customers Set CompanyName = '" +
                                                                        txtNombreCompany.Text +
                                                 "', ContactName = '" + txtContactoNombre.Text +
                                                 "', ContactTitle = '" + txtContactoCargo.Text +
@@ -93,17 +107,33 @@ namespace Proyecto_U2
                                                 "', Country = '" + txtPais.Text +
                                                 "', Phone = '" + mtbTel.Text +
                                                 "', Fax = '" + mtbFax.Text +
-                        " Where CustomerID = '" + customerID + "'");
+                        " Where CustomerID = '" + customerID + "'");*/
+                    parametros.Add("@customerNuevo", customerNuevo);
+                    parametros.Add("@customerOriginal", customerOriginal);
+                    //parametros.Add("@CustomerID", calcularID(txtNombreCompany.Text));
+                    parametros.Add("@CompanyName", txtNombreCompany.Text);
+                    parametros.Add("@ContactName", txtContactoNombre.Text);
+                    parametros.Add("@ContactTitle", txtContactoCargo.Text);
+                    parametros.Add("@Address", txtDireccion.Text);
+                    parametros.Add("@City", txtCiudad.Text);
+                    parametros.Add("@Region", txtEstado.Text);
+                    parametros.Add("@PostalCode", mtbCodigoP.Text);
+                    parametros.Add("@Country", txtPais.Text);
+                    parametros.Add("@Phone", mtbTel.Text);
+                    parametros.Add("@Fax", mtbFax.Text);
+
+                    bool j = dt.ejecutarABCModificado(consultaUpdate,parametros);
 
                     if (j == true)
                     {
                         MessageBox.Show("Datos Actualizados", "Customers",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmClientes.cargarDatosCustomers("Select * From Customers");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Error", "Customers", MessageBoxButtons.OK,
+                        MessageBox.Show("Error Al Actualizar", "Customers", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }
@@ -111,7 +141,7 @@ namespace Proyecto_U2
                 {
                     //try
                     //{
-                    MessageBox.Show(calcularID(txtNombreCompany.Text));
+                    //MessageBox.Show(calcularID(txtNombreCompany.Text));
                     bool j = dt.ejecutarABC("Insert Into Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address" +
                                              ",City, Region, PostalCode, Country, Phone, Fax ) " +
                         "Values ('" + calcularID(txtNombreCompany.Text) + "', '" + txtNombreCompany.Text +
@@ -139,7 +169,7 @@ namespace Proyecto_U2
                         txtPais.Clear();
                         mtbTel.Clear();
                         mtbFax.Clear();
-
+                        frmClientes.cargarDatosCustomers("Select * From Customers");
                     }
                     else
                     {

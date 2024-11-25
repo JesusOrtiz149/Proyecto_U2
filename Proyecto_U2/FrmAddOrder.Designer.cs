@@ -49,7 +49,7 @@
             cmbIDbarco = new ComboBox();
             mtbFlete = new MaskedTextBox();
             groupBox1 = new GroupBox();
-            txtCodigoP = new TextBox();
+            mtbCodigoP = new MaskedTextBox();
             label12 = new Label();
             txtCiudad = new TextBox();
             label10 = new Label();
@@ -201,6 +201,7 @@
             // 
             // dtpFechaEmbarque
             // 
+            dtpFechaEmbarque.CustomFormat = "";
             dtpFechaEmbarque.Location = new Point(9, 447);
             dtpFechaEmbarque.MaxDate = new DateTime(2099, 12, 31, 0, 0, 0, 0);
             dtpFechaEmbarque.MinDate = new DateTime(1800, 12, 31, 0, 0, 0, 0);
@@ -235,7 +236,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtCodigoP);
+            groupBox1.Controls.Add(mtbCodigoP);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(txtCiudad);
             groupBox1.Controls.Add(dtpFechaEmbarque);
@@ -263,12 +264,13 @@
             groupBox1.Text = "Datos del barco";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // txtCodigoP
+            // mtbCodigoP
             // 
-            txtCodigoP.Location = new Point(6, 337);
-            txtCodigoP.Name = "txtCodigoP";
-            txtCodigoP.Size = new Size(197, 23);
-            txtCodigoP.TabIndex = 55;
+            mtbCodigoP.Location = new Point(6, 337);
+            mtbCodigoP.Mask = "000.00";
+            mtbCodigoP.Name = "mtbCodigoP";
+            mtbCodigoP.Size = new Size(100, 23);
+            mtbCodigoP.TabIndex = 55;
             // 
             // label12
             // 
@@ -382,8 +384,8 @@
         private Button btnCancelar;
         private Label label13;
         private TextBox textBox3;
-        private TextBox txtCodigoP;
         private TextBox txtIDCliente;
         private ComboBox cmbEmpleado;
+        private MaskedTextBox mtbCodigoP;
     }
 }

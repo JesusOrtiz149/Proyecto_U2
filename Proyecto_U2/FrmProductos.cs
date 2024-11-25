@@ -48,7 +48,27 @@ namespace Proyecto_U2
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                FrmAddProduct edit = new FrmAddProduct(
+                    dgvProducts[0, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[1, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[2, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[3, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[4, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[5, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[6, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[7, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[8, dgvProducts.SelectedRows[0].Index].Value.ToString(),
+                    dgvProducts[9, dgvProducts.SelectedRows[0].Index].Value.ToString());
+                edit.ShowDialog();
+                cargarDatosProducts();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)

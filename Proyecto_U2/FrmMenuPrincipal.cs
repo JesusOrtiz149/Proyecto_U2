@@ -64,6 +64,14 @@ namespace Proyecto_U2
                     btnTerritorios.Visible = true;
                     archivoToolStripMenuItem.Visible = true;
                     salirToolStripMenuItem.Visible = true;
+                    //add
+                    btnClientes.Visible= true;
+                    btnSuppliers.Visible= true;
+                    btnEmbarca.Visible= true;
+                    btnProductos.Visible = true;
+                    
+                    
+
                     break;
 
                 case "Sales Manager":
