@@ -16,11 +16,19 @@ namespace Proyecto_U2
         {
             InitializeComponent();
         }
+        public void CargarEmbarca()
+        {
 
+        }
         private void btnNuevoEmbarcadero_Click(object sender, EventArgs e)
         {
-            FrmAddShippers frmAddShippers = new FrmAddShippers();   
+            FrmAddShippers frmAddShippers = new FrmAddShippers();
             frmAddShippers.ShowDialog();
+        }
+
+        private void FrmEmbarcaderos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

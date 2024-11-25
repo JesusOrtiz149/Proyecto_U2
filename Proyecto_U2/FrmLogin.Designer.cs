@@ -135,6 +135,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = SystemColors.GradientInactiveCaption;
             groupBox1.Controls.Add(txtCustomers);
             groupBox1.Controls.Add(chkCustomers);
             groupBox1.Controls.Add(txtSupplier);
@@ -146,6 +147,7 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtUsuario);
             groupBox1.Controls.Add(label1);
+            groupBox1.FlatStyle = FlatStyle.Flat;
             groupBox1.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(103, 150);
             groupBox1.Name = "groupBox1";
@@ -213,9 +215,9 @@
             BackColor = SystemColors.GradientInactiveCaption;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(773, 697);
-            Controls.Add(groupBox1);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
+            Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmLogin";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

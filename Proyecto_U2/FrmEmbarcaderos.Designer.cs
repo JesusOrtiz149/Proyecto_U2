@@ -36,17 +36,19 @@
             // dgvShippers
             // 
             dgvShippers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvShippers.Location = new Point(114, 207);
+            dgvShippers.Location = new Point(130, 276);
+            dgvShippers.Margin = new Padding(3, 4, 3, 4);
             dgvShippers.Name = "dgvShippers";
             dgvShippers.RowHeadersWidth = 51;
-            dgvShippers.Size = new Size(558, 231);
+            dgvShippers.Size = new Size(638, 308);
             dgvShippers.TabIndex = 2;
             // 
             // btnNuevoEmbarcadero
             // 
-            btnNuevoEmbarcadero.Location = new Point(293, 115);
+            btnNuevoEmbarcadero.Location = new Point(335, 153);
+            btnNuevoEmbarcadero.Margin = new Padding(3, 4, 3, 4);
             btnNuevoEmbarcadero.Name = "btnNuevoEmbarcadero";
-            btnNuevoEmbarcadero.Size = new Size(139, 23);
+            btnNuevoEmbarcadero.Size = new Size(159, 31);
             btnNuevoEmbarcadero.TabIndex = 3;
             btnNuevoEmbarcadero.Text = "Nuevo Embarcadero";
             btnNuevoEmbarcadero.UseVisualStyleBackColor = true;
@@ -54,13 +56,15 @@
             // 
             // FrmEmbarcaderos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(btnNuevoEmbarcadero);
             Controls.Add(dgvShippers);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmEmbarcaderos";
             Text = "FrmEmbarcaderoscs";
+            Load += FrmEmbarcaderos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvShippers).EndInit();
             ResumeLayout(false);
         }

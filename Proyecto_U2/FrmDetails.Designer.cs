@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetails));
             dtgDetails = new DataGridView();
             lblCompanyName = new Label();
             lblTotal = new Label();
@@ -40,11 +41,11 @@
             dtgDetails.AllowUserToAddRows = false;
             dtgDetails.AllowUserToDeleteRows = false;
             dtgDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgDetails.Location = new Point(3, 95);
+            dtgDetails.Location = new Point(12, 95);
             dtgDetails.Name = "dtgDetails";
             dtgDetails.ReadOnly = true;
             dtgDetails.RowHeadersWidth = 51;
-            dtgDetails.Size = new Size(699, 152);
+            dtgDetails.Size = new Size(723, 169);
             dtgDetails.TabIndex = 0;
             dtgDetails.CellContentClick += dtgDetails_CellContentClick;
             // 
@@ -62,7 +63,7 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(530, 250);
+            lblTotal.Location = new Point(488, 279);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(72, 27);
             lblTotal.TabIndex = 3;
@@ -82,11 +83,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 316);
+            ClientSize = new Size(867, 348);
             Controls.Add(dtgDetails);
             Controls.Add(lblTotal);
             Controls.Add(lblOrderID);
             Controls.Add(lblCompanyName);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmDetails";
             Text = "Details";
             Load += FrmDetails_Load_1;
