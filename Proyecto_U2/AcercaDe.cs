@@ -110,7 +110,7 @@ namespace Proyecto_U2
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            Form1 forma = new Form1();
+            FrmMenuPrincipal forma = new FrmMenuPrincipal();
             this.Close();
             forma.Show();
         }
