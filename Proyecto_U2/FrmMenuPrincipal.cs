@@ -94,7 +94,7 @@ namespace Proyecto_U2
                     archivoToolStripMenuItem.Visible = true;
                     salirToolStripMenuItem.Visible = true;
                     btnMostrar.Visible = true;
-                    btnClientes.Visible = true;
+                    
                     break;
 
                 default:

@@ -23,92 +23,82 @@ namespace Proyecto_U2
         }
         public void Chart(int employeeID)
         {
-            Datos dt = new Datos(); // Asegúrate de que esta clase esté correctamente configurada
+            Datos dt = new Datos();
 
-            // Consulta SQL que obtiene las órdenes del empleado seleccionado
-            string query = $"SELECT CONVERT(DATE, OrderDate) AS OrderDate, COUNT(*) AS OrderCount " +
-                           $"FROM Orders " +
-                           $"WHERE EmployeeID = {employeeID} " +  // Filtrar por el employeeID
-                           $"GROUP BY CONVERT(DATE, OrderDate) " +
-                           $"ORDER BY CONVERT(DATE, OrderDate)";
+            string query = @"
+        SELECT CONVERT(DATE, OrderDate) AS OrderDate, COUNT(*) AS OrderCount
+FROM Orders
+WHERE EmployeeID IS NOT NULL AND EmployeeID = @EmployeeID
+GROUP BY CONVERT(DATE, OrderDate)
+ORDER BY CONVERT(DATE, OrderDate)";
 
-            // Ejecutar la consulta y obtener los resultados
-            DataSet ds = dt.ejecutarConsulta(query);
 
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            SqlParameter[] parametros = new SqlParameter[]
             {
-                // Crear la serie de datos para la gráfica
-                Series orderSeries = new Series("OrderCount")
-                {
-                    ChartType = SeriesChartType.Column, // Tipo de gráfico (Columnas)
-                    Color = Color.DeepSkyBlue,         // Color de las barras
-                    BorderWidth = 3                    // Ancho de borde de las barras
-                };
+        new SqlParameter("@EmployeeID", employeeID)
+            };
 
-                // Añadir los puntos de datos a la serie
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-                    DateTime orderDate = Convert.ToDateTime(row["OrderDate"]);
-                    int orderCount = Convert.ToInt32(row["OrderCount"]);
+            DataSet ds = dt.ejecutarConsultaPS(query, parametros);
 
-                    // Añadir un punto con la fecha y el número de órdenes
-                    orderSeries.Points.AddXY(orderDate, orderCount);
-                }
-
-                // Verificar si el gráfico necesita actualizarse desde otro hilo (en caso de usar Invoke)
-                if (chtOrde.InvokeRequired)
-                {
-                    chtOrde.Invoke(new MethodInvoker(delegate
-                    {
-                        chtOrde.Series.Clear();  // Limpiar antes de agregar nueva serie
-                        chtOrde.Series.Add(orderSeries);
-                        ConfigurarEjes();
-                    }));
-                }
-                else
-                {
-                    // Actualizar la gráfica directamente si ya estamos en el hilo correcto
-                    chtOrde.Series.Clear();  // Limpiar antes de agregar nueva serie
-                    chtOrde.Series.Add(orderSeries);
-                    ConfigurarEjes();
-                }
+            if (ds == null || ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
+            {
+                
+                return;
             }
 
+            // Crear la serie de datos para la gráfica
+            Series orderSeries = new Series("OrderCount")
+            {
+                ChartType = SeriesChartType.Column,
+                Color = Color.DeepSkyBlue,
+                BorderWidth = 3
+            };
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                DateTime orderDate = Convert.ToDateTime(row["OrderDate"]);
+                int orderCount = Convert.ToInt32(row["OrderCount"]);
+                orderSeries.Points.AddXY(orderDate, orderCount);
+            }
+
+            // Configurar el gráfico
+            chtOrde.Series.Clear();
+            chtOrde.Series.Add(orderSeries);
+            ConfigurarEjes();
         }
 
         private void ConfigurarEjes()
         {
-            // Configuración de los ejes de la gráfica
             var chartArea = chtOrde.ChartAreas[0];
-
-            // Configuración del eje X
-            chartArea.AxisX.Interval = 1; // Mostrar todas las fechas
-            chartArea.AxisX.LabelStyle.Angle = -45; // Rotar las etiquetas de las fechas para mejor visibilidad
-            chartArea.AxisX.LabelStyle.Format = "dd/MM/yyyy"; // Formato de fecha
+            chartArea.AxisX.Interval = 1;
+            chartArea.AxisX.LabelStyle.Angle = -45;
+            chartArea.AxisX.LabelStyle.Format = "dd/MM/yyyy";
             chartArea.AxisX.Title = "Fecha de Pedido";
-
-            // Configuración del eje Y
-            chartArea.AxisY.Minimum = 0;  // Asegurar que el eje Y comienza en 0
+            chartArea.AxisY.Minimum = 0;
             chartArea.AxisY.Title = "Cantidad de Órdenes";
         }
 
-        public void cargarDatosOrders()
-        {
-  
-                using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
-                {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand("SELECT OrderID, OrderDate FROM Orders", conn);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dtgOrders.DataSource = dt;
-                }
-            }
 
         
+    
+
+        public void cargarDatosOrders()
+        {
+
+            using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT OrderID, OrderDate FROM Orders", conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dtgOrders.DataSource = dt;
+            }
+        }
+
+
 
 
         public void cargarEmployeeIDs()
@@ -241,6 +231,12 @@ namespace Proyecto_U2
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lklOrdenes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmNewOrders frm = new FrmNewOrders();
+            frm.ShowDialog();
         }
     }
 }
