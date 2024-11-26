@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Proyecto_U2
 {
     public partial class FrmOrdenes : Form
     {
-        
+
         public FrmOrdenes()
         {
             InitializeComponent();
@@ -72,13 +73,7 @@ namespace Proyecto_U2
                     ConfigurarEjes();
                 }
             }
-            else
-            {
-                // Limpiar la gráfica si no hay datos
-                chtOrde.Series.Clear();
-                MessageBox.Show("No se encontraron datos para graficar del empleado seleccionado.",
-                                "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         private void ConfigurarEjes()
@@ -99,15 +94,23 @@ namespace Proyecto_U2
 
         public void cargarDatosOrders()
         {
-            Datos dt = new Datos();
-            DataSet ds = dt.ejecutarConsulta("SELECT * FROM Orders");
-            if (ds != null)
-            {
-                dtgOrders.DataSource = ds.Tables[0];
+  
+                using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT OrderID, OrderDate FROM Orders", conn);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dtgOrders.DataSource = dt;
+                }
             }
-        }
 
         
+
+
         public void cargarEmployeeIDs()
         {
             Datos dt = new Datos();
@@ -120,7 +123,7 @@ namespace Proyecto_U2
             }
         }
 
-       
+
         public void cargarNombreEmpleado(int employeeID)
         {
             Datos dt = new Datos();
@@ -136,7 +139,7 @@ namespace Proyecto_U2
             }
         }
 
-        
+
         public void cargarOrdersPorEmpleado(int employeeID)
         {
             Datos dt = new Datos();
@@ -148,30 +151,29 @@ namespace Proyecto_U2
             }
         }
 
-        
+
         private void cmbEmployeeID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbEmployeeID.SelectedValue != null)
+            if (cmbEmployeeID.SelectedValue != null && cmbEmployeeID.SelectedValue != DBNull.Value)
             {
                 int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue);
+                Chart(selectedEmployeeID);
+                cargarOrdersPorEmpleado(selectedEmployeeID);
+                cargarNombreEmpleado(selectedEmployeeID);
 
-                
-                Chart(selectedEmployeeID); 
-                cargarOrdersPorEmpleado(selectedEmployeeID); 
-                cargarNombreEmpleado(selectedEmployeeID); 
             }
         }
 
-        
+
         private void FrmOrdenes_Load_1(object sender, EventArgs e)
         {
-            cargarEmployeeIDs();  
-            cargarDatosOrders();  
+            cargarEmployeeIDs();
+            cargarDatosOrders();
 
-          
+
             if (cmbEmployeeID.SelectedValue != null)
             {
-                int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue);
+                int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue != DBNull.Value);
                 Chart(selectedEmployeeID);
             }
         }
@@ -198,6 +200,47 @@ namespace Proyecto_U2
             this.Hide();
         }
 
-        
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtOrderID.Text))
+            {
+                MessageBox.Show("Por favor, ingresa un OrderID.");
+                return;
+            }
+
+
+            int orderIdToSearch;
+            if (!int.TryParse(txtOrderID.Text, out orderIdToSearch))
+            {
+                MessageBox.Show("Por favor, ingresa un OrderID válido.");
+                return;
+            }
+
+
+            bool orderFound = false;
+
+            foreach (DataGridViewRow row in dtgOrders.Rows)
+            {
+
+                if (Convert.ToInt32(row.Cells["OrderID"].Value) == orderIdToSearch)
+                {
+
+                    row.Selected = true;
+                    dtgOrders.FirstDisplayedScrollingRowIndex = row.Index;
+                    orderFound = true;
+                    break;
+                }
+            }
+
+            if (!orderFound)
+            {
+                MessageBox.Show("No se encontró la orden con el ID proporcionado.");
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
