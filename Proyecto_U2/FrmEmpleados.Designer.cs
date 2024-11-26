@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEmpleados));
             dgvEmployees = new DataGridView();
             btnNuevoEmpleado = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
@@ -36,17 +37,19 @@
             // dgvEmployees
             // 
             dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployees.Location = new Point(12, 41);
+            dgvEmployees.Location = new Point(15, 147);
+            dgvEmployees.Margin = new Padding(3, 4, 3, 4);
             dgvEmployees.Name = "dgvEmployees";
             dgvEmployees.RowHeadersWidth = 51;
-            dgvEmployees.Size = new Size(776, 397);
+            dgvEmployees.Size = new Size(1100, 308);
             dgvEmployees.TabIndex = 1;
             // 
             // btnNuevoEmpleado
             // 
-            btnNuevoEmpleado.Location = new Point(312, 12);
+            btnNuevoEmpleado.Location = new Point(979, 108);
+            btnNuevoEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnNuevoEmpleado.Name = "btnNuevoEmpleado";
-            btnNuevoEmpleado.Size = new Size(129, 23);
+            btnNuevoEmpleado.Size = new Size(147, 31);
             btnNuevoEmpleado.TabIndex = 2;
             btnNuevoEmpleado.Text = "Nuevo Empleado";
             btnNuevoEmpleado.UseVisualStyleBackColor = true;
@@ -54,11 +57,13 @@
             // 
             // FrmEmpleados
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1153, 491);
             Controls.Add(btnNuevoEmpleado);
             Controls.Add(dgvEmployees);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmEmpleados";
             Text = "Empleados";
             Load += FrmEmpleados_Load;

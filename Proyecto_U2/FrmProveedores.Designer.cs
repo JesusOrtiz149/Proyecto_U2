@@ -43,16 +43,20 @@
             dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSuppliers.ContextMenuStrip = contextMenuStrip1;
             dgvSuppliers.Location = new Point(12, 41);
+            dgvSuppliers.Location = new Point(14, 176);
+            dgvSuppliers.Margin = new Padding(3, 4, 3, 4);
             dgvSuppliers.Name = "dgvSuppliers";
             dgvSuppliers.RowHeadersWidth = 51;
-            dgvSuppliers.Size = new Size(795, 397);
+            dgvSuppliers.Size = new Size(909, 308);
             dgvSuppliers.TabIndex = 1;
             // 
             // btnNuevoProveedor
             // 
-            btnNuevoProveedor.Location = new Point(318, 12);
+            btnNuevoProveedor.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNuevoProveedor.Location = new Point(741, 114);
+            btnNuevoProveedor.Margin = new Padding(3, 4, 3, 4);
             btnNuevoProveedor.Name = "btnNuevoProveedor";
-            btnNuevoProveedor.Size = new Size(159, 23);
+            btnNuevoProveedor.Size = new Size(182, 31);
             btnNuevoProveedor.TabIndex = 2;
             btnNuevoProveedor.Text = "Nuevo Proveedor";
             btnNuevoProveedor.UseVisualStyleBackColor = true;
@@ -80,11 +84,12 @@
             // 
             // FrmProveedores
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(837, 450);
+            ClientSize = new Size(957, 529);
             Controls.Add(btnNuevoProveedor);
             Controls.Add(dgvSuppliers);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmProveedores";
             Text = "Proveedores";
             Load += FrmProveedores_Load;

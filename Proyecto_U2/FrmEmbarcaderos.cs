@@ -23,10 +23,11 @@ namespace Proyecto_U2
             cargarDatosShippers();
         }
 
+        }
         private void btnNuevoEmbarcadero_Click(object sender, EventArgs e)
         {
             FrmAddShippers frmAddShippers = new FrmAddShippers();
-            frmAddShippers.FormClosed += Shippers_FormClosed;
+            //frmAddShippers.FormClosed += Shippers_FormClosed;
             frmAddShippers.ShowDialog();
         }
 

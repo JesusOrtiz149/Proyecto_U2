@@ -149,8 +149,9 @@ namespace Proyecto_U2
 
         private void btnTerritorios_Click(object sender, EventArgs e)
         {
-            FrmTerritorios frmTerritorios = new FrmTerritorios();
-            frmTerritorios.Show();
+            int employeeID = UserSession.EmployeeID;
+            FrmTerritorios frmTerritorios = new FrmTerritorios(employeeID);
+            frmTerritorios.ShowDialog();
         }
 
         private void btnProductos_Click(object sender, EventArgs e)

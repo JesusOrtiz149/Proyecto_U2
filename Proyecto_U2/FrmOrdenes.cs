@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,24 +25,26 @@ namespace Proyecto_U2
         }
         public void Chart(int employeeID)
         {
-            Datos dt = new Datos();
+            Datos dt = new Datos(); // Asegúrate de que esta clase esté correctamente configurada
 
-            // Consulta SQL para obtener las fechas y cantidades de órdenes del empleado seleccionado
+            // Consulta SQL que obtiene las órdenes del empleado seleccionado
             string query = $"SELECT CONVERT(DATE, OrderDate) AS OrderDate, COUNT(*) AS OrderCount " +
                            $"FROM Orders " +
-                           $"WHERE EmployeeID = {employeeID} " +
+                           $"WHERE EmployeeID = {employeeID} " +  // Filtrar por el employeeID
                            $"GROUP BY CONVERT(DATE, OrderDate) " +
                            $"ORDER BY CONVERT(DATE, OrderDate)";
+
+            // Ejecutar la consulta y obtener los resultados
             DataSet ds = dt.ejecutarConsulta(query);
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-                // Crear y configurar la serie de datos para el gráfico
+                // Crear la serie de datos para la gráfica
                 Series orderSeries = new Series("OrderCount")
                 {
-                    ChartType = SeriesChartType.Column,
-                    Color = Color.DeepSkyBlue,
-                    BorderWidth = 3
+                    ChartType = SeriesChartType.Column, // Tipo de gráfico (Columnas)
+                    Color = Color.DeepSkyBlue,         // Color de las barras
+                    BorderWidth = 3                    // Ancho de borde de las barras
                 };
 
                 // Añadir los puntos de datos a la serie
@@ -49,61 +52,65 @@ namespace Proyecto_U2
                 {
                     DateTime orderDate = Convert.ToDateTime(row["OrderDate"]);
                     int orderCount = Convert.ToInt32(row["OrderCount"]);
-                    orderSeries.Points.AddXY(orderDate.ToShortDateString(), orderCount);
+
+                    // Añadir un punto con la fecha y el número de órdenes
+                    orderSeries.Points.AddXY(orderDate, orderCount);
                 }
 
-                // Verificar si el gráfico necesita invocarse desde un subproceso
+                // Verificar si el gráfico necesita actualizarse desde otro hilo (en caso de usar Invoke)
                 if (chtOrde.InvokeRequired)
                 {
                     chtOrde.Invoke(new MethodInvoker(delegate
                     {
-                        chtOrde.Series.Clear();
+                        chtOrde.Series.Clear();  // Limpiar antes de agregar nueva serie
                         chtOrde.Series.Add(orderSeries);
                         ConfigurarEjes();
                     }));
                 }
                 else
                 {
-                    chtOrde.Series.Clear();
+                    // Actualizar la gráfica directamente si ya estamos en el hilo correcto
+                    chtOrde.Series.Clear();  // Limpiar antes de agregar nueva serie
                     chtOrde.Series.Add(orderSeries);
                     ConfigurarEjes();
                 }
             }
-            else
-            {
-                // Limpiar el gráfico si no hay datos
-                chtOrde.Series.Clear();
-                MessageBox.Show("No se encontraron datos para graficar del empleado seleccionado.",
-                                "Información",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-            }
+
         }
 
         private void ConfigurarEjes()
         {
+            // Configuración de los ejes de la gráfica
             var chartArea = chtOrde.ChartAreas[0];
 
-            chartArea.AxisX.Interval = 1;                     // Mostrar todas las fechas
-            chartArea.AxisX.LabelStyle.Angle = -45;           // Rotar etiquetas para legibilidad
+            // Configuración del eje X
+            chartArea.AxisX.Interval = 1; // Mostrar todas las fechas
+            chartArea.AxisX.LabelStyle.Angle = -45; // Rotar las etiquetas de las fechas para mejor visibilidad
             chartArea.AxisX.LabelStyle.Format = "dd/MM/yyyy"; // Formato de fecha
             chartArea.AxisX.Title = "Fecha de Pedido";
 
-            chartArea.AxisY.Minimum = 0;                      // Asegurar que el eje Y comienza en 0
+            // Configuración del eje Y
+            chartArea.AxisY.Minimum = 0;  // Asegurar que el eje Y comienza en 0
             chartArea.AxisY.Title = "Cantidad de Órdenes";
         }
 
-
-
         public void cargarDatosOrders()
         {
-            Datos dt = new Datos();
-            DataSet ds = dt.ejecutarConsulta("SELECT * FROM Orders");
-            if (ds != null)
-            {
-                dtgOrders.DataSource = ds.Tables[0];
+  
+                using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT OrderID, OrderDate FROM Orders", conn);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dtgOrders.DataSource = dt;
+                }
             }
-        }
+
+        
 
 
         public void cargarEmployeeIDs()
@@ -147,6 +154,32 @@ namespace Proyecto_U2
         }
 
 
+        private void cmbEmployeeID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEmployeeID.SelectedValue != null && cmbEmployeeID.SelectedValue != DBNull.Value)
+            {
+                int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue);
+                Chart(selectedEmployeeID);
+                cargarOrdersPorEmpleado(selectedEmployeeID);
+                cargarNombreEmpleado(selectedEmployeeID);
+
+            }
+        }
+
+
+        private void FrmOrdenes_Load_1(object sender, EventArgs e)
+        {
+            cargarEmployeeIDs();
+            cargarDatosOrders();
+
+
+            if (cmbEmployeeID.SelectedValue != null)
+            {
+                int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue != DBNull.Value);
+                Chart(selectedEmployeeID);
+            }
+        }
+
         private void dtgOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -164,47 +197,63 @@ namespace Proyecto_U2
             //frmAddOrder.FormClosed += Ordenes_FormClosed;
             frmAddOrder.Show();
         }
-
-
-        private void cmbEmployeeID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEmployeeID.SelectedValue != null)
-            {
-                int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue);
-
-                Chart(selectedEmployeeID);
-                cargarOrdersPorEmpleado(selectedEmployeeID);
-                cargarNombreEmpleado(selectedEmployeeID);
-
-            }
-        }
-
-
-        private void FrmOrdenes_Load_1(object sender, EventArgs e)
-        {
-            cargarEmployeeIDs();
-            cargarDatosOrders();
-
-            if (cmbEmployeeID.SelectedValue != null)
-            {
-                int selectedEmployeeID = Convert.ToInt32(cmbEmployeeID.SelectedValue);
-                Chart(selectedEmployeeID);
-
-            }
-        }
         private void btnRegresar_Click(object sender, EventArgs e)
         {
 
             this.Hide();
-
         }
 
-        private void FrmOrdenes_Load(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtOrderID.Text))
+            {
+                MessageBox.Show("Por favor, ingresa un OrderID.");
+                return;
+            }
+
+
+            int orderIdToSearch;
+            if (!int.TryParse(txtOrderID.Text, out orderIdToSearch))
+            {
+                MessageBox.Show("Por favor, ingresa un OrderID válido.");
+                return;
+            }
+
+
+            bool orderFound = false;
+
+            foreach (DataGridViewRow row in dtgOrders.Rows)
+            {
+
+                if (Convert.ToInt32(row.Cells["OrderID"].Value) == orderIdToSearch)
+                {
+
+                    row.Selected = true;
+                    dtgOrders.FirstDisplayedScrollingRowIndex = row.Index;
+                    orderFound = true;
+                    break;
+                }
+            }
+
+            if (!orderFound)
+            {
+                MessageBox.Show("No se encontró la orden con el ID proporcionado.");
+            }
+            }
+        }
+        /*private void btnRegresar_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+
+        }*/
+
+       /* private void FrmOrdenes_Load(object sender, EventArgs e)
         {
             cargarDatosOrders("Select * From Orders");
 
-        }
-        public void cargarDatosOrders(String comando)
+        }*/
+        /*public void cargarDatosOrders(String comando)
         {
 
             dtgOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -217,7 +266,7 @@ namespace Proyecto_U2
             {
                 dtgOrders.DataSource = ds.Tables[0];
             }
-        }
+        }*/
 
         private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -288,6 +337,9 @@ namespace Proyecto_U2
             }
         }
 
-        
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

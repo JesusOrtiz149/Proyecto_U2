@@ -68,8 +68,9 @@ namespace Proyecto_U2
                                     
                                     UserSession.Role = role;
                                     UserSession.UserName = userName;
+                                    UserSession.EmployeeID = employeeIDInput;
 
-                                    
+
                                     DialogResult result = MessageBox.Show($"¡Bienvenido, {userName}! Rol: {role}", "Acceso Empleado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
                                     if (result == DialogResult.Cancel)

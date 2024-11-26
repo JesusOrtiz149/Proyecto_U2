@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,301 +13,174 @@ namespace Proyecto_U2
 {
     public partial class FrmAddOrder : Form
     {
-        FrmOrdenes frmOrdenes = new FrmOrdenes();
-
-        Datos dt = new Datos();
-        int OrderID;
-        bool bandera = false;
-        string hora = DateTime.Now.ToString();
-        
-        int cmbIntEmpleado;
-        int cmbIntBarco;
-
+        private List<Product> carrito = new List<Product>();
+        private decimal total = 0;
+        private int orderId = 0;
         public FrmAddOrder()
         {
             InitializeComponent();
         }
-        public FrmAddOrder(string orderID, string IDCliente, string IDEmpleado,string  orderDate, 
-                            string requiredDate, string shippedDate, string IDbarco, string flete, 
-                            string barcoNombre, string barcoDireccion, string barcoCiudad, 
-                            string barcoRegion, string barcoCodigoP, string barcoPais)
-        {
-
-            InitializeComponent();
-            poblarCmb(cmbIDbarco, "Select CompanyName from Shippers");
-            poblarCmb(cmbEmpleado, "Select FirstName, LastName from Employees ");
-
-            cmbIntEmpleado = Convert.ToInt32(IDEmpleado);
-            cmbIntBarco = Convert.ToInt32(IDbarco);
-            dtpFechaEntrega.Format = DateTimePickerFormat.Custom;
-            dtpFechaEntrega.CustomFormat = "dd-MM-yyyy";
-
-            dtpFechaEmbarque.Format = DateTimePickerFormat.Custom;
-            dtpFechaEmbarque.CustomFormat = "dd-MM-yyyy";
-
-
-            OrderID = Convert.ToInt32(orderID);
-
-            txtIDCliente.Text = IDCliente;
-
-
-
-            cmbEmpleado.SelectedIndex = cmbIntEmpleado - 1;
-
-         
-
-            if (!string.IsNullOrEmpty(orderDate) && DateTime.TryParse(orderDate, out DateTime parsedOrderDate))
-                hora = parsedOrderDate.ToString("dd-MM-yyyy");
-
-            if (!string.IsNullOrEmpty(requiredDate) && DateTime.TryParse(requiredDate, out DateTime parsedRequiredDate))
-            {
-                dtpFechaEntrega.Value = parsedRequiredDate;
-            }
-
-            if (!string.IsNullOrEmpty(shippedDate) && DateTime.TryParse(shippedDate, out DateTime parsedShippedDate))
-                dtpFechaEmbarque.Value = parsedShippedDate;
-
-
-
-            // hora = fecha;
-
-
-
-
-            //   dtpFechaEntrega.va = FECHAentrega;
-
-            //  dtpFechaEmbarque.Text = FECHAembarque;
-
-            /* MessageBox.Show("fecha entrega " + dtpFechaEntrega.Value.ToString("dd-MM-yyyy") + "fecha entrega ");
-
-             MessageBox.Show("fecha embarque " + dtpFechaEmbarque.Value.ToString("dd-MM-yyyy"));*/
-
-            cmbIDbarco.SelectedIndex = cmbIntBarco - 1;
-
-            //MessageBox.Show("cmbbarco " + cmbIDbarco.SelectedIndex);
-
-            mtbFlete.Text = flete;
-
-  
-
-            txtNombre.Text = barcoNombre;
-            txtDireccion.Text = barcoDireccion;
-            txtCiudad.Text = barcoCiudad;
-            txtEstado.Text = barcoRegion;
-            mtbCodigoP.Text = barcoCodigoP;
-            txtPais.Text = barcoPais;
-
-            bandera = true;
-
-        }
-        public void poblarCmb(ComboBox cmb, string consulta)
-        {
-            try
-            {
-                //string consulta = "Select CompanyName from Shippers";
-                DataSet ds;
-                ds = dt.ejecutarConsulta(consulta);
-
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    // Limpia el ComboBox antes de llenarlo
-                    cmb.Items.Clear();
-
-                    // Itera sobre los datos y los agrega al ComboBox
-                    foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        cmb.Items.Add(row[0].ToString());
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron datos para llenar el ComboBox.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
 
         private void FrmAddOrder_Load(object sender, EventArgs e)
         {
-            poblarCmb(cmbIDbarco, "Select CompanyName from Shippers");
-            poblarCmb(cmbEmpleado, "Select FirstName, LastName from Employees ");
-        }
+            btnAgregar.Enabled = false;
+            btnAgrOrder.Enabled = false;
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            Dictionary<string, object> parametros = new Dictionary<string, object>();
-
-            if (MessageBox.Show("¿Los datos son correctos?", "Orders",
-               MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
             {
-                if (bandera == true)
+                conn.Open();
+
+
+                SqlCommand cmd = new SqlCommand("SELECT ProductID, ProductName, UnitPrice ,UnitsInStock,UnitsOnOrder FROM Products", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                List<Product> productos = new List<Product>();
+
+                while (reader.Read())
                 {
-                   /* MessageBox.Show(dtpFechaEntrega.Value.ToString("dd - MM - yyyy"));
-                    MessageBox.Show(dtpFechaEmbarque.Value.ToString("dd - MM - yyyy"));*/
-                    //MessageBox.Show((cmbEmpleado.SelectedIndex).ToString());
-                    //MessageBox.Show((cmbIDbarco.SelectedIndex).ToString());
-
-                    string consultaUpdate = @"UPDATE Orders 
-                                      SET CustomerID = @CustomerID, 
-                                          EmployeeID = @EmployeeID, 
-                                          OrderDate = @OrderDate, 
-                                          RequiredDate = @RequiredDate, 
-                                          ShippedDate = @ShippedDate, 
-                                          ShipVia = @ShipVia, 
-                                          Freight = @Freight, 
-                                          ShipName = @ShipName, 
-                                          ShipAddress = @ShipAddress,
-                                          ShipCity = @ShipCity, 
-                                          ShipRegion = @ShipRegion,
-                                          ShipPostalCode = @ShipPostalCode,
-                                          ShipCountry = @ShipCountry
-                                      WHERE OrderID = @OrderID";
-
-                    /*bool j = dt.ejecutarABC("Update Orders Set " +
-                        "                           CustomerID = " + txtIDCliente.Text +
-                                                ",  EmployeeID = " + cmbEmpleado.Text +
-                                                ",  OrderDate = '" + hora +
-                                                "', RequiredDate = '" + dtpFechaEntrega.Text +
-                                                "', ShippedDate = '" + dtpFechaEmbarque.Text +
-                                                "', ShipVia = " + cmbIDbarco.Text +
-                                                ", Freight = " + mtbFlete.Text +
-                                                ",  ShipName  = '" + txtNombre.Text +
-                                                "', ShipAddress = '" + txtDireccion.Text +
-                                                "', ShipCity = '" + txtDireccion.Text +
-                                                "', ShipRegion = '" + txtEstado.Text +
-                                                "', ShipPostalCode = '" + txtCodigoP.Text +
-                                                "', ShipCountry = '" + txtPais.Text +
-                        " Where OrderID = " + OrderID 
-                        );*/
-                    parametros.Add("@OrderID", OrderID);
-                    parametros.Add("@CustomerID", txtIDCliente.Text);
-                    parametros.Add("@EmployeeID", Convert.ToInt32((cmbEmpleado.SelectedIndex+1)));
-                    parametros.Add("@OrderDate", hora);
-                    parametros.Add("@RequiredDate", dtpFechaEntrega.Value.ToString("dd-MM-yyyy"));
-                    parametros.Add("@ShippedDate", dtpFechaEmbarque.Value.ToString("dd-MM-yyyy"));
-                    parametros.Add("@ShipVia", Convert.ToInt32((cmbIDbarco.SelectedIndex+1)));
-                    parametros.Add("@Freight", double.Parse(mtbFlete.Text));
-                    parametros.Add("@ShipName", txtNombre.Text);
-                    parametros.Add("@ShipAddress", txtDireccion.Text);
-                    parametros.Add("@ShipCity", txtCiudad.Text);
-                    parametros.Add("@ShipRegion", txtEstado.Text);
-                    parametros.Add("@ShipPostalCode", mtbCodigoP.Text);
-                    parametros.Add("@ShipCountry", txtPais.Text);
-                    
-
-
-                    bool j = dt.ejecutarABCModificado(consultaUpdate,parametros);
-
-
-                    if (j == true)
+                    productos.Add(new Product
                     {
-                        MessageBox.Show("Datos Actualizados", "Products",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        frmOrdenes.cargarDatosOrders();
-                        this.Close();
+                        ProductID = reader.GetInt32(0),
+                        ProductName = reader.GetString(1),
+                        UnitPrice = reader.GetDecimal(2)
+                    });
+                }
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error", "Products", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+
+                cmbProductos.DataSource = productos;
+                cmbProductos.DisplayMember = "ProductName";
+                cmbProductos.ValueMember = "ProductID";
+
+                
+            }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            orderId = random.Next(1000, 9999);
+            lblOrder.Text = $"OrdenID: {orderId}";
+            btnAgregar.Enabled = true;
+            btnAgrOrder.Enabled = true;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (orderId == 0)
+            {
+                MessageBox.Show("Por favor, genera un número de orden antes de continuar.");
+                return;
+            }
+            if (cmbProductos.SelectedItem != null)
+            {
+                Product selectedProduct = (Product)cmbProductos.SelectedItem;
+
+
+                MessageBox.Show($"Producto seleccionado: {selectedProduct.ProductName}\nPrecio: {selectedProduct.UnitPrice:C}");
+            }
+
+            if (cmbProductos.SelectedItem != null)
+            {
+                Product selectedProduct = (Product)cmbProductos.SelectedItem;
+
+
+                var productoEnCarrito = carrito.Find(p => p.ProductID == selectedProduct.ProductID);
+
+                if (productoEnCarrito != null)
+                {
+
+                    productoEnCarrito.Quantity++;
                 }
                 else
                 {
-                    try
-                    {
 
-                        DateTime fechaActual = dtpOrderDate.Value;
-                        string fecha = fechaActual.ToString("dd-MM-yyyy");
-
-                        DateTime fechaRequerida = dtpFechaEntrega.Value;
-                        string fechaEntrega = fechaRequerida.ToString("dd-MM-yyyy");
-
-                        DateTime fechaEmb = dtpFechaEmbarque.Value;
-                        string fechaEmbarque = fechaEmb.ToString("dd-MM-yyyy");
+                    selectedProduct.Quantity = 1;
+                    carrito.Add(selectedProduct);
+                }
 
 
-                        string consulta = "Insert Into Orders (CustomerID, EmployeeID, OrderDate, RequiredDate" +
-                                                 ",ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity," +
-                                                 "ShipRegion, ShipPostalCode, ShipCountry ) " +
-                                                         "Values ('" + txtIDCliente.Text + "',"
-                                                            + (cmbEmpleado.SelectedIndex + 1) + ",'"
-                                                            + fecha + "','"
-                                                            + fechaEntrega + "','"
-                                                            + fechaEmbarque + "',"
-                                                            + (cmbIDbarco.SelectedIndex + 1) + ","
-                                                            + Convert.ToDecimal(mtbFlete.Text) + ",'"
-                                                            + txtNombre.Text + "','"
-                                                            + txtDireccion.Text + "','"
-                                                            + txtCiudad.Text + "','"
-                                                            + txtEstado.Text + "','"
-                                                            + mtbCodigoP.Text + "','"
-                                                            + txtPais.Text + "')";
+                dtgCarrito.DataSource = null;
+                dtgCarrito.DataSource = carrito;
 
 
-                        bool j = dt.ejecutarABC(/*"Insert Into Orders (CustomerID, EmployeeID, OrderDate, RequiredDate" +
-                                             ",ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity," +
-                                             "ShipRegion, ShipPostalCode, ShipCountry ) " +
-                                                     "Values ('" + txtIDCliente.Text + "',"
-                                                        + (cmbEmpleado.SelectedIndex+1) + ",'"
-                                                        + fecha + "','"
-                                                        + fechaEntrega + "','"
-                                                        + fechaEmbarque + "',"
-                                                        + (cmbIDbarco.SelectedIndex+1) + ","
-                                                        + double.Parse(mtbFlete.Text) + ",'"
-                                                        + txtNombre.Text + "','"
-                                                        + txtDireccion.Text + "','"
-                                                        + txtCiudad.Text + "','"
-                                                        + txtEstado.Text + "','"
-                                                        + txtCodigoP.Text + "','"
-                                                        + txtPais.Text + "')"*/consulta);
-                        MessageBox.Show(consulta);
+                total += selectedProduct.UnitPrice;
+                lblTotal.Text = $"Total: {total:C}";
+            }
+            
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un producto.");
+            }
+            }
 
-                        if (j == true)
-                        {
-                            MessageBox.Show("Producto añadido", "Orders",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            frmOrdenes.cargarDatosOrders();
-                            txtNombre.Clear();
-                            txtPais.Clear();
-                            txtEstado.Clear();
-                            txtCiudad.Clear();
-                            txtDireccion.Clear();
-                            mtbCodigoP.Clear();
-                            mtbFlete.Clear();
-                            txtIDCliente.Clear();
+        private void btnAgrOrder_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            {
+                conn.Open();
 
+                
+                SqlCommand cmdOrder = new SqlCommand(
+                    "INSERT INTO Orders (OrderDate) VALUES (@OrderDate); SELECT SCOPE_IDENTITY();", conn);
+                cmdOrder.Parameters.AddWithValue("@OrderDate", DateTime.Now);
 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error", "Orders", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+                int orderId = Convert.ToInt32(cmdOrder.ExecuteScalar());
+
+                
+               
+
+                foreach (var product in carrito)
+                {
+                    SqlCommand cmdDetail = new SqlCommand(
+                        "INSERT INTO [Order Details] ([OrderID], [ProductID], [Quantity], [UnitPrice]) " +
+                        "VALUES (@OrderID, @ProductID, @Quantity, @UnitPrice)", conn);
+
+                    cmdDetail.Parameters.AddWithValue("@OrderID", orderId);
+                    cmdDetail.Parameters.AddWithValue("@ProductID", product.ProductID);
+                    cmdDetail.Parameters.AddWithValue("@Quantity", product.Quantity);
+                    cmdDetail.Parameters.AddWithValue("@UnitPrice", product.UnitPrice);
+
+                    cmdDetail.ExecuteNonQuery();
+                }
+
+                
+                SqlCommand cmdSearchOrder = new SqlCommand(
+                    "SELECT * FROM Orders WHERE OrderID = @OrderID", conn);
+                cmdSearchOrder.Parameters.AddWithValue("@OrderID", orderId);
+
+                SqlDataReader reader = cmdSearchOrder.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    DateTime orderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate"));
+                    MessageBox.Show($"Orden ID: {orderId}\nFecha de la Orden: {orderDate}");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la orden.");
                 }
             }
 
 
+            MessageBox.Show("Orden agregada correctamente.");
+
+            
+            carrito.Clear();
+            dtgCarrito.DataSource = null;
+            lblTotal.Text = "Total: $0.00";
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+
+
+        private void cmbProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Close();
+            if (cmbProductos.SelectedItem != null)
+            {
+                Product selectedProduct = (Product)cmbProductos.SelectedItem;
+                //MessageBox.Show($"Producto seleccionado: {selectedProduct.ProductName}\nPrecio: {selectedProduct.UnitPrice:C}");
+            }
         }
     }
 }

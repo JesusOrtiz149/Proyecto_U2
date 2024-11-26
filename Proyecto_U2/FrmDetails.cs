@@ -29,13 +29,13 @@ namespace Proyecto_U2
                              "INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID " +
                              "WHERE Orders.OrderID = @OrderID";
 
-           
+
             var parametros = new Dictionary<string, object>
     {
         { "@OrderID", this.orderID }
     };
 
-           
+
             Datos dt = new Datos();
             DataSet ds = dt.ejecutarConsultaConParametros(comando, parametros); // Pasa la consulta y los parámetros
 
@@ -46,7 +46,7 @@ namespace Proyecto_U2
                 //MessageBox.Show($"Order ID: {orderIDValue}, Company: {companyNameValue}");
 
                 lblOrderID.Text = "OrderID: " + orderIDValue;
-                lblCompanyName.Text = "CompanyName: \n"+ companyNameValue;
+                lblCompanyName.Text = "CompanyName: \n" + companyNameValue;
             }
             else
             {
@@ -66,8 +66,7 @@ namespace Proyecto_U2
             if (ds != null)
             {
                 dtgDetails.DataSource = ds.Tables[0];
-
-
+               
                 foreach (DataGridViewRow row in dtgDetails.Rows)
                 {
                     if (row.Cells["Quantity"].Value != DBNull.Value &&
@@ -83,29 +82,33 @@ namespace Proyecto_U2
                         row.Cells["Total"].Value = total;
                         totalSum += total;
                     }
+                    
+                
 
-                }
-            
-        
+                
+            }
 
-       
-        lblTotal.Text = $"Total General: {totalSum:C}";
+
+
+
+                lblTotal.Text = $"Total General: {totalSum:C}";
             }
         }
-
-
+       
 
 
         private void FrmDetails_Load_1(object sender, EventArgs e)
         {
-            cargarDetallesOrden(); 
-            cargarDatosRelacionados(); 
+            cargarDetallesOrden();
+            cargarDatosRelacionados();
         }
 
         private void dtgDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
         }
+       
     }
 }
+
 

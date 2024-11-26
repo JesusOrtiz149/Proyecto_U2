@@ -10,5 +10,7 @@ namespace Proyecto_U2
     {
         public static string Role { get; set; }
         public static string UserName { get; set; }
+
+        public static int EmployeeID {  get; set; }
     }
 }

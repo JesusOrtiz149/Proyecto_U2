@@ -17,7 +17,15 @@ namespace Proyecto_U2
         {
             InitializeComponent();
         }
-
+        public void CargarEmpleados()
+        {
+            Datos dt = new Datos();
+            DataSet ds = dt.ejecutarConsulta("SELECT * FROM Employees");
+            if (ds != null)
+            {
+                dgvEmployees.DataSource = ds.Tables[0];
+            }
+        }
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
             FrmAddEmployee frmAddEmployee = new FrmAddEmployee();
@@ -26,6 +34,11 @@ namespace Proyecto_U2
         }
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
+        {
+            CargarEmpleados();
+        }
+
+        /*private void FrmEmpleados_Load(object sender, EventArgs e)
         {
             cargarDatos1("Select * From Employees");
         }
@@ -37,7 +50,7 @@ namespace Proyecto_U2
             {
                 dgvEmployees.DataSource = ds.Tables[0];
             }
-        }
+        }*/
 
     }
 }
