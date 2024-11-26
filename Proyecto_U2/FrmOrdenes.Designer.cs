@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrdenes));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dtgOrders = new DataGridView();
             btnNuevaOrden = new Button();
             btnRegresar = new Button();
@@ -41,6 +41,7 @@
             label2 = new Label();
             tabOrders = new TabControl();
             tabPage1 = new TabPage();
+            lklOrdenes = new LinkLabel();
             btnBuscar = new Button();
             txtOrderID = new TextBox();
             label3 = new Label();
@@ -140,6 +141,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(lklOrdenes);
             tabPage1.Controls.Add(btnBuscar);
             tabPage1.Controls.Add(txtOrderID);
             tabPage1.Controls.Add(label3);
@@ -157,6 +159,17 @@
             tabPage1.Text = "Orders";
             tabPage1.UseVisualStyleBackColor = true;
             tabPage1.Click += tabPage1_Click;
+            // 
+            // lklOrdenes
+            // 
+            lklOrdenes.AutoSize = true;
+            lklOrdenes.Location = new Point(1129, 533);
+            lklOrdenes.Name = "lklOrdenes";
+            lklOrdenes.Size = new Size(156, 20);
+            lklOrdenes.TabIndex = 11;
+            lklOrdenes.TabStop = true;
+            lklOrdenes.Text = "Ver Ordenes Recientes";
+            lklOrdenes.LinkClicked += lklOrdenes_LinkClicked;
             // 
             // btnBuscar
             // 
@@ -200,16 +213,16 @@
             // 
             // chtOrde
             // 
-            chartArea1.Name = "ChartArea1";
-            chtOrde.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chtOrde.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chtOrde.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chtOrde.Legends.Add(legend2);
             chtOrde.Location = new Point(34, 29);
             chtOrde.Name = "chtOrde";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "OrderCount";
-            chtOrde.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "OrderCount";
+            chtOrde.Series.Add(series2);
             chtOrde.Size = new Size(1214, 549);
             chtOrde.TabIndex = 0;
             chtOrde.Text = "OrderCount";
@@ -251,5 +264,6 @@
         private Label label3;
         private Button btnBuscar;
         private TextBox txtOrderID;
+        private LinkLabel lklOrdenes;
     }
 }

@@ -14,6 +14,7 @@ namespace Proyecto_U2
     public partial class FrmAddOrder : Form
     {
         private List<Product> carrito = new List<Product>();
+        public static List<Order> orders = new List<Order>();
         private decimal total = 0;
         private int orderId = 0;
         public FrmAddOrder()
@@ -58,20 +59,14 @@ namespace Proyecto_U2
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            orderId = random.Next(1000, 9999);
-            lblOrder.Text = $"OrdenID: {orderId}";
+            
             btnAgregar.Enabled = true;
             btnAgrOrder.Enabled = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (orderId == 0)
-            {
-                MessageBox.Show("Por favor, genera un número de orden antes de continuar.");
-                return;
-            }
+            
             if (cmbProductos.SelectedItem != null)
             {
                 Product selectedProduct = (Product)cmbProductos.SelectedItem;
@@ -116,6 +111,12 @@ namespace Proyecto_U2
 
         private void btnAgrOrder_Click(object sender, EventArgs e)
         {
+            if (carrito.Count == 0)
+            {
+                MessageBox.Show("El carrito está vacío. Agrega productos antes de generar una orden.", "Carrito vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
             using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
             {
                 conn.Open();
@@ -127,8 +128,8 @@ namespace Proyecto_U2
 
                 int orderId = Convert.ToInt32(cmdOrder.ExecuteScalar());
 
+
                 
-               
 
                 foreach (var product in carrito)
                 {
@@ -143,8 +144,14 @@ namespace Proyecto_U2
 
                     cmdDetail.ExecuteNonQuery();
                 }
+                orders.Add(new Order
+                {
+                    OrderID = orderId,
+                    OrderDate = DateTime.Now
+                });
+              
 
-                
+
                 SqlCommand cmdSearchOrder = new SqlCommand(
                     "SELECT * FROM Orders WHERE OrderID = @OrderID", conn);
                 cmdSearchOrder.Parameters.AddWithValue("@OrderID", orderId);
@@ -176,6 +183,7 @@ namespace Proyecto_U2
 
         private void cmbProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             if (cmbProductos.SelectedItem != null)
             {
                 Product selectedProduct = (Product)cmbProductos.SelectedItem;

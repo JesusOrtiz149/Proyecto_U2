@@ -104,6 +104,26 @@ namespace Proyecto_U2
                 return null;
             }
         }
+        public DataSet ejecutarConsultaPS(string query, SqlParameter[] parametros = null)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog=Northwind"))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (parametros != null)
+                    {
+                        cmd.Parameters.AddRange(parametros);
+                    }
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    return ds;
+                }
+            }
+        }
+
 
     }
 }
