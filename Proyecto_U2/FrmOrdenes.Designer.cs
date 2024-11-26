@@ -45,6 +45,7 @@
             label2 = new Label();
             tabOrders = new TabControl();
             tabPage1 = new TabPage();
+            lklOrdenes = new LinkLabel();
             btnBuscar = new Button();
             txtOrderID = new TextBox();
             label3 = new Label();
@@ -172,6 +173,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(lklOrdenes);
             tabPage1.Controls.Add(btnBuscar);
             tabPage1.Controls.Add(txtOrderID);
             tabPage1.Controls.Add(label3);
@@ -189,6 +191,17 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Orders";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lklOrdenes
+            // 
+            lklOrdenes.AutoSize = true;
+            lklOrdenes.Location = new Point(1129, 533);
+            lklOrdenes.Name = "lklOrdenes";
+            lklOrdenes.Size = new Size(156, 20);
+            lklOrdenes.TabIndex = 11;
+            lklOrdenes.TabStop = true;
+            lklOrdenes.Text = "Ver Ordenes Recientes";
+            lklOrdenes.LinkClicked += lklOrdenes_LinkClicked;
             // 
             // btnBuscar
             // 
@@ -237,14 +250,13 @@
             chtOrde.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             chtOrde.Legends.Add(legend2);
-            chtOrde.Location = new Point(30, 22);
-            chtOrde.Margin = new Padding(3, 2, 3, 2);
+            chtOrde.Location = new Point(34, 29);
             chtOrde.Name = "chtOrde";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "OrderCount";
             chtOrde.Series.Add(series2);
-            chtOrde.Size = new Size(1062, 412);
+            chtOrde.Size = new Size(1214, 549);
             chtOrde.TabIndex = 0;
             chtOrde.Text = "OrderCount";
             // 
@@ -304,5 +316,6 @@
         private Label label3;
         private Button btnBuscar;
         private TextBox txtOrderID;
+        private LinkLabel lklOrdenes;
     }
 }

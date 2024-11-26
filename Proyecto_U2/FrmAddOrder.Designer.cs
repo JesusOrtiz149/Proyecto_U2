@@ -45,27 +45,27 @@
             dtgCarrito.AllowUserToAddRows = false;
             dtgCarrito.AllowUserToDeleteRows = false;
             dtgCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgCarrito.Location = new Point(12, 148);
+            dtgCarrito.Location = new Point(12, 169);
             dtgCarrito.Name = "dtgCarrito";
             dtgCarrito.ReadOnly = true;
             dtgCarrito.RowHeadersWidth = 51;
-            dtgCarrito.Size = new Size(934, 241);
+            dtgCarrito.Size = new Size(568, 241);
             dtgCarrito.TabIndex = 0;
             // 
             // lblOrder
             // 
             lblOrder.AutoSize = true;
-            lblOrder.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrder.Font = new Font("Georgia", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblOrder.Location = new Point(12, 50);
             lblOrder.Name = "lblOrder";
-            lblOrder.Size = new Size(0, 21);
+            lblOrder.Size = new Size(0, 27);
             lblOrder.TabIndex = 1;
             // 
             // lblProd
             // 
             lblProd.AutoSize = true;
             lblProd.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblProd.Location = new Point(387, 41);
+            lblProd.Location = new Point(133, 17);
             lblProd.Name = "lblProd";
             lblProd.Size = new Size(106, 24);
             lblProd.TabIndex = 2;
@@ -74,7 +74,7 @@
             // cmbProductos
             // 
             cmbProductos.FormattingEnabled = true;
-            cmbProductos.Location = new Point(510, 39);
+            cmbProductos.Location = new Point(245, 14);
             cmbProductos.Name = "cmbProductos";
             cmbProductos.Size = new Size(257, 28);
             cmbProductos.TabIndex = 3;
@@ -83,7 +83,7 @@
             // btnAgregar
             // 
             btnAgregar.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAgregar.Location = new Point(810, 39);
+            btnAgregar.Location = new Point(539, 12);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(94, 29);
             btnAgregar.TabIndex = 4;
@@ -105,7 +105,7 @@
             // btnAgrOrder
             // 
             btnAgrOrder.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAgrOrder.Location = new Point(810, 448);
+            btnAgrOrder.Location = new Point(467, 427);
             btnAgrOrder.Name = "btnAgrOrder";
             btnAgrOrder.Size = new Size(166, 31);
             btnAgrOrder.TabIndex = 6;
@@ -117,7 +117,8 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(809, 124);
+            lblTotal.ImageAlign = ContentAlignment.MiddleRight;
+            lblTotal.Location = new Point(440, 142);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(62, 24);
             lblTotal.TabIndex = 7;
@@ -127,7 +128,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 491);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(645, 482);
             Controls.Add(lblTotal);
             Controls.Add(btnAgrOrder);
             Controls.Add(btnOrder);
