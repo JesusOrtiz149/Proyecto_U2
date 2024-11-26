@@ -36,13 +36,13 @@ namespace Proyecto_U2
             this.idProducto = Convert.ToInt32(ProductID);
             txtNombreProduct.Text = NombreProducto;
             mtbSuppID.Text = supplierID;
-            cmbCategoria.SelectedIndex = cmbIntCategoria-1;
+            cmbCategoria.SelectedIndex = cmbIntCategoria - 1 >= 0 ? cmbIntCategoria - 1 : 0;
             txtUnidadxCantidad.Text = unidadxCantidad;
             mtbPrecio.Text = unidadPrecio;
             mtbUnInv.Text = unidadStock;
             mtbUnOnOrder.Text = unidadSobPedido;
             mtbNivelReorder.Text = nivelPedidos;
-            cmbDescontinuado.SelectedValue = descontinuado;
+            cmbDescontinuado.SelectedIndex = descontinuado == "1" ? 1 : 0;
             bandera = true;
 
         }
@@ -85,8 +85,8 @@ namespace Proyecto_U2
             {
                 if (bandera == true)
                 {
-                    MessageBox.Show("descontinuado "+Convert.ToInt32(cmbDescontinuado.SelectedValue).ToString());
-                    MessageBox.Show(Convert.ToInt32(cmbCategoria.SelectedValue).ToString());
+                    //MessageBox.Show("descontinuado "+Convert.ToInt32(cmbDescontinuado.SelectedValue).ToString());
+                    // MessageBox.Show(Convert.ToInt32(cmbCategoria.SelectedValue).ToString());
                     string consultaUpdate = @"UPDATE Products 
                                       SET ProductName = @ProductName, 
                                           SupplierID = @SupplierID, 
@@ -113,9 +113,22 @@ namespace Proyecto_U2
                          );*/
                     parametros.Add("@ProductID", idProducto);
                     parametros.Add("@ProductName", txtNombreProduct.Text);
+
+                    if (!int.TryParse(mtbSuppID.Text, out int supplierID))
+                    {
+                        MessageBox.Show("Por favor ingrese un SupplierID válido.");
+                        return;
+                    }
                     parametros.Add("@SupplierID", Convert.ToInt32(mtbSuppID.Text));
                     parametros.Add("@CategoryID", Convert.ToInt32((cmbCategoria.SelectedIndex+1)));
                     parametros.Add("@QuantityPerUnit", txtUnidadxCantidad.Text);
+
+                    if (!decimal.TryParse(mtbPrecio.Text, out decimal unitPrice))
+                    {
+                        MessageBox.Show("Por favor ingrese un precio válido.");
+                        return;
+                    }
+
                     parametros.Add("@UnitPrice", Convert.ToDecimal(mtbPrecio.Text));
                     parametros.Add("@UnitsInStock", Convert.ToInt32(mtbUnInv.Text));
                     parametros.Add("@UnitsOnOrder", Convert.ToInt32(mtbUnOnOrder.Text));

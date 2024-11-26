@@ -144,7 +144,11 @@ namespace Proyecto_U2
                     dgvProducts[8, dgvProducts.SelectedRows[0].Index].Value.ToString(),
                     dgvProducts[9, dgvProducts.SelectedRows[0].Index].Value.ToString());
                 edit.ShowDialog();
-           //     cargarDatosProducts();
+                if (cmbSuppliers.SelectedValue != null)
+                {
+                    int selectedSupplierID = Convert.ToInt32(cmbSuppliers.SelectedValue);
+                    cargarSupplierID(selectedSupplierID);
+                }
             }
             else
             {
