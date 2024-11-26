@@ -41,6 +41,9 @@
             label2 = new Label();
             tabOrders = new TabControl();
             tabPage1 = new TabPage();
+            btnBuscar = new Button();
+            txtOrderID = new TextBox();
+            label3 = new Label();
             tabPage2 = new TabPage();
             chtOrde = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)dtgOrders).BeginInit();
@@ -66,7 +69,7 @@
             // btnNuevaOrden
             // 
             btnNuevaOrden.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevaOrden.Location = new Point(1069, 83);
+            btnNuevaOrden.Location = new Point(1165, 86);
             btnNuevaOrden.Margin = new Padding(3, 4, 3, 4);
             btnNuevaOrden.Name = "btnNuevaOrden";
             btnNuevaOrden.Size = new Size(147, 35);
@@ -91,7 +94,7 @@
             // cmbEmployeeID
             // 
             cmbEmployeeID.FormattingEnabled = true;
-            cmbEmployeeID.Location = new Point(28, 76);
+            cmbEmployeeID.Location = new Point(18, 48);
             cmbEmployeeID.Name = "cmbEmployeeID";
             cmbEmployeeID.Size = new Size(151, 28);
             cmbEmployeeID.TabIndex = 4;
@@ -99,7 +102,8 @@
             // 
             // txtEmployeeName
             // 
-            txtEmployeeName.Location = new Point(374, 76);
+            txtEmployeeName.Font = new Font("Georgia", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmployeeName.Location = new Point(342, 13);
             txtEmployeeName.Name = "txtEmployeeName";
             txtEmployeeName.Size = new Size(237, 27);
             txtEmployeeName.TabIndex = 5;
@@ -108,7 +112,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(223, 77);
+            label1.Location = new Point(230, 13);
             label1.Name = "label1";
             label1.Size = new Size(106, 24);
             label1.TabIndex = 6;
@@ -118,7 +122,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(28, 41);
+            label2.Location = new Point(18, 13);
             label2.Name = "label2";
             label2.Size = new Size(117, 21);
             label2.TabIndex = 7;
@@ -136,6 +140,9 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnBuscar);
+            tabPage1.Controls.Add(txtOrderID);
+            tabPage1.Controls.Add(label3);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(txtEmployeeName);
             tabPage1.Controls.Add(btnNuevaOrden);
@@ -149,6 +156,36 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Orders";
             tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Click += tabPage1_Click;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBuscar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBuscar.Location = new Point(875, 91);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(87, 30);
+            btnBuscar.TabIndex = 10;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // txtOrderID
+            // 
+            txtOrderID.Location = new Point(720, 91);
+            txtOrderID.Name = "txtOrderID";
+            txtOrderID.Size = new Size(149, 27);
+            txtOrderID.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(578, 67);
+            label3.Name = "label3";
+            label3.Size = new Size(207, 21);
+            label3.TabIndex = 8;
+            label3.Text = "Ingresa la orden deseada";
             // 
             // tabPage2
             // 
@@ -211,5 +248,8 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtOrde;
+        private Label label3;
+        private Button btnBuscar;
+        private TextBox txtOrderID;
     }
 }

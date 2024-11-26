@@ -28,254 +28,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label9 = new Label();
-            txtFax = new TextBox();
-            label10 = new Label();
-            txtTel = new TextBox();
-            label7 = new Label();
-            txtPais = new TextBox();
-            label8 = new Label();
-            txtCodigoP = new TextBox();
-            label4 = new Label();
-            txtEstado = new TextBox();
-            label5 = new Label();
-            txtCiudad = new TextBox();
-            label6 = new Label();
-            txtDireccion = new TextBox();
-            label3 = new Label();
-            txtContactoCargo = new TextBox();
-            label2 = new Label();
-            txtContactoNombre = new TextBox();
-            label1 = new Label();
-            btnAceptar = new Button();
-            dtpOrderDate = new DateTimePicker();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddOrder));
+            dtgCarrito = new DataGridView();
+            lblOrder = new Label();
+            lblProd = new Label();
+            cmbProductos = new ComboBox();
+            btnAgregar = new Button();
+            btnOrder = new Button();
+            btnAgrOrder = new Button();
+            lblTotal = new Label();
+            ((System.ComponentModel.ISupportInitialize)dtgCarrito).BeginInit();
             SuspendLayout();
             // 
-            // label9
+            // dtgCarrito
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(120, 245);
-            label9.Name = "label9";
-            label9.Size = new Size(25, 15);
-            label9.TabIndex = 44;
-            label9.Text = "Fax";
+            dtgCarrito.AllowUserToAddRows = false;
+            dtgCarrito.AllowUserToDeleteRows = false;
+            dtgCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgCarrito.Location = new Point(12, 148);
+            dtgCarrito.Name = "dtgCarrito";
+            dtgCarrito.ReadOnly = true;
+            dtgCarrito.RowHeadersWidth = 51;
+            dtgCarrito.Size = new Size(934, 241);
+            dtgCarrito.TabIndex = 0;
             // 
-            // txtFax
+            // lblOrder
             // 
-            txtFax.Location = new Point(120, 263);
-            txtFax.Name = "txtFax";
-            txtFax.Size = new Size(197, 23);
-            txtFax.TabIndex = 43;
+            lblOrder.AutoSize = true;
+            lblOrder.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrder.Location = new Point(12, 50);
+            lblOrder.Name = "lblOrder";
+            lblOrder.Size = new Size(0, 21);
+            lblOrder.TabIndex = 1;
             // 
-            // label10
+            // lblProd
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(120, 201);
-            label10.Name = "label10";
-            label10.Size = new Size(52, 15);
-            label10.TabIndex = 42;
-            label10.Text = "Teléfono";
+            lblProd.AutoSize = true;
+            lblProd.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblProd.Location = new Point(387, 41);
+            lblProd.Name = "lblProd";
+            lblProd.Size = new Size(106, 24);
+            lblProd.TabIndex = 2;
+            lblProd.Text = "Productos:";
             // 
-            // txtTel
+            // cmbProductos
             // 
-            txtTel.Location = new Point(120, 219);
-            txtTel.Name = "txtTel";
-            txtTel.Size = new Size(197, 23);
-            txtTel.TabIndex = 41;
+            cmbProductos.FormattingEnabled = true;
+            cmbProductos.Location = new Point(510, 39);
+            cmbProductos.Name = "cmbProductos";
+            cmbProductos.Size = new Size(257, 28);
+            cmbProductos.TabIndex = 3;
+            cmbProductos.SelectedIndexChanged += cmbProductos_SelectedIndexChanged;
             // 
-            // label7
+            // btnAgregar
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(401, 60);
-            label7.Name = "label7";
-            label7.Size = new Size(28, 15);
-            label7.TabIndex = 40;
-            label7.Text = "País";
+            btnAgregar.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAgregar.Location = new Point(810, 39);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(94, 29);
+            btnAgregar.TabIndex = 4;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
-            // txtPais
+            // btnOrder
             // 
-            txtPais.Location = new Point(401, 78);
-            txtPais.Name = "txtPais";
-            txtPais.Size = new Size(197, 23);
-            txtPais.TabIndex = 39;
+            btnOrder.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOrder.Location = new Point(12, 12);
+            btnOrder.Name = "btnOrder";
+            btnOrder.Size = new Size(94, 29);
+            btnOrder.TabIndex = 5;
+            btnOrder.Text = "OrderID";
+            btnOrder.UseVisualStyleBackColor = true;
+            btnOrder.Click += btnOrder_Click;
             // 
-            // label8
+            // btnAgrOrder
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(401, 201);
-            label8.Name = "label8";
-            label8.Size = new Size(81, 15);
-            label8.TabIndex = 38;
-            label8.Text = "Código Postal";
+            btnAgrOrder.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAgrOrder.Location = new Point(810, 448);
+            btnAgrOrder.Name = "btnAgrOrder";
+            btnAgrOrder.Size = new Size(166, 31);
+            btnAgrOrder.TabIndex = 6;
+            btnAgrOrder.Text = "AgrOrder";
+            btnAgrOrder.UseVisualStyleBackColor = true;
+            btnAgrOrder.Click += btnAgrOrder_Click;
             // 
-            // txtCodigoP
+            // lblTotal
             // 
-            txtCodigoP.Location = new Point(401, 219);
-            txtCodigoP.Name = "txtCodigoP";
-            txtCodigoP.Size = new Size(197, 23);
-            txtCodigoP.TabIndex = 37;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(401, 105);
-            label4.Name = "label4";
-            label4.Size = new Size(42, 15);
-            label4.TabIndex = 36;
-            label4.Text = "Estado";
-            // 
-            // txtEstado
-            // 
-            txtEstado.Location = new Point(401, 123);
-            txtEstado.Name = "txtEstado";
-            txtEstado.Size = new Size(197, 23);
-            txtEstado.TabIndex = 35;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(401, 151);
-            label5.Name = "label5";
-            label5.Size = new Size(45, 15);
-            label5.TabIndex = 34;
-            label5.Text = "Ciudad";
-            // 
-            // txtCiudad
-            // 
-            txtCiudad.Location = new Point(401, 169);
-            txtCiudad.Name = "txtCiudad";
-            txtCiudad.Size = new Size(197, 23);
-            txtCiudad.TabIndex = 33;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(401, 245);
-            label6.Name = "label6";
-            label6.Size = new Size(57, 15);
-            label6.TabIndex = 32;
-            label6.Text = "Dirección";
-            // 
-            // txtDireccion
-            // 
-            txtDireccion.Location = new Point(401, 263);
-            txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(197, 23);
-            txtDireccion.TabIndex = 31;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(120, 151);
-            label3.Name = "label3";
-            label3.Size = new Size(108, 15);
-            label3.TabIndex = 30;
-            label3.Text = "Cargo del contacto";
-            // 
-            // txtContactoCargo
-            // 
-            txtContactoCargo.Location = new Point(120, 169);
-            txtContactoCargo.Name = "txtContactoCargo";
-            txtContactoCargo.Size = new Size(197, 23);
-            txtContactoCargo.TabIndex = 29;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(120, 105);
-            label2.Name = "label2";
-            label2.Size = new Size(117, 15);
-            label2.TabIndex = 28;
-            label2.Text = "Nombre de contacto";
-            // 
-            // txtContactoNombre
-            // 
-            txtContactoNombre.Location = new Point(120, 123);
-            txtContactoNombre.Name = "txtContactoNombre";
-            txtContactoNombre.Size = new Size(197, 23);
-            txtContactoNombre.TabIndex = 27;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(120, 60);
-            label1.Name = "label1";
-            label1.Size = new Size(135, 15);
-            label1.TabIndex = 26;
-            label1.Text = "Nombre de la compañía";
-            // 
-            // btnAceptar
-            // 
-            btnAceptar.Location = new Point(319, 313);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
-            btnAceptar.TabIndex = 24;
-            btnAceptar.Text = "Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
-            // 
-            // dtpOrderDate
-            // 
-            dtpOrderDate.Location = new Point(120, 79);
-            dtpOrderDate.MaxDate = new DateTime(2099, 12, 31, 0, 0, 0, 0);
-            dtpOrderDate.MinDate = new DateTime(1800, 12, 31, 0, 0, 0, 0);
-            dtpOrderDate.Name = "dtpOrderDate";
-            dtpOrderDate.Size = new Size(200, 23);
-            dtpOrderDate.TabIndex = 45;
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotal.Location = new Point(809, 124);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(62, 24);
+            lblTotal.TabIndex = 7;
+            lblTotal.Text = "Total:";
             // 
             // FrmAddOrder
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(718, 397);
-            Controls.Add(dtpOrderDate);
-            Controls.Add(label9);
-            Controls.Add(txtFax);
-            Controls.Add(label10);
-            Controls.Add(txtTel);
-            Controls.Add(label7);
-            Controls.Add(txtPais);
-            Controls.Add(label8);
-            Controls.Add(txtCodigoP);
-            Controls.Add(label4);
-            Controls.Add(txtEstado);
-            Controls.Add(label5);
-            Controls.Add(txtCiudad);
-            Controls.Add(label6);
-            Controls.Add(txtDireccion);
-            Controls.Add(label3);
-            Controls.Add(txtContactoCargo);
-            Controls.Add(label2);
-            Controls.Add(txtContactoNombre);
-            Controls.Add(label1);
-            Controls.Add(btnAceptar);
+            ClientSize = new Size(988, 491);
+            Controls.Add(lblTotal);
+            Controls.Add(btnAgrOrder);
+            Controls.Add(btnOrder);
+            Controls.Add(btnAgregar);
+            Controls.Add(cmbProductos);
+            Controls.Add(lblProd);
+            Controls.Add(lblOrder);
+            Controls.Add(dtgCarrito);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmAddOrder";
-            Text = "FrmAddOrder";
+            Text = "AddOrder";
+            Load += FrmAddOrder_Load;
+            ((System.ComponentModel.ISupportInitialize)dtgCarrito).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label9;
-        private TextBox txtFax;
-        private Label label10;
-        private TextBox txtTel;
-        private Label label7;
-        private TextBox txtPais;
-        private Label label8;
-        private TextBox txtCodigoP;
-        private Label label4;
-        private TextBox txtEstado;
-        private Label label5;
-        private TextBox txtCiudad;
-        private Label label6;
-        private TextBox txtDireccion;
-        private Label label3;
-        private TextBox txtContactoCargo;
-        private Label label2;
-        private TextBox txtContactoNombre;
-        private Label label1;
-        private Button btnAceptar;
-        private DateTimePicker dtpOrderDate;
+        private DataGridView dtgCarrito;
+        private Label lblOrder;
+        private Label lblProd;
+        private ComboBox cmbProductos;
+        private Button btnAgregar;
+        private Button btnOrder;
+        private Button btnAgrOrder;
+        private Label lblTotal;
     }
 }
