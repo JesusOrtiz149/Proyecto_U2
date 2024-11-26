@@ -96,21 +96,21 @@ namespace Proyecto_U2
 
         public void cargarDatosOrders()
         {
-  
-                using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
-                {
-                    conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT OrderID, OrderDate FROM Orders", conn);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+            using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            {
+                conn.Open();
 
-                    dtgOrders.DataSource = dt;
-                }
+                SqlCommand cmd = new SqlCommand("SELECT OrderID, OrderDate FROM Orders", conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dtgOrders.DataSource = dt;
             }
+        }
 
-        
+
 
 
         public void cargarEmployeeIDs()
@@ -239,38 +239,11 @@ namespace Proyecto_U2
             {
                 MessageBox.Show("No se encontró la orden con el ID proporcionado.");
             }
-            }
         }
-        /*private void btnRegresar_Click(object sender, EventArgs e)
-        {
-
-            this.Hide();
-
-        }*/
-
-       /* private void FrmOrdenes_Load(object sender, EventArgs e)
-        {
-            cargarDatosOrders("Select * From Orders");
-
-        }*/
-        /*public void cargarDatosOrders(String comando)
-        {
-
-            dtgOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dtgOrders.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
-
-            Datos dt = new Datos();
-            ds = dt.ejecutarConsulta(comando);
-            if (ds != null)
-            {
-                dtgOrders.DataSource = ds.Tables[0];
-            }
-        }*/
 
         private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (dtgOrders.SelectedRows.Count > 0)
+          /*  if (dtgOrders.SelectedRows.Count > 0)
             {
                 FrmAddOrder edit = new FrmAddOrder(
                     dtgOrders[0, dtgOrders.SelectedRows[0].Index].Value.ToString(),
@@ -294,7 +267,7 @@ namespace Proyecto_U2
             {
                 MessageBox.Show("Debe seleccionar un registro", "Sistema", MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -327,7 +300,7 @@ namespace Proyecto_U2
                     MessageBox.Show("Registro eliminado con éxito.", "Sistema",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    cargarDatosOrders("Select * from Orders");
+                    cargarDatosOrders();
                 }
                 else
                 {
@@ -336,10 +309,28 @@ namespace Proyecto_U2
                 }
             }
         }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
-}
+
+
+    /* private void FrmOrdenes_Load(object sender, EventArgs e)
+     {
+         cargarDatosOrders("Select * From Orders");
+
+     }*/
+    /*public void cargarDatosOrders(String comando)
+    {
+
+        dtgOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        dtgOrders.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+        Datos dt = new Datos();
+        ds = dt.ejecutarConsulta(comando);
+        if (ds != null)
+        {
+            dtgOrders.DataSource = ds.Tables[0];
+        }
+    }*/
+
+
+    }

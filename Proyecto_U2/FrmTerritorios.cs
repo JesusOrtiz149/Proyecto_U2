@@ -12,16 +12,20 @@ namespace Proyecto_U2
 {
     public partial class FrmTerritorios : Form
     {
-        private int employeeID;
-
-        public FrmTerritorios(int employeeID)
         Datos dt = new Datos();
+        private int employeeID;
         DataSet ds;
-        public FrmTerritorios()
+
+        public FrmTerritorios(int employeeID) 
         {
             InitializeComponent();
             this.employeeID = employeeID;
         }
+        /*public FrmTerritorios()
+        {
+            InitializeComponent();
+            this.employeeID = employeeID;
+        }*/
 
         public void CargarTerri()
         {

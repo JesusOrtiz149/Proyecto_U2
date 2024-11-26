@@ -20,7 +20,8 @@ namespace Proyecto_U2
 
         private void Productos_FormClosed(Object sender, FormClosedEventArgs e)
         {
-            cargarDatosProducts();
+            //cargarDatosProducts();
+            CargarDatosP();
         }
 
         private void btnNuevoProducto_Click(object sender, EventArgs e)
@@ -182,7 +183,13 @@ namespace Proyecto_U2
                     MessageBox.Show("Registro eliminado con éxito.", "Sistema",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    cargarDatosProducts();
+                    
+                    if (cmbSuppliers.SelectedValue != null)
+                    {
+                        int selectedSupplierID = Convert.ToInt32(cmbSuppliers.SelectedValue);
+                        cargarSupplierID(selectedSupplierID);
+                    }
+
                 }
                 else
                 {

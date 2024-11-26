@@ -76,8 +76,6 @@ namespace Proyecto_U2
             }
         }
 
-
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
@@ -130,6 +128,7 @@ namespace Proyecto_U2
                     {
                         MessageBox.Show("Datos Actualizados", "Products",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         this.Close();
                     }
                     else
@@ -160,7 +159,7 @@ namespace Proyecto_U2
                     {
                         MessageBox.Show("Producto añadido", "Products",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        productos.cargarDatosProducts();
+                        productos.CargarDatosP();
                         mtbSuppID.Clear();
                         txtNombreProduct.Clear();
                         mtbUnInv.Clear();

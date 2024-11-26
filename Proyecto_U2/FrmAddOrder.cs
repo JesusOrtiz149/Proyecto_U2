@@ -21,12 +21,14 @@ namespace Proyecto_U2
             InitializeComponent();
         }
 
+
+
         private void FrmAddOrder_Load(object sender, EventArgs e)
         {
             btnAgregar.Enabled = false;
             btnAgrOrder.Enabled = false;
 
-            using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            using (SqlConnection conn = new SqlConnection(/*"Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"*/@"Data Source = DESKTOP-3KGVR4J\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind"))
             {
                 conn.Open();
 
