@@ -38,6 +38,20 @@ namespace Proyecto_U2
             {
                 dgvProducts.DataSource = ds.Tables[0];
             }
+            // Verificar si ya existe la columna de eliminación para evitar duplicados
+            if (!dgvProducts.Columns.Contains("Eliminar"))
+            {
+                // Crear la columna tipo botón
+                DataGridViewButtonColumn eliminarColumna = new DataGridViewButtonColumn
+                {
+                    Name = "Eliminar",
+                    HeaderText = "Eliminar",
+                    Text = "🗑️", // Ícono o texto
+                    UseColumnTextForButtonValue = true, // Usar el texto como contenido
+                    Width = 80
+                };
+                dgvProducts.Columns.Add(eliminarColumna);
+            }
         }
 
         private void FrmProductos_Load(object sender, EventArgs e)
@@ -53,15 +67,15 @@ namespace Proyecto_U2
         {
             Datos dt = new Datos();
             string query = $@"
-        SELECT STRING_AGG(ProductName, ', ') AS FullName 
-        FROM Products 
-        WHERE SupplierID = {SupplierID}";
+                            SELECT STRING_AGG(ProductName, ', ') AS FullName 
+                            FROM Products 
+                             WHERE SupplierID = {SupplierID}";
 
             DataSet ds = dt.ejecutarConsulta(query);
 
             if (ds != null && ds.Tables[0].Rows.Count > 0 && !string.IsNullOrEmpty(ds.Tables[0].Rows[0]["FullName"].ToString()))
             {
-              
+
                 txtProName.Text = ds.Tables[0].Rows[0]["FullName"].ToString();
             }
             else
@@ -109,7 +123,7 @@ namespace Proyecto_U2
                 string supplierID = dgvProducts.Rows[e.RowIndex].Cells["SupplierID"].Value.ToString();
                 FrmprDetails frmPR = new FrmprDetails(supplierID);
                 frmPR.ShowDialog();
-           } 
+            }
         }
 
         /*private void FrmProductos_Load(object sender, EventArgs e)
@@ -169,7 +183,7 @@ namespace Proyecto_U2
 
             // Confirmar eliminación
             if (MessageBox.Show("¿Deseas eliminar a " +
-                dgvProducts[1, dgvProducts.SelectedRows[0].Index].Value.ToString() + "?",
+                dgvProducts[1, dgvProducts.SelectedRows[0].Index].Value.ToString()+ "?",
                 "Confirmar eliminación",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
@@ -187,7 +201,7 @@ namespace Proyecto_U2
                     MessageBox.Show("Registro eliminado con éxito.", "Sistema",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    
+
                     if (cmbSuppliers.SelectedValue != null)
                     {
                         int selectedSupplierID = Convert.ToInt32(cmbSuppliers.SelectedValue);
@@ -199,6 +213,81 @@ namespace Proyecto_U2
                 {
                     MessageBox.Show("Error al eliminar el registro.", "Sistema",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar que el clic ocurrió en la columna "Eliminar"
+            if (e.ColumnIndex == dgvProducts.Columns["Eliminar"].Index && e.RowIndex >= 0)
+            {
+                // Obtener el OrderID de la fila seleccionada
+                int productID = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells["ProductID"].Value);
+                string ProductName = dgvProducts.Rows[e.RowIndex].Cells["ProductName"].Value.ToString();
+                int SupplierID = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells["SupplierID"].Value);
+                int CategoryID = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells["CategoryID"].Value);
+                string QuantityUnit = dgvProducts.Rows[e.RowIndex].Cells["QuantityPerUnit"].Value.ToString();
+                double UnitPrice = Convert.ToDouble(dgvProducts.Rows[e.RowIndex].Cells["UnitPrice"].Value);
+                int UnitStock = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells["UnitsInStock"].Value);
+                int UnitOrder= Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells["UnitsOnOrder"].Value);
+                int reorderlvl = Convert.ToInt32(dgvProducts.Rows[e.RowIndex].Cells["ReorderLevel"].Value);
+                bool descontinuado = Convert.ToBoolean(dgvProducts.Rows[e.RowIndex].Cells["Discontinued"].Value);
+                string descontinuadoTexto = descontinuado ? "Sí" : "No";
+
+
+                //mensaje de confirmación con los datos
+                string mensajeC = $"¿Estás seguro de que deseas eliminar el producto?\n\n " +
+                                 $"**ID:   {productID}**\n" +
+                                 $"**Nombre:  {ProductName}**\n"+
+                                 $"**SupplierID:   {SupplierID}**\n"+
+                                 $"**CategoryID:  {CategoryID}**\n"+
+                                 $"**QuantityPerUnit:  {QuantityUnit}**\n" +
+                                 $"**UnitPrice:  {UnitPrice}**\n" +
+                                 $"**UnitStock:  {UnitStock}**\n" +
+                                 $"**UnitOrder:  {UnitOrder}**\n" +
+                                 $"**reorderlvl:  {reorderlvl}**\n" +
+                                 $"**Descontinuado:  {descontinuadoTexto}**\n" 
+                                 ;
+
+
+                // Confirmar eliminación
+                var confirmResult = MessageBox.Show(
+                    mensajeC,
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Eliminar el registro de la base de datos
+                    string consulta = "DELETE FROM Products WHERE ProductID = @ProductID";
+
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                { "@ProductID", productID }
+            };
+
+                    bool resultado = dt.ejecutarABCModificado(consulta, parametros);
+
+                    if (resultado)
+                    {
+                        MessageBox.Show("Registro eliminado con éxito.", "Información",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Recargar los datos en el DataGridView
+                        if (cmbSuppliers.SelectedValue != null)
+                        {
+                            int selectedSupplierID = Convert.ToInt32(cmbSuppliers.SelectedValue);
+                            cargarSupplierID(selectedSupplierID);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar el registro.", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

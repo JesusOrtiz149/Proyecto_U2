@@ -52,6 +52,7 @@
             dgvProducts.RowHeadersWidth = 51;
             dgvProducts.Size = new Size(955, 260);
             dgvProducts.TabIndex = 2;
+            dgvProducts.CellClick += dgvProducts_CellClick;
             dgvProducts.CellContentDoubleClick += dgvProducts_CellContentDoubleClick;
             // 
             // contextMenuStrip1

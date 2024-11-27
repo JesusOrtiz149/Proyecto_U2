@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrdenes));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dtgOrders = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
             editarToolStripMenuItem1 = new ToolStripMenuItem();
@@ -80,19 +80,19 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem1, eliminarToolStripMenuItem1 });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 70);
+            contextMenuStrip1.Size = new Size(118, 48);
             // 
             // editarToolStripMenuItem1
             // 
             editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
-            editarToolStripMenuItem1.Size = new Size(180, 22);
+            editarToolStripMenuItem1.Size = new Size(117, 22);
             editarToolStripMenuItem1.Text = "Editar";
             editarToolStripMenuItem1.Click += editarToolStripMenuItem1_Click;
             // 
             // eliminarToolStripMenuItem1
             // 
             eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            eliminarToolStripMenuItem1.Size = new Size(180, 22);
+            eliminarToolStripMenuItem1.Size = new Size(117, 22);
             eliminarToolStripMenuItem1.Text = "Eliminar";
             eliminarToolStripMenuItem1.Click += eliminarToolStripMenuItem1_Click;
             // 
@@ -197,7 +197,7 @@
             lklOrdenes.AutoSize = true;
             lklOrdenes.Location = new Point(1129, 533);
             lklOrdenes.Name = "lklOrdenes";
-            lklOrdenes.Size = new Size(156, 20);
+            lklOrdenes.Size = new Size(123, 15);
             lklOrdenes.TabIndex = 11;
             lklOrdenes.TabStop = true;
             lklOrdenes.Text = "Ver Ordenes Recientes";
@@ -207,7 +207,7 @@
             // 
             btnBuscar.Font = new Font("Georgia", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBuscar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBuscar.Location = new Point(875, 91);
+            btnBuscar.Location = new Point(912, 61);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(87, 30);
             btnBuscar.TabIndex = 10;
@@ -217,7 +217,7 @@
             // 
             // txtOrderID
             // 
-            txtOrderID.Location = new Point(720, 91);
+            txtOrderID.Location = new Point(757, 67);
             txtOrderID.Name = "txtOrderID";
             txtOrderID.Size = new Size(149, 23);
             txtOrderID.TabIndex = 9;
@@ -246,16 +246,16 @@
             // 
             // chtOrde
             // 
-            chartArea2.Name = "ChartArea1";
-            chtOrde.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chtOrde.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chtOrde.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chtOrde.Legends.Add(legend1);
             chtOrde.Location = new Point(34, 29);
             chtOrde.Name = "chtOrde";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "OrderCount";
-            chtOrde.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "OrderCount";
+            chtOrde.Series.Add(series1);
             chtOrde.Size = new Size(1214, 549);
             chtOrde.TabIndex = 0;
             chtOrde.Text = "OrderCount";

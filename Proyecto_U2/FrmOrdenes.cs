@@ -87,7 +87,8 @@ ORDER BY CONVERT(DATE, OrderDate)";
         public void cargarDatosOrders()
         {
 
-            using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            //using (SqlConnection conn = new SqlConnection("Data Source = LAPTOP-9P0KPF56\\SQLEXPRESS04;Integrated Security=true;Initial Catalog = Northwind"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-3KGVR4J\SQLEXPRESS;Integrated Security=true;Initial Catalog = Northwind"))
             {
                 conn.Open();
 
@@ -97,6 +98,20 @@ ORDER BY CONVERT(DATE, OrderDate)";
                 da.Fill(dt);
 
                 dtgOrders.DataSource = dt;
+                // Verificar si ya existe la columna de eliminación para evitar duplicados
+                if (!dtgOrders.Columns.Contains("Eliminar"))
+                {
+                    // Crear la columna tipo botón
+                    DataGridViewButtonColumn eliminarColumna = new DataGridViewButtonColumn
+                    {
+                        Name = "Eliminar",
+                        HeaderText = "Eliminar",
+                        Text = "🗑️", // Ícono o texto
+                        UseColumnTextForButtonValue = true, // Usar el texto como contenido
+                        Width = 80
+                    };
+                    dtgOrders.Columns.Add(eliminarColumna);
+                }
             }
         }
 

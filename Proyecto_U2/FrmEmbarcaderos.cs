@@ -26,7 +26,7 @@ namespace Proyecto_U2
 
         public void cargarDatosShippers()
         {
-            dgvShippers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvShippers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvShippers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             Datos dt = new Datos();
@@ -89,7 +89,7 @@ namespace Proyecto_U2
                     MessageBox.Show("Registro eliminado con éxito.", "Sistema",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                   // cargarDatosShippers();
+                    cargarDatosShippers();
                 }
                 else
                 {
